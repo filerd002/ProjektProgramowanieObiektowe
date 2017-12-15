@@ -1,0 +1,6 @@
+com\example\WebSecurityConfig.class
+com\example\HibernateUtil.class
+com\example\MvcConfig.class
+com\example\BasicApplication.class
+com\example\SpringBootApplication.class
+com\example\VaadinUI.class
