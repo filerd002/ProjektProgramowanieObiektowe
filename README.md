@@ -7,4 +7,4 @@ Wykorzystane zostaną technologie:
 -Hosting Heroku
 -Postgres (Heroku Postgres) 
 -Hibernate
--Stream api
+-REST API
