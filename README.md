@@ -3,8 +3,8 @@ Filip Erdmann Maciej Wysocki
 
 Wykorzystane zostaną technologie: 
 -Spring boot 
--Vaadin 
+-thymeleaf 
+-bootstrap
 -Hosting Heroku
 -Postgres (Heroku Postgres) 
--Hibernate
 -REST API
