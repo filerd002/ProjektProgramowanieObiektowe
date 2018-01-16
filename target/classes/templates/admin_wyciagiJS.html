@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+
+        <title>Panel Administratora</title>
+        <link rel="stylesheet" type="text/css"
+              href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" media="all"  
+              href="../css/admin.css"  th:href="@{/css/admin.css}" />
+
+
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse">
+            <div  class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" th:href="@{/admin}">Panel Administratora </a>
+                </div>
+
+            </div>
+        </nav>
+        <nav class="navbar navbar-inverse">
+            <div  class="container">
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li ><a  th:href="@{/admin}">Start</a></li>     
+                         <li ><a  th:href="@{/admin_zarz_user}">Zarządzanie użytkownikami</a></li>
+                              <li ><a  th:href="@{/admin_zarz_dzialka}">Zarządzanie działkami</a></li>                         
+                             <li ><a  th:href="@{/admin_liczniki}">Liczniki</a></li>
+                          <li ><a  th:href="@{/admin_upload}">Upload​ ​dokumentów​</a></li>
+                            <li class="active"><a  th:href="@{/admin_wyciagiJS}">Wyciągi-JS</a></li>
+                           <li ><a  th:href="@{/admin_raport}">Raporty</a></li>
+                       <li style="  position: absolute; left: 94%; background-color: black">
+
+                            <a th:href="@{/login?logout}" onclick="$('#form').submit();">
+                                Wyloguj
+                            </a>
+                            <form style="visibility: hidden" id="form" method="post"  th:action="@{/logout}"></form>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+
+        <br/>
+
+
+
+    </body>
+</html>

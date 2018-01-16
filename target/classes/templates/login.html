@@ -3,20 +3,40 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     <head>
         <title>Logowanie </title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.css" />
+        <link rel="stylesheet/less" type="text/css" href="formChanges.less" />
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" type="text/css" media="all"  
+              href="../css/login.css"  th:href="@{/css/login.css}" />
     </head>
     <body>
-         <center>  <h2>Wprowadz dane</h2>   </center>
-        <center>   <form th:action="@{/login}" method="post">
-            <div><label style="line-height: 1cm;white-space: pre"> Login:     <input type="text" name="username"/> </label></div>
-            <div><label style="line-height: 1cm; "> Password: <input type="password" name="password"/> </label></div>
-            <div><input name="Zaloguj"  type="submit"  value="Zaloguj" onclick="window.location.href='/app'"/></div>    
-        </form>   </center>
-        
-          <center>  <div th:if="${param.error}" style="line-height: 1cm; ">
-           Wprowadzone dane są niepawidłowe!
-        </div>   </center>
-          <center><div th:if="${param.logout}" style="line-height: 1cm; ">
-            Zostałeś wylogowany!
-        </div>   </center>
+        <center><img th:src="@{/images/login.jpg}" class="img" alt="Logo" />
+        </center> 
+        <center> <div id="box">
+                <center>  <h2>Wprowadz dane</h2>   </center>
+                <center>   <form th:action="@{/login}" method="post">
+
+
+                        <div class="form-group has-feedback has-feedback-left">
+                            <label class="control-label">Login:</label>
+                            <input  type="text"  name="username" class="form-control" placeholder="Username" />
+                            <i class="form-control-feedback glyphicon glyphicon-user"></i>
+                        </div>
+                        <div class="form-group has-feedback has-feedback-left">
+                            <label class="control-label">Haslo:</label>
+                            <input type="password" name="password" class="form-control" placeholder="Password" />
+                            <i class="form-control-feedback glyphicon glyphicon-lock"></i>
+                        </div>
+
+                        <div><input name="Zaloguj" class="button1" type="submit"  value="Zaloguj" /></div>    
+                    </form>   </center>
+
+                <center>  <div th:if="${param.error}"  >
+                        <h4> Wprowadzone dane są niepawidłowe!</h4>         
+                    </div>   </center>
+                <center><div th:if="${param.logout}" >
+                        <h4>  Zostałeś wylogowany! </h4> 
+                    </div>   </center>
+            </div>  </center>
     </body>
 </html>
