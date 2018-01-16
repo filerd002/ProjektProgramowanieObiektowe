@@ -1,0 +1,76 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2017-12-24, 14:03:16
+    Author     : Filip
+*/
+body {
+
+    background: lightsteelblue;
+
+}
+.navbar-inverse {
+
+   
+    background-color: #11274C;
+
+}
+
+
+
+.navbar-brand
+{
+    position: absolute;
+    width: 100%;
+       left: 0;
+    text-align: center;
+    margin:0 auto;
+}
+
+.navbar-collapse
+{
+    position: absolute;
+    width: 100%;
+         left: 0;
+    text-align: center;
+    margin:0 auto;
+}
+
+.form{
+        position: absolute;
+    width: 100%;
+        right: 0;
+    text-align: center;
+    margin:0 auto;
+    
+}
+
+.button1 {
+  margin: 10px;
+background-color: #3276B1;
+border: 1px solid #bbbbbb;
+-moz-border-radius: 7px;
+-webkit-border-radius: 7px;
+border-radius: 7px;
+-moz-box-shadow: 2px 2px 3px #cccccc;
+-webkit-box-shadow: 2px 2px 3px #cccccc;
+box-shadow: 2px 2px 3px #cccccc;
+text-decoration: none;
+color: #fff;
+font-family: Calibri, Verdana, Arial, sans-serif;
+font-size: 18px;
+   position: static;
+  width: 100px;
+ font-size: 1.3vw;
+outline: none;
+padding: 3px 10px;
+}
+ 
+.button1:active {
+-moz-box-shadow: 2px 2px 3px #cccccc inset;
+-webkit-box-shadow: 2px 2px 3px #cccccc inset;
+box-shadow: 2px 2px 3px #cccccc inset;
+}
