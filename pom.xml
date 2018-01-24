@@ -32,11 +32,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.vaadin</groupId>
-            <artifactId>vaadin-spring-boot-starter</artifactId>
-        </dependency>
+        </dependency>    
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -170,12 +166,7 @@
             <version>3.4.0</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.vaadin</groupId>
-            <artifactId>vaadin-testbench-api</artifactId>
-            <version>8.0.6</version>
-            <scope>test</scope>
-        </dependency>
+        
       <dependency>
          <groupId>org.postgresql</groupId>
          <artifactId>postgresql</artifactId>
@@ -186,21 +177,24 @@
     <artifactId>spring-boot-autoconfigure</artifactId>
     <version>1.5.8.RELEASE</version>
 </dependency>
-
-
+      <dependency>
+         <groupId>unknown.binary</groupId>
+         <artifactId>postgresql-9.4.1209</artifactId>
+         <version>SNAPSHOT</version>
+      </dependency>
+      <dependency>
+         <groupId>unknown.binary</groupId>
+         <artifactId>derbyclient</artifactId>
+         <version>SNAPSHOT</version>
+      </dependency>
+      <dependency>
+         <groupId>unknown.binary</groupId>
+         <artifactId>derby</artifactId>
+         <version>SNAPSHOT</version>
+      </dependency>
    </dependencies>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>com.vaadin</groupId>
-                <artifactId>vaadin-bom</artifactId>
-                <version>${vaadin.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+   
 
     <build>
         <plugins>

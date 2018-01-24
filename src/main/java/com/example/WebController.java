@@ -47,7 +47,8 @@ public class WebController {
     public String user(){
         return "user";
     }
-
+    
+    
       @RequestMapping(value="/user_Rozrachunki")
     public String user_Rozrachunki(){
         return "user_Rozrachunki";

@@ -153,7 +153,7 @@ CREATE TABLE Zobowiazania
   "wpiowe" double precision,
   "energia_rozpocecie_sezonu" double precision,
   "energia_akonczenia_seoznu" double precision,
-  "dyzur z poprzedniego na biezący" double precision,
+  "dyzur z poprzedniego na biezacy" double precision,
   "dyzur z roku biezacego na nastepny" double precision,
   "zadluzenie z roku poprzedniego" double precision,
   "zobowiazania razem z BO" double precision,
