@@ -3,7 +3,7 @@ CREATE TABLE Aktualizacja_danych
   "id_aktual_data" serial NOT NULL,
   "nr_dzialki" integer NOT NULL,
   "nr_aktualizacji" integer NOT NULL,
-  "data_aktualizacji" date,
+  "data_aktualizacji" character varying(255),
   "sposob przekazania danych do aktualizacji" character varying(255),
   "zaktualizowane dane" character varying(255),
 PRIMARY KEY ("id_aktual_data")
@@ -17,10 +17,10 @@ ALTER TABLE Aktualizacja_danych
 CREATE TABLE Dostep
 (
   "nr_dzialkowicza" integer NOT NULL,
-  "login" character varying(20),
-  "password" character varying(20),
+  "login" character varying(20) NOT NULL ,
+  "password" character varying(20) NOT NULL,
   "enabled" boolean NOT NULL DEFAULT FALSE,
-  "role" character varying(15),
+  "role" character varying(15) NOT NULL DEFAULT 'ROLE_USER',
   UNIQUE (login,role),
 PRIMARY KEY (nr_dzialkowicza)
 )
@@ -70,8 +70,8 @@ ALTER TABLE Dzialki
 CREATE TABLE IBAN
 (
   "nr_dzialki" integer NOT NULL,
-  "IBAN" character varying(100),
-  "nr_konta" integer,
+  "kod_iban" character varying(100),
+  "nr_konta" character varying(100),
  PRIMARY KEY ("nr_dzialki")
 )
 WITH (
@@ -103,7 +103,7 @@ CREATE TABLE Odczyt_licznika
   "id_odczyt_licznika" integer NOT NULL,
   "nr_dzialki" integer NOT NULL,
   "nr_pomiaru" integer NOT NULL,
-  "data" date,
+  "data" character varying(255),
   "stan_licznika" integer,
   "naleznosc" double precision,
 PRIMARY KEY (id_odczyt_licznika)
@@ -120,7 +120,7 @@ CREATE TABLE Wyciagi_JS
   "nr_wyciagu" integer NOT NULL,
   "nr_dzialki" integer NOT NULL,
   "kwota" double precision,
-  "data" date,
+  "data" character varying(255),
   "opis" character(255),
   "skladka" double precision,
   "cynsz" double precision,

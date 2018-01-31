@@ -1,5 +1,5 @@
 package com.example.basic.model;
-// Generated 2018-01-24 14:30:52 by Hibernate Tools 4.3.1
+// Generated 2018-01-31 18:43:59 by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
@@ -25,8 +25,8 @@ public class Iban  implements java.io.Serializable {
 
      private int nrDzialki;
      private Dzialki dzialki;
-     private String iban;
-     private Integer nrKonta;
+     private String kodIban;
+     private String nrKonta;
 
     public Iban() {
     }
@@ -35,9 +35,9 @@ public class Iban  implements java.io.Serializable {
     public Iban(Dzialki dzialki) {
         this.dzialki = dzialki;
     }
-    public Iban(Dzialki dzialki, String iban, Integer nrKonta) {
+    public Iban(Dzialki dzialki, String kodIban, String nrKonta) {
        this.dzialki = dzialki;
-       this.iban = iban;
+       this.kodIban = kodIban;
        this.nrKonta = nrKonta;
     }
    
@@ -63,22 +63,22 @@ public class Iban  implements java.io.Serializable {
     }
 
     
-    @Column(name="IBAN", length=100)
-    public String getIban() {
-        return this.iban;
+    @Column(name="kod_iban", length=100)
+    public String getKodIban() {
+        return this.kodIban;
     }
     
-    public void setIban(String iban) {
-        this.iban = iban;
+    public void setKodIban(String kodIban) {
+        this.kodIban = kodIban;
     }
 
     
-    @Column(name="nr_konta")
-    public Integer getNrKonta() {
+    @Column(name="nr_konta", length=100)
+    public String getNrKonta() {
         return this.nrKonta;
     }
     
-    public void setNrKonta(Integer nrKonta) {
+    public void setNrKonta(String nrKonta) {
         this.nrKonta = nrKonta;
     }
 

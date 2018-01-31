@@ -1,4 +1,13 @@
-com\example\SpringBootApplication.class
-com\example\BasicApplication.class
+com\example\basic\model\WyciagiJs.class
+com\example\basic\model\Zobowiazania.class
+com\example\basic\model\Dzialkowicz.class
+com\example\basic\model\OdczytLicznika.class
 com\example\HibernateUtil.class
 com\example\WebSecurityConfig.class
+com\example\basic\model\Iban.class
+com\example\WebController.class
+com\example\basic\model\Informacja.class
+com\example\SpringBootApplication.class
+com\example\basic\model\Dzialki.class
+com\example\EmployeeAuthenticationSuccessHandler.class
+com\example\basic\model\AktualizacjaDanych.class

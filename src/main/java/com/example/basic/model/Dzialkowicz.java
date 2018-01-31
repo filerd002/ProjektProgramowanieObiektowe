@@ -1,5 +1,5 @@
 package com.example.basic.model;
-// Generated 2018-01-24 14:30:52 by Hibernate Tools 4.3.1
+// Generated 2018-01-31 18:43:59 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -35,6 +35,7 @@ public class Dzialkowicz  implements java.io.Serializable {
      private String email;
      private Set<Dzialki> dzialkis = new HashSet<Dzialki>(0);
      private Dostep dostep;
+   
 
     public Dzialkowicz() {
     }
@@ -56,6 +57,7 @@ public class Dzialkowicz  implements java.io.Serializable {
        this.telefon = telefon;
        this.email = email;
        this.dzialkis = dzialkis;
+       this.dostep = dostep;
        this.dostep = dostep;
     }
    
@@ -188,6 +190,8 @@ public class Dzialkowicz  implements java.io.Serializable {
     public void setDostep(Dostep dostep) {
         this.dostep = dostep;
     }
+
+
 
 
 
