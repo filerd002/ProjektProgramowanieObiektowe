@@ -1,13 +1,16 @@
 package com.example.basic.model;
-// Generated 2018-01-31 18:43:59 by Hibernate Tools 4.3.1
+// Generated 2018-02-02 20:24:56 by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -20,19 +23,20 @@ import javax.persistence.Table;
 public class WyciagiJs  implements java.io.Serializable {
 
 
-     private int nrWyciagu;
+     private int idWyciagu;
      private Dzialki dzialki;
+     private int nrWyciagu;
      private Double kwota;
      private String data;
      private String opis;
      private Double skladka;
      private Double cynsz;
-     private Integer awrbp;
+     private Double awrbp;
      private Double wpisowe;
      private Double energiaRozpoczecieSezonu;
      private Double energiaZakonczenieSezonu;
-     private Integer dyzurZRokuPopredniegoNaBiezacy;
-     private Integer dyzurZRokuBiezacegoNaNastepny;
+     private Double dyzurZRokuPoprzedniegoNaBiezacy;
+     private Double dyzurZRokuBiezacegoNaNastepny;
      private Double zadluzenieZRokuPoprzedniego;
      private Double licznik;
 
@@ -40,13 +44,15 @@ public class WyciagiJs  implements java.io.Serializable {
     }
 
 	
-    public WyciagiJs(int nrWyciagu, Dzialki dzialki) {
-        this.nrWyciagu = nrWyciagu;
+    public WyciagiJs(int idWyciagu, Dzialki dzialki, int nrWyciagu) {
+        this.idWyciagu = idWyciagu;
         this.dzialki = dzialki;
+        this.nrWyciagu = nrWyciagu;
     }
-    public WyciagiJs(int nrWyciagu, Dzialki dzialki, Double kwota, String data, String opis, Double skladka, Double cynsz, Integer awrbp, Double wpisowe, Double energiaRozpoczecieSezonu, Double energiaZakonczenieSezonu, Integer dyzurZRokuPopredniegoNaBiezacy, Integer dyzurZRokuBiezacegoNaNastepny, Double zadluzenieZRokuPoprzedniego, Double licznik) {
-       this.nrWyciagu = nrWyciagu;
+    public WyciagiJs(int idWyciagu, Dzialki dzialki, int nrWyciagu, Double kwota, String data, String opis, Double skladka, Double cynsz, Double awrbp, Double wpisowe, Double energiaRozpoczecieSezonu, Double energiaZakonczenieSezonu, Double dyzurZRokuPoprzedniegoNaBiezacy, Double dyzurZRokuBiezacegoNaNastepny, Double zadluzenieZRokuPoprzedniego, Double licznik) {
+       this.idWyciagu = idWyciagu;
        this.dzialki = dzialki;
+       this.nrWyciagu = nrWyciagu;
        this.kwota = kwota;
        this.data = data;
        this.opis = opis;
@@ -56,7 +62,7 @@ public class WyciagiJs  implements java.io.Serializable {
        this.wpisowe = wpisowe;
        this.energiaRozpoczecieSezonu = energiaRozpoczecieSezonu;
        this.energiaZakonczenieSezonu = energiaZakonczenieSezonu;
-       this.dyzurZRokuPopredniegoNaBiezacy = dyzurZRokuPopredniegoNaBiezacy;
+       this.dyzurZRokuPoprzedniegoNaBiezacy = dyzurZRokuPoprzedniegoNaBiezacy;
        this.dyzurZRokuBiezacegoNaNastepny = dyzurZRokuBiezacegoNaNastepny;
        this.zadluzenieZRokuPoprzedniego = zadluzenieZRokuPoprzedniego;
        this.licznik = licznik;
@@ -65,13 +71,20 @@ public class WyciagiJs  implements java.io.Serializable {
      @Id 
 
     
-    @Column(name="nr_wyciagu", unique=true, nullable=false)
-    public int getNrWyciagu() {
-        return this.nrWyciagu;
+
+@SequenceGenerator(name="Wyciagi_JS_id_seq",
+                       sequenceName="Wyciagi_JS_id_seq",
+                       allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+                    generator="Wyciagi_JS_id_seq")
+
+    @Column(name="id_wyciagu", unique=true, nullable=false)
+    public int getIdWyciagu() {
+        return this.idWyciagu;
     }
     
-    public void setNrWyciagu(int nrWyciagu) {
-        this.nrWyciagu = nrWyciagu;
+    public void setIdWyciagu(int idWyciagu) {
+        this.idWyciagu = idWyciagu;
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
@@ -82,6 +95,16 @@ public class WyciagiJs  implements java.io.Serializable {
     
     public void setDzialki(Dzialki dzialki) {
         this.dzialki = dzialki;
+    }
+
+    
+    @Column(name="nr_wyciagu", nullable=false)
+    public int getNrWyciagu() {
+        return this.nrWyciagu;
+    }
+    
+    public void setNrWyciagu(int nrWyciagu) {
+        this.nrWyciagu = nrWyciagu;
     }
 
     
@@ -135,12 +158,12 @@ public class WyciagiJs  implements java.io.Serializable {
     }
 
     
-    @Column(name="AWRBP")
-    public Integer getAwrbp() {
+    @Column(name="awrbp", precision=17, scale=17)
+    public Double getAwrbp() {
         return this.awrbp;
     }
     
-    public void setAwrbp(Integer awrbp) {
+    public void setAwrbp(Double awrbp) {
         this.awrbp = awrbp;
     }
 
@@ -175,27 +198,27 @@ public class WyciagiJs  implements java.io.Serializable {
     }
 
     
-    @Column(name="dyzur z roku popredniego na biezacy")
-    public Integer getDyzurZRokuPopredniegoNaBiezacy() {
-        return this.dyzurZRokuPopredniegoNaBiezacy;
+    @Column(name="dyzur_z_roku_poprzedniego_na_biezacy", precision=17, scale=17)
+    public Double getDyzurZRokuPoprzedniegoNaBiezacy() {
+        return this.dyzurZRokuPoprzedniegoNaBiezacy;
     }
     
-    public void setDyzurZRokuPopredniegoNaBiezacy(Integer dyzurZRokuPopredniegoNaBiezacy) {
-        this.dyzurZRokuPopredniegoNaBiezacy = dyzurZRokuPopredniegoNaBiezacy;
+    public void setDyzurZRokuPoprzedniegoNaBiezacy(Double dyzurZRokuPoprzedniegoNaBiezacy) {
+        this.dyzurZRokuPoprzedniegoNaBiezacy = dyzurZRokuPoprzedniegoNaBiezacy;
     }
 
     
-    @Column(name="dyzur z roku biezacego na nastepny")
-    public Integer getDyzurZRokuBiezacegoNaNastepny() {
+    @Column(name="dyzur_z_roku_biezacego_na_nastepny", precision=17, scale=17)
+    public Double getDyzurZRokuBiezacegoNaNastepny() {
         return this.dyzurZRokuBiezacegoNaNastepny;
     }
     
-    public void setDyzurZRokuBiezacegoNaNastepny(Integer dyzurZRokuBiezacegoNaNastepny) {
+    public void setDyzurZRokuBiezacegoNaNastepny(Double dyzurZRokuBiezacegoNaNastepny) {
         this.dyzurZRokuBiezacegoNaNastepny = dyzurZRokuBiezacegoNaNastepny;
     }
 
     
-    @Column(name="zadluzenie z roku poprzedniego", precision=17, scale=17)
+    @Column(name="zadluzenie_z_roku_poprzedniego", precision=17, scale=17)
     public Double getZadluzenieZRokuPoprzedniego() {
         return this.zadluzenieZRokuPoprzedniego;
     }

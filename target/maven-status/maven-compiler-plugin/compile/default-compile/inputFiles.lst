@@ -6,6 +6,7 @@ C:\Users\Filip\Documents\NetBeansProjects\ProjektProgramowanieObiektowe\src\main
 C:\Users\Filip\Documents\NetBeansProjects\ProjektProgramowanieObiektowe\src\main\java\com\example\basic\model\WyciagiJs.java
 C:\Users\Filip\Documents\NetBeansProjects\ProjektProgramowanieObiektowe\src\main\java\com\example\DataMigrationExcelToDatabase.java
 C:\Users\Filip\Documents\NetBeansProjects\ProjektProgramowanieObiektowe\src\main\java\com\example\basic\imp\ImplIban.java
+C:\Users\Filip\Documents\NetBeansProjects\ProjektProgramowanieObiektowe\src\main\java\com\example\basic\inter\InterDostep.java
 C:\Users\Filip\Documents\NetBeansProjects\ProjektProgramowanieObiektowe\src\main\java\com\example\basic\inter\InterWyciagiJS.java
 C:\Users\Filip\Documents\NetBeansProjects\ProjektProgramowanieObiektowe\src\main\java\com\example\basic\imp\ImplDzialki.java
 C:\Users\Filip\Documents\NetBeansProjects\ProjektProgramowanieObiektowe\src\main\java\com\example\basic\model\Informacja.java
@@ -15,6 +16,7 @@ C:\Users\Filip\Documents\NetBeansProjects\ProjektProgramowanieObiektowe\src\main
 C:\Users\Filip\Documents\NetBeansProjects\ProjektProgramowanieObiektowe\src\main\java\com\example\basic\model\Zobowiazania.java
 C:\Users\Filip\Documents\NetBeansProjects\ProjektProgramowanieObiektowe\src\main\java\com\example\basic\model\Iban.java
 C:\Users\Filip\Documents\NetBeansProjects\ProjektProgramowanieObiektowe\src\main\java\com\example\EmployeeAuthenticationSuccessHandler.java
+C:\Users\Filip\Documents\NetBeansProjects\ProjektProgramowanieObiektowe\src\main\java\com\example\basic\imp\ImplDostep.java
 C:\Users\Filip\Documents\NetBeansProjects\ProjektProgramowanieObiektowe\src\main\java\com\example\basic\inter\InterAktualizacjaDanych.java
 C:\Users\Filip\Documents\NetBeansProjects\ProjektProgramowanieObiektowe\src\main\java\com\example\HibernateUtil.java
 C:\Users\Filip\Documents\NetBeansProjects\ProjektProgramowanieObiektowe\src\main\java\com\example\WebSecurityConfig.java
@@ -23,6 +25,7 @@ C:\Users\Filip\Documents\NetBeansProjects\ProjektProgramowanieObiektowe\src\main
 C:\Users\Filip\Documents\NetBeansProjects\ProjektProgramowanieObiektowe\src\main\java\com\example\basic\inter\InterIban.java
 C:\Users\Filip\Documents\NetBeansProjects\ProjektProgramowanieObiektowe\src\main\java\com\example\basic\inter\InterOdczytLicznika.java
 C:\Users\Filip\Documents\NetBeansProjects\ProjektProgramowanieObiektowe\src\main\java\com\example\basic\imp\ImplDzialkowicz.java
+C:\Users\Filip\Documents\NetBeansProjects\ProjektProgramowanieObiektowe\src\main\java\com\example\basic\model\Dostep.java
 C:\Users\Filip\Documents\NetBeansProjects\ProjektProgramowanieObiektowe\src\main\java\com\example\basic\model\Dzialkowicz.java
 C:\Users\Filip\Documents\NetBeansProjects\ProjektProgramowanieObiektowe\src\main\java\com\example\basic\model\Dzialki.java
 C:\Users\Filip\Documents\NetBeansProjects\ProjektProgramowanieObiektowe\src\main\java\com\example\basic\imp\ImplWyciagiJs.java

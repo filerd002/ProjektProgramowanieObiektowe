@@ -1,13 +1,16 @@
 package com.example.basic.model;
-// Generated 2018-01-31 18:43:59 by Hibernate Tools 4.3.1
+// Generated 2018-02-02 20:24:56 by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -46,6 +49,14 @@ public class Informacja  implements java.io.Serializable {
      @Id 
 
     
+
+ @SequenceGenerator(name="Informacja_id_seq",
+                       sequenceName="Informacja_id_seq",
+                       allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+                    generator="Informacja_id_seq")
+    
+
     @Column(name="id_informacja", unique=true, nullable=false)
     public int getIdInformacja() {
         return this.idInformacja;

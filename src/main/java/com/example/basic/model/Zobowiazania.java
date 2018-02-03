@@ -1,13 +1,16 @@
 package com.example.basic.model;
-// Generated 2018-01-31 18:43:59 by Hibernate Tools 4.3.1
+// Generated 2018-02-02 20:24:56 by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -27,10 +30,10 @@ public class Zobowiazania  implements java.io.Serializable {
      private Double skladka;
      private Double czynsz;
      private Double anr;
-     private Double wpiowe;
+     private Double wpisowe;
      private Double energiaRozpocecieSezonu;
-     private Double energiaAkonczeniaSeoznu;
-     private Double dyzurZPoprzedniegoNaBiezacy;
+     private Double energiaZakonczeniaSeoznu;
+     private Double dyzurZRokuPoprzedniegoNaBiezacy;
      private Double dyzurZRokuBiezacegoNaNastepny;
      private Double zadluzenieZRokuPoprzedniego;
      private Double zobowiazaniaRazemZBo;
@@ -44,7 +47,7 @@ public class Zobowiazania  implements java.io.Serializable {
         this.dzialki = dzialki;
         this.rokRozliczeniowy = rokRozliczeniowy;
     }
-    public Zobowiazania(int nrZobowiazania, Dzialki dzialki, int rokRozliczeniowy, Double bilansOtwarcia, Double skladka, Double czynsz, Double anr, Double wpiowe, Double energiaRozpocecieSezonu, Double energiaAkonczeniaSeoznu, Double dyzurZPoprzedniegoNaBiezacy, Double dyzurZRokuBiezacegoNaNastepny, Double zadluzenieZRokuPoprzedniego, Double zobowiazaniaRazemZBo) {
+    public Zobowiazania(int nrZobowiazania, Dzialki dzialki, int rokRozliczeniowy, Double bilansOtwarcia, Double skladka, Double czynsz, Double anr, Double wpisowe, Double energiaRozpocecieSezonu, Double energiaZakonczeniaSeoznu, Double dyzurZRokuPoprzedniegoNaBiezacy, Double dyzurZRokuBiezacegoNaNastepny, Double zadluzenieZRokuPoprzedniego, Double zobowiazaniaRazemZBo) {
        this.nrZobowiazania = nrZobowiazania;
        this.dzialki = dzialki;
        this.rokRozliczeniowy = rokRozliczeniowy;
@@ -52,16 +55,23 @@ public class Zobowiazania  implements java.io.Serializable {
        this.skladka = skladka;
        this.czynsz = czynsz;
        this.anr = anr;
-       this.wpiowe = wpiowe;
+       this.wpisowe = wpisowe;
        this.energiaRozpocecieSezonu = energiaRozpocecieSezonu;
-       this.energiaAkonczeniaSeoznu = energiaAkonczeniaSeoznu;
-       this.dyzurZPoprzedniegoNaBiezacy = dyzurZPoprzedniegoNaBiezacy;
+       this.energiaZakonczeniaSeoznu = energiaZakonczeniaSeoznu;
+       this.dyzurZRokuPoprzedniegoNaBiezacy = dyzurZRokuPoprzedniegoNaBiezacy;
        this.dyzurZRokuBiezacegoNaNastepny = dyzurZRokuBiezacegoNaNastepny;
        this.zadluzenieZRokuPoprzedniego = zadluzenieZRokuPoprzedniego;
        this.zobowiazaniaRazemZBo = zobowiazaniaRazemZBo;
     }
    
      @Id 
+
+
+   @SequenceGenerator(name="Zobowiazania_id_seq",
+                       sequenceName="Zobowiazania_id_seq",
+                       allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+                    generator="Zobowiazania_id_seq")
 
     
     @Column(name="nr_zobowiazania", unique=true, nullable=false)
@@ -84,7 +94,7 @@ public class Zobowiazania  implements java.io.Serializable {
     }
 
     
-    @Column(name="rok rozliczeniowy", nullable=false)
+    @Column(name="rok_rozliczeniowy", nullable=false)
     public int getRokRozliczeniowy() {
         return this.rokRozliczeniowy;
     }
@@ -94,7 +104,7 @@ public class Zobowiazania  implements java.io.Serializable {
     }
 
     
-    @Column(name="bilans otwarcia", precision=17, scale=17)
+    @Column(name="bilans_otwarcia", precision=17, scale=17)
     public Double getBilansOtwarcia() {
         return this.bilansOtwarcia;
     }
@@ -124,7 +134,7 @@ public class Zobowiazania  implements java.io.Serializable {
     }
 
     
-    @Column(name="ANR", precision=17, scale=17)
+    @Column(name="anr", precision=17, scale=17)
     public Double getAnr() {
         return this.anr;
     }
@@ -134,13 +144,13 @@ public class Zobowiazania  implements java.io.Serializable {
     }
 
     
-    @Column(name="wpiowe", precision=17, scale=17)
-    public Double getWpiowe() {
-        return this.wpiowe;
+    @Column(name="wpisowe", precision=17, scale=17)
+    public Double getWpisowe() {
+        return this.wpisowe;
     }
     
-    public void setWpiowe(Double wpiowe) {
-        this.wpiowe = wpiowe;
+    public void setWpisowe(Double wpisowe) {
+        this.wpisowe = wpisowe;
     }
 
     
@@ -154,27 +164,27 @@ public class Zobowiazania  implements java.io.Serializable {
     }
 
     
-    @Column(name="energia_akonczenia_seoznu", precision=17, scale=17)
-    public Double getEnergiaAkonczeniaSeoznu() {
-        return this.energiaAkonczeniaSeoznu;
+    @Column(name="energia_zakonczenia_seoznu", precision=17, scale=17)
+    public Double getEnergiaZakonczeniaSeoznu() {
+        return this.energiaZakonczeniaSeoznu;
     }
     
-    public void setEnergiaAkonczeniaSeoznu(Double energiaAkonczeniaSeoznu) {
-        this.energiaAkonczeniaSeoznu = energiaAkonczeniaSeoznu;
-    }
-
-    
-    @Column(name="dyzur z poprzedniego na biezacy", precision=17, scale=17)
-    public Double getDyzurZPoprzedniegoNaBiezacy() {
-        return this.dyzurZPoprzedniegoNaBiezacy;
-    }
-    
-    public void setDyzurZPoprzedniegoNaBiezacy(Double dyzurZPoprzedniegoNaBiezacy) {
-        this.dyzurZPoprzedniegoNaBiezacy = dyzurZPoprzedniegoNaBiezacy;
+    public void setEnergiaZakonczeniaSeoznu(Double energiaZakonczeniaSeoznu) {
+        this.energiaZakonczeniaSeoznu = energiaZakonczeniaSeoznu;
     }
 
     
-    @Column(name="dyzur z roku biezacego na nastepny", precision=17, scale=17)
+    @Column(name="dyzur_z_roku_poprzedniego_na_biezacy", precision=17, scale=17)
+    public Double getDyzurZRokuPoprzedniegoNaBiezacy() {
+        return this.dyzurZRokuPoprzedniegoNaBiezacy;
+    }
+    
+    public void setDyzurZRokuPoprzedniegoNaBiezacy(Double dyzurZRokuPoprzedniegoNaBiezacy) {
+        this.dyzurZRokuPoprzedniegoNaBiezacy = dyzurZRokuPoprzedniegoNaBiezacy;
+    }
+
+    
+    @Column(name="dyzur_z_roku_biezacego_na_nastepny", precision=17, scale=17)
     public Double getDyzurZRokuBiezacegoNaNastepny() {
         return this.dyzurZRokuBiezacegoNaNastepny;
     }
@@ -184,7 +194,7 @@ public class Zobowiazania  implements java.io.Serializable {
     }
 
     
-    @Column(name="zadluzenie z roku poprzedniego", precision=17, scale=17)
+    @Column(name="zadluzenie_z_roku_poprzedniego", precision=17, scale=17)
     public Double getZadluzenieZRokuPoprzedniego() {
         return this.zadluzenieZRokuPoprzedniego;
     }
@@ -194,7 +204,7 @@ public class Zobowiazania  implements java.io.Serializable {
     }
 
     
-    @Column(name="zobowiazania razem z BO", precision=17, scale=17)
+    @Column(name="zobowiazania_razem_z_bo", precision=17, scale=17)
     public Double getZobowiazaniaRazemZBo() {
         return this.zobowiazaniaRazemZBo;
     }

@@ -31,6 +31,7 @@ public class ImplDzialkowicz implements InterDzialkowicz {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             trns = session.beginTransaction();
+            
             session.save(dzialkowicz);
             session.getTransaction().commit();
         } catch (RuntimeException e) {

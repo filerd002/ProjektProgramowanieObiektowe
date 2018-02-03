@@ -1,13 +1,16 @@
 package com.example.basic.model;
-// Generated 2018-01-31 18:43:59 by Hibernate Tools 4.3.1
+// Generated 2018-02-02 20:24:56 by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -48,6 +51,14 @@ public class AktualizacjaDanych  implements java.io.Serializable {
      @Id 
 
     
+    @SequenceGenerator(name="Aktualizacja_danych_id_seq",
+                       sequenceName="Aktualizacja_danych_id_seq",
+                       allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+                    generator="Aktualizacja_danych_id_seq")
+
+
+
     @Column(name="id_aktual_data", unique=true, nullable=false)
     public int getIdAktualData() {
         return this.idAktualData;
@@ -88,7 +99,7 @@ public class AktualizacjaDanych  implements java.io.Serializable {
     }
 
     
-    @Column(name="sposob przekazania danych do aktualizacji")
+    @Column(name="sposob_przekazania_danych_do_aktualizacji")
     public String getSposobPrzekazaniaDanychDoAktualizacji() {
         return this.sposobPrzekazaniaDanychDoAktualizacji;
     }
@@ -98,7 +109,7 @@ public class AktualizacjaDanych  implements java.io.Serializable {
     }
 
     
-    @Column(name="zaktualizowane dane")
+    @Column(name="zaktualizowane_dane")
     public String getZaktualizowaneDane() {
         return this.zaktualizowaneDane;
     }
