@@ -1,5 +1,5 @@
 package com.example.basic.model;
-// Generated 2018-01-24 14:30:52 by Hibernate Tools 4.3.1
+// Generated 2018-02-02 20:24:56 by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
@@ -29,17 +29,12 @@ public class Dostep  implements java.io.Serializable {
      private Dzialkowicz dzialkowicz;
      private String login;
      private String password;
-     private boolean enabled;
-     private String role;
+     private boolean enabled =true;
+     private String role ="ROLE_USER";
 
     public Dostep() {
     }
 
-	
-    public Dostep(Dzialkowicz dzialkowicz, boolean enabled) {
-        this.dzialkowicz = dzialkowicz;
-        this.enabled = enabled;
-    }
     public Dostep(Dzialkowicz dzialkowicz, String login, String password, boolean enabled, String role) {
        this.dzialkowicz = dzialkowicz;
        this.login = login;
@@ -70,7 +65,7 @@ public class Dostep  implements java.io.Serializable {
     }
 
     
-    @Column(name="login", length=20)
+    @Column(name="login", nullable=false, length=40)
     public String getLogin() {
         return this.login;
     }
@@ -80,7 +75,7 @@ public class Dostep  implements java.io.Serializable {
     }
 
     
-    @Column(name="password", length=20)
+    @Column(name="password", nullable=false, length=20)
     public String getPassword() {
         return this.password;
     }
@@ -100,7 +95,7 @@ public class Dostep  implements java.io.Serializable {
     }
 
     
-    @Column(name="role", length=15)
+    @Column(name="role", nullable=false, length=15)
     public String getRole() {
         return this.role;
     }

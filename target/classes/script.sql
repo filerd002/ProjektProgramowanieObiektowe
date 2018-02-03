@@ -1,11 +1,14 @@
+CREATE EXTENSION pgcrypto;
+CREATE SEQUENCE Aktualizacja_danych_id_seq;
+
 CREATE TABLE Aktualizacja_danych
 (
-  "id_aktual_data" serial NOT NULL,
+  "id_aktual_data" INTEGER DEFAULT NEXTVAL('Aktualizacja_danych_id_seq')  NOT NULL,
   "nr_dzialki" integer NOT NULL,
   "nr_aktualizacji" integer NOT NULL,
-  "data_aktualizacji" date,
-  "sposob przekazania danych do aktualizacji" character varying(255),
-  "zaktualizowane dane" character varying(255),
+  "data_aktualizacji" character varying(255),
+  "sposob_przekazania_danych_do_aktualizacji" character varying(255),
+  "zaktualizowane_dane" character varying(255),
 PRIMARY KEY ("id_aktual_data")
 )
 WITH (
@@ -17,12 +20,12 @@ ALTER TABLE Aktualizacja_danych
 CREATE TABLE Dostep
 (
   "nr_dzialkowicza" integer NOT NULL,
-  "login" character varying(20),
-  "password" character varying(20),
-  "enabled" boolean NOT NULL DEFAULT FALSE,
-  "role" character varying(15),
+  "login" character varying(40) NOT NULL ,
+  "password" character varying(20) NOT NULL DEFAULT crypt('MyNewPassword', gen_salt('des')),
+  "enabled" boolean NOT NULL DEFAULT TRUE,
+  "role" character varying(15) NOT NULL DEFAULT 'ROLE_USER',
   UNIQUE (login,role),
-PRIMARY KEY (nr_dzialkowicza)
+PRIMARY KEY ("nr_dzialkowicza")
 )
 WITH (
   OIDS=FALSE
@@ -44,7 +47,7 @@ CREATE TABLE Dzialkowicz
   "adres_do_korespondencji" character varying(255),
   "telefon" integer,
   "email" character varying(40),
-PRIMARY KEY (nr_dzialkowicza)
+PRIMARY KEY ("nr_dzialkowicza")
 )
 WITH (
   OIDS=FALSE
@@ -70,8 +73,8 @@ ALTER TABLE Dzialki
 CREATE TABLE IBAN
 (
   "nr_dzialki" integer NOT NULL,
-  "IBAN" character varying(100),
-  "nr_konta" integer,
+  "kod_iban" character varying(100),
+  "nr_konta" character varying(100),
  PRIMARY KEY ("nr_dzialki")
 )
 WITH (
@@ -80,10 +83,11 @@ WITH (
 ALTER TABLE IBAN
   OWNER TO postgres;
 
+CREATE SEQUENCE Informacja_id_seq;
 
 CREATE TABLE Informacja
 (
-  "id_informacja" integer NOT NULL,
+  "id_informacja" INTEGER DEFAULT NEXTVAL('Informacja_id_seq')  NOT NULL,
   "nr_dzialki" integer,
   "nr_informacji" integer,
   "rok_rozliczeniowy" integer,
@@ -97,13 +101,15 @@ WITH (
 ALTER TABLE Informacja
   OWNER TO postgres;
 
+CREATE SEQUENCE Odczyt_licznika_id_seq;
+
 
 CREATE TABLE Odczyt_licznika
 (
-  "id_odczyt_licznika" integer NOT NULL,
+  "id_odczyt_licznika" INTEGER DEFAULT NEXTVAL('Odczyt_licznika_id_seq')  NOT NULL,
   "nr_dzialki" integer NOT NULL,
   "nr_pomiaru" integer NOT NULL,
-  "data" date,
+  "data" character varying(255),
   "stan_licznika" integer,
   "naleznosc" double precision,
 PRIMARY KEY (id_odczyt_licznika)
@@ -114,25 +120,27 @@ WITH (
 ALTER TABLE Odczyt_licznika
   OWNER TO postgres;
 
+CREATE SEQUENCE Wyciagi_JS_id_seq;
 
 CREATE TABLE Wyciagi_JS
 (
+  "id_wyciagu" INTEGER DEFAULT NEXTVAL('Wyciagi_JS_id_seq')  NOT NULL,
   "nr_wyciagu" integer NOT NULL,
   "nr_dzialki" integer NOT NULL,
   "kwota" double precision,
-  "data" date,
+  "data" character varying(255),
   "opis" character(255),
   "skladka" double precision,
   "cynsz" double precision,
-  "AWRBP" integer,
+  "awrbp" double precision,
   "wpisowe" double precision,
   "energia_rozpoczecie_sezonu" double precision,
   "energia_zakonczenie_sezonu" double precision,
-  "dyzur z roku popredniego na biezacy" integer,
-  "dyzur z roku biezacego na nastepny" integer,
-  "zadluzenie z roku poprzedniego" double precision,
+  "dyzur_z_roku_poprzedniego_na_biezacy" double precision,
+  "dyzur_z_roku_biezacego_na_nastepny" double precision,
+  "zadluzenie_z_roku_poprzedniego" double precision,
   "licznik" double precision,
-   PRIMARY KEY ("nr_wyciagu")
+   PRIMARY KEY ("id_wyciagu")
 )
 WITH (
   OIDS=FALSE
@@ -140,23 +148,24 @@ WITH (
 ALTER TABLE Wyciagi_JS
   OWNER TO postgres;
 
+CREATE SEQUENCE Zobowiazania_id_seq;
 
 CREATE TABLE Zobowiazania
 (
-  "nr_zobowiazania" integer NOT NULL,
-  "rok rozliczeniowy" integer NOT NULL,
+  "nr_zobowiazania" INTEGER DEFAULT NEXTVAL('Zobowiazania_id_seq')  NOT NULL,
+  "rok_rozliczeniowy" integer NOT NULL,
   "nr_dzialki" integer NOT NULL,
-  "bilans otwarcia" double precision,
+  "bilans_otwarcia" double precision,
   "skladka" double precision,
   "czynsz" double precision,
-  "ANR" double precision,
-  "wpiowe" double precision,
+  "anr" double precision,
+  "wpisowe" double precision,
   "energia_rozpocecie_sezonu" double precision,
-  "energia_akonczenia_seoznu" double precision,
-  "dyzur z poprzedniego na biezacy" double precision,
-  "dyzur z roku biezacego na nastepny" double precision,
-  "zadluzenie z roku poprzedniego" double precision,
-  "zobowiazania razem z BO" double precision,
+  "energia_zakonczenia_seoznu" double precision,
+  "dyzur_z_roku_poprzedniego_na_biezacy" double precision,
+  "dyzur_z_roku_biezacego_na_nastepny" double precision,
+  "zadluzenie_z_roku_poprzedniego" double precision,
+  "zobowiazania_razem_z_bo" double precision,
    PRIMARY KEY ("nr_zobowiazania")
 )
 WITH (
@@ -168,6 +177,7 @@ ALTER TABLE Zobowiazania
 ALTER TABLE Dostep
 ADD FOREIGN KEY ("nr_dzialkowicza")
 REFERENCES Dzialkowicz("nr_dzialkowicza");
+
 
 ALTER TABLE Odczyt_licznika
 ADD FOREIGN KEY ("nr_dzialki")

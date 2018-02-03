@@ -1,8 +1,14 @@
 package com.example;
 
+import java.io.IOException;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import static com.example.DataMigrationExcelToDatabase.readFromExcelAndSaveToDatabase;
+import java.io.FileInputStream;
 @Controller
 public class WebController {
    
@@ -33,6 +39,14 @@ public class WebController {
     public String admin_upload(){
         return "admin_upload";
     }
+
+     @PostMapping("/migration")
+    public String handleFileUpload(@RequestParam("file") MultipartFile file,
+            RedirectAttributes redirectAttributes) throws IOException, Exception {
+        readFromExcelAndSaveToDatabase((FileInputStream) file.getInputStream());
+              return "admin_upload";  
+    }
+    
          @RequestMapping(value="/admin_wyciagiJS")
     public String admin_wyciagiJS(){
         return "admin_wyciagiJS";
