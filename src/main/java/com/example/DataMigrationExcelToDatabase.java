@@ -1,7 +1,21 @@
 package com.example;
 
-import com.example.basic.imp.*;
-import com.example.basic.model.*;
+import com.example.model.Informacja;
+import com.example.model.Dostep;
+import com.example.model.Iban;
+import com.example.model.Zobowiazania;
+import com.example.model.OdczytLicznika;
+import com.example.model.WyciagiJs;
+import com.example.model.Dzialkowicz;
+import com.example.model.Dzialki;
+import com.example.model.imp.ImplDostep;
+import com.example.model.imp.ImplIban;
+import com.example.model.imp.ImplZobowiazania;
+import com.example.model.imp.ImplDzialki;
+import com.example.model.imp.ImplDzialkowicz;
+import com.example.model.imp.ImplWyciagiJs;
+import com.example.model.imp.ImplOdczytLicznika;
+import com.example.model.imp.ImplInformacja;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -72,7 +86,7 @@ File selectedFile = fileChooser.getSelectedFile();
 
                     if (row.getCell(2).getCellType() == HSSFCell.CELL_TYPE_NUMERIC) {
                         int nr_czlonkowski = (int) row.getCell(2).getNumericCellValue();
-                        dzialkowicz.setNrDzialkowicza(nr_czlonkowski);
+                        dzialkowicz.setNrDzialkowicza(Long.valueOf(String.valueOf(nr_czlonkowski)));
                         dzialki.setDzialkowicz(dzialkowicz);
                         dost.setDzialkowicz(dzialkowicz);
                      
