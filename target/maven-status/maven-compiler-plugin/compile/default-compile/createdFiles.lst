@@ -14,13 +14,10 @@ com\example\HibernateUtil.class
 com\example\security\EmployeeAuthenticationSuccessHandler.class
 com\example\model\inter\InterOdczytLicznika.class
 com\example\model\inter\InterWyciagiJS.class
-com\example\controller\DzialkowiczRestController.class
 com\example\model\inter\InterDzialkowicz.class
 com\example\model\OdczytLicznika.class
 com\example\model\inter\InterZobowiazania.class
 com\example\model\inter\InterDzialki.class
-com\example\repository\DzialkowiczRepository.class
-com\example\service\DzialkowiczService.class
 com\example\model\Dostep.class
 com\example\model\inter\InterIban.class
 com\example\model\inter\InterInformacja.class
@@ -31,7 +28,6 @@ com\example\model\imp\ImplAktualizacjaDanych.class
 com\example\model\Informacja.class
 com\example\model\inter\InterDostep.class
 com\example\model\imp\ImplOdczytLicznika.class
-com\example\service\DzialkowiczServiceImpl.class
 com\example\model\imp\ImplIban.class
 com\example\model\imp\ImplDostep.class
 com\example\model\imp\ImplDzialkowicz.class

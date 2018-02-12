@@ -28,6 +28,10 @@
         <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
         <script src="https://cdn.datatables.net/select/1.2.5/js/dataTables.select.min.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
+
 
 
 
@@ -47,13 +51,14 @@
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li ><a  th:href="@{/admin}">Start</a></li>     
-                        <li ><a  th:href="@{/admin_zarz_user}">Zarządzanie użytkownikami</a></li>
-                        <li ><a  th:href="@{/admin_zarz_dzialka}">Zarządzanie działkami</a></li>       
-                           <li class="active"><a  th:href="@{/admin_zarz_dostep}">Zarządzanie dostepem</a></li> 
-                        <li ><a  th:href="@{/admin_liczniki}">Liczniki</a></li>
-                        <li ><a  th:href="@{/admin_upload}">Upload​ ​dokumentów​</a></li>
-                        <li ><a  th:href="@{/admin_wyciagiJS}">Wyciągi-JS</a></li>
-                        <li ><a  th:href="@{/admin_raport}">Raporty</a></li>
+                        <li ><a  th:href="@{/admin_zarz_user}">Zarz. użytkownikami</a></li>
+                        <li ><a  th:href="@{/admin_zarz_dzialka}">Zarz. działkami</a></li>       
+                           <li class="active"><a  th:href="@{/admin_zarz_dostep}">Zarz. dostepem</a></li> 
+                        <li ><a  th:href="@{/admin_zarz_liczniki}">Zarz. Licznikami</a></li>
+                       <li><a  th:href="@{/admin_zarz_zobowiazania}">Zarz. Zobowiazaniami</a></li>
+                         <li ><a  th:href="@{/admin_zarz_wyciagiJS}">Zarz. Wyciągami</a></li>
+                         <li><a  th:href="@{/admin_zarz_bank}">Zarz. kontami bankowymi</a></li>
+                                  <li ><a  th:href="@{/admin_upload}">Upload​ ​dokumentów​</a></li>
                         <li style="  position: absolute; left: 94%; background-color: black">
                             <a th:href="@{/login?logout}" onclick="$('#form').submit();">Wyloguj</a>
                             <form style="visibility: hidden" id="form" method="post"  th:action="@{/logout}"></form>
@@ -64,41 +69,27 @@
         </nav>
 
 
-        <table id="DzialkowiczTable" class="display" cellspacing="0" width="100%">
+        <table id="admin_zarz_dostep_Table" class="display" cellspacing="0" width="100%">
 
             <!-- Header Table -->
             <thead class="display headAndFooter">
                 <tr>
-                    <th>Nr Działkowicza</th>
-                    <th>Imie</th>
-                    <th>Nazwisko</th>
-                    <th>Ulica</th>
-                    <th>Nr domu</th>
-                    <th>Nr lokalu</th>
-                    <th>Kod pocztowy</th>
-                    <th>Miasto</th>
-                    <th>Adres do korespondencji</th>
-                    <th>Telefon</th>
-                    <th>Email</th>     
-
+                    <th>Nr dzialkowicza</th>
+                    <th>login</th>
+                    <th>password</th> 
+                    <th>enabled</th>
+                    <th>role</th>
                 </tr>
             </thead>
 
             <!-- Footer Table -->
             <tfoot class="display headAndFooter">
                 <tr>
-                    <th>Nr Działkowicza</th>
-                    <th>Imie</th>
-                    <th>Nazwisko</th>
-                    <th>Ulica</th>
-                    <th>Nr domu</th>
-                    <th>Nr lokalu</th>
-                    <th>Kod pocztowy</th>
-                    <th>Miasto</th>
-                    <th>Adres do korespondencji</th>
-                    <th>Telefon</th>
-                    <th>Email</th>  
-
+        <th>Nr dzialkowicza</th>
+                    <th>login</th>
+                    <th>password</th> 
+                    <th>enabled</th>
+                    <th>role</th>
                 </tr>
             </tfoot>
         </table>
@@ -119,10 +110,10 @@
                                          ajax: {
                                                         create: {
            		
-                                                url: '/Dzialkowicz/add',
+                                                url: '/admin_zarz_dostep/add',                                      
                                                    type: 'POST',
-                                                dataType: 'json',
-                                                contentType: 'application/json; charset=utf-8',
+                                                dataType: 'json',     
+                                                  contentType: 'application/json; charset=utf-8',
                                                 data: function (d) {
                                                     var obj;
                                                     for (var key in d.data) {
@@ -131,6 +122,7 @@
                                                     }
                                                     return JSON.stringify(obj);
                                                 },
+                                                
                                                 success: function (data) {
                                                     table.clear().draw();
                                                     table.ajax.reload();
@@ -144,9 +136,10 @@
                                                         },
                                                         edit: {
                                                                 type: 'PUT',
-                                                             url: "/Dzialkowicz/update",
+                                                             url: "/admin_zarz_dostep/update",
                                                 dataType: 'json',
                                                 contentType: 'application/json; charset=utf-8',
+                                                
                                                 data: function (d) {
                                                     var obj;
                                                     for (var key in d.data) {
@@ -167,7 +160,7 @@
                                                         remove: {
                                                 
                                                                 type: 'DELETE',
-                                                               url: "/Dzialkowicz/delete",
+                                                               url: "/admin_zarz_dostep/delete",
                                                 dataType: 'json',
                                                 contentType: 'application/json; charset=utf-8',
                                               
@@ -178,7 +171,7 @@
                                                         break;
                                                     }
                                                     JSON.stringify(obj);
-                                                    return {"id" : obj["nrDzialkowicza"]};
+                                                    return {"id" : obj["dzialkowicz.nrDzialkowicza"]};
                                                 },
                                           success: function (data) {
                                                     table.clear().draw();
@@ -191,41 +184,23 @@
 
                                             }
                                                 },
-                                        "table": "#DzialkowiczTable",
-                                        idSrc: "nrDzialkowicza",
+                                        "table": "#admin_zarz_dostep_Table",
+                                        idSrc: "dzialkowicz.nrDzialkowicza",
                                         "fields": [{
-                                                "label": "Nr Działkowicza",
-                                                "name": "nrDzialkowicza"
+                                                "label": "Nr dzialkowicza",
+                                                "name": "dzialkowicz.nrDzialkowicza"
                                             }, {
-                                                "label": "Imie",
-                                                "name": "imie"
+                                                   "label": "login",
+                                                "name": "login"
                                             }, {
-                                                "label": "Nazwisko",
-                                                "name": "nazwisko"
+                                               "label": "password",
+                                                "name": "password"
                                             }, {
-                                                "label": "Ulica",
-                                                "name": "ulica"
+                                               "label": "enabled",
+                                                "name": "enabled"
                                             }, {
-                                                "label": "Nr domu",
-                                                "name": "nrDomu"
-                                            }, {
-                                                "label": "Nr lokalu",
-                                                "name": "nrLokalu"
-                                            }, {
-                                                "label": "Kod pocztowy",
-                                                "name": "kodPocztowy"
-                                            }, {
-                                                "label": "Miasto",
-                                                "name": "miasto"
-                                            }, {
-                                                "label": "Adres do korespondencji",
-                                                "name": "adresDoKorespondencji"
-                                            }, {
-                                                "label": "Telefon",
-                                                "name": "telefon"
-                                            }, {
-                                                "label": "Email",
-                                                "name": "email"
+                                               "label": "role",
+                                                "name": "role"
                                             }
                                         ]
                                     });
@@ -233,35 +208,30 @@
 
 
 
-                                    var table = $('#DzialkowiczTable').DataTable({
+                                    var table = $('#admin_zarz_dostep_Table').DataTable({
                                           dom: "Bfrtip",
                                         "processing": true,
                                         "serverSide": false,
-                                        "sAjaxSource": "/Dzialkowicz",
+                                        "sAjaxSource": "/admin_zarz_dostep/get",
                                         "sAjaxDataProp": "",
-
+                                       
                                           columns: [
-                                            {data: "nrDzialkowicza"},
-                                            {data: "imie"},
-                                            {data: "nazwisko"},
-                                            {data: "ulica"},
-                                            {data: "nrDomu"},
-                                            {data: "nrLokalu"},
-                                            {data: "kodPocztowy"},
-                                            {data: "miasto"},
-                                            {data: "adresDoKorespondencji"},
-                                            {data: "telefon"},
-                                            {data: "email"}
-
+                                            {data: "dzialkowicz.nrDzialkowicza"},
+                                            {data: "login"},
+                                             {data: "password"},
+                                              {data: "enabled"},
+                                            {data: "role"}
                                         ],
 
                                         select: true,
-                                        idSrc: "nrDzialkowicza",
+                                        idSrc: "dzialkowicz.nrDzialkowicza",
                                                 buttons: [
 
                                                         {extend: "create", editor: editor},
                                                         {extend: "edit",   editor: editor},
-                                                        {extend: "remove", editor: editor}
+                                                        {extend: "remove", editor: editor},
+                                            {extend: 'pdfHtml5', orientation: 'landscape',
+                pageSize: 'LEGAL',  download: 'open'}
                                                 ]
                                     });
                                 });
@@ -269,17 +239,12 @@
 // Helper function to serialize all the form fields into a JSON string
                                 function formToJSON() {
                                         return JSON.stringify({
-                                                "nrDzialkowicza": $('#nrDzialkowicza').val(),
-                                                "imie": $('#imie').val(),
-                                                "nazwisko": $('#nazwisko').val(),
-                                                "ulica": $('#ulica').val(),
-                                                "nrDomu": $('#nrDomu').val(),
-                                                "nrLokalu": $('#nrLokalu').val(),
-                                                "kodPocztowy": $('#kodPocztowy').val(),
-                                                "miasto": $('#miasto').val(),
-                                                "adresDoKorespondencji": $('#adresDoKorespondencji').val(),
-                                                "telefon": $('#telefon').val(),
-                                        "email": $('#email').val()
+                                                "dzialkowicz.nrDzialkowicza": $('#dzialkowicz.nrDzialkowicza').val(),
+                                                "login": $('#login').val(),
+                                          "password": $('#password').val(),
+                                          "enabled": $('#enabled').val(),
+                                                "role": $('#role').val()
+                                            
                                             });
                                 }
                             

@@ -105,7 +105,7 @@ public class ImplZobowiazania implements InterZobowiazania {
    
     
     
-    public Zobowiazania getById(int nr_zobowiazania) {
+    public Zobowiazania getById(Long nr_zobowiazania) {
         Zobowiazania zobowiazania = null;
         Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -113,7 +113,7 @@ public class ImplZobowiazania implements InterZobowiazania {
             trns = session.beginTransaction();
             String queryString = "from Zobowiazania where nr_zobowiazania= :nr_zobowiazania";
             Query query = session.createQuery(queryString);
-            query.setInteger("nr_zobowiazania", nr_zobowiazania);
+            query.setLong("nr_zobowiazania", nr_zobowiazania);
             zobowiazania = (Zobowiazania) query.uniqueResult();
         } catch (RuntimeException e) {
             e.printStackTrace();

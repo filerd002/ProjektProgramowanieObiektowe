@@ -14,7 +14,7 @@ import java.util.List;
 public interface InterInformacja {
 
  List<Informacja> getAll(); 
-  Informacja getById(int id);
+  Informacja getById(Long id);
  void add(Informacja informacja); 
  void delete(Long id); 
  void update(Informacja informacja);

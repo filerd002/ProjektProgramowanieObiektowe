@@ -106,7 +106,7 @@ public class ImplWyciagiJs implements InterWyciagiJS {
    
     
     
-    public WyciagiJs getById(int nr_wyciagu) {
+    public WyciagiJs getById(Long nr_wyciagu) {
         WyciagiJs wyciagiJs = null;
         Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -114,7 +114,7 @@ public class ImplWyciagiJs implements InterWyciagiJS {
             trns = session.beginTransaction();
             String queryString = "from WyciagiJs where nr_wyciagu= :nr_wyciagu";
             Query query = session.createQuery(queryString);
-            query.setInteger("nr_wyciagu", nr_wyciagu);
+            query.setLong("nr_wyciagu", nr_wyciagu);
             wyciagiJs = (WyciagiJs) query.uniqueResult();
         } catch (RuntimeException e) {
             e.printStackTrace();

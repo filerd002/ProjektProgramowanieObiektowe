@@ -14,7 +14,7 @@ import java.util.List;
 public interface InterAktualizacjaDanych {
 
  List<AktualizacjaDanych> getAll(); 
-  AktualizacjaDanych getById(int id);
+  AktualizacjaDanych getById(Long id);
  void add(AktualizacjaDanych aktualizacjaDanych); 
  void delete(Long id); 
  void update(AktualizacjaDanych aktualizacjaDanych);

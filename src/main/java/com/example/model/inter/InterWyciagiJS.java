@@ -14,7 +14,7 @@ import java.util.List;
 public interface InterWyciagiJS {
 
  List<WyciagiJs> getAll(); 
-  WyciagiJs getById(int id);
+  WyciagiJs getById(Long id);
  void add(WyciagiJs wyciagiJs); 
  void delete(Long id); 
  void update(WyciagiJs wyciagiJs);

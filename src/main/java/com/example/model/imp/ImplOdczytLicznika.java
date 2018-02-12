@@ -105,7 +105,7 @@ public class ImplOdczytLicznika implements InterOdczytLicznika {
    
     
     
-    public OdczytLicznika getById(int id_odczyt_licznika) {
+    public OdczytLicznika getById(Long id_odczyt_licznika) {
         OdczytLicznika odczytLicznika = null;
         Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -113,7 +113,7 @@ public class ImplOdczytLicznika implements InterOdczytLicznika {
             trns = session.beginTransaction();
             String queryString = "from OdczytLicznika where id_odczyt_licznika= :id_odczyt_licznika";
             Query query = session.createQuery(queryString);
-            query.setInteger("id_odczyt_licznika", id_odczyt_licznika);
+            query.setLong("id_odczyt_licznika", id_odczyt_licznika);
             odczytLicznika = (OdczytLicznika) query.uniqueResult();
         } catch (RuntimeException e) {
             e.printStackTrace();

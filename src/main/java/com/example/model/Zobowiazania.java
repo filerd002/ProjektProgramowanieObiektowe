@@ -2,6 +2,9 @@ package com.example.model;
 // Generated 2018-02-09 18:36:23 by Hibernate Tools 4.3.1
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import javax.persistence.*;
 
 /**
@@ -11,10 +14,13 @@ import javax.persistence.*;
 @Table(name="zobowiazania"
     ,schema="public"
 )
+@JsonIdentityInfo(scope = Zobowiazania.class,generator = ObjectIdGenerators.PropertyGenerator.class , property = "nrZobowiazania") 
+
 public class Zobowiazania  implements java.io.Serializable {
 
 
-     private int nrZobowiazania;
+     private Long nrZobowiazania;
+     
      private Dzialki dzialki;
      private int rokRozliczeniowy;
      private Double bilansOtwarcia;
@@ -33,12 +39,12 @@ public class Zobowiazania  implements java.io.Serializable {
     }
 
 	
-    public Zobowiazania(int nrZobowiazania, Dzialki dzialki, int rokRozliczeniowy) {
+    public Zobowiazania(Long nrZobowiazania, Dzialki dzialki, int rokRozliczeniowy) {
         this.nrZobowiazania = nrZobowiazania;
         this.dzialki = dzialki;
         this.rokRozliczeniowy = rokRozliczeniowy;
     }
-    public Zobowiazania(int nrZobowiazania, Dzialki dzialki, int rokRozliczeniowy, Double bilansOtwarcia, Double skladka, Double czynsz, Double anr, Double wpisowe, Double energiaRozpocecieSezonu, Double energiaZakonczeniaSeoznu, Double dyzurZRokuPoprzedniegoNaBiezacy, Double dyzurZRokuBiezacegoNaNastepny, Double zadluzenieZRokuPoprzedniego, Double zobowiazaniaRazemZBo) {
+    public Zobowiazania(Long nrZobowiazania, Dzialki dzialki, int rokRozliczeniowy, Double bilansOtwarcia, Double skladka, Double czynsz, Double anr, Double wpisowe, Double energiaRozpocecieSezonu, Double energiaZakonczeniaSeoznu, Double dyzurZRokuPoprzedniegoNaBiezacy, Double dyzurZRokuBiezacegoNaNastepny, Double zadluzenieZRokuPoprzedniego, Double zobowiazaniaRazemZBo) {
        this.nrZobowiazania = nrZobowiazania;
        this.dzialki = dzialki;
        this.rokRozliczeniowy = rokRozliczeniowy;
@@ -65,11 +71,11 @@ public class Zobowiazania  implements java.io.Serializable {
 
 
     @Column(name="nr_zobowiazania", unique=true, nullable=false)
-    public int getNrZobowiazania() {
+    public Long getNrZobowiazania() {
         return this.nrZobowiazania;
     }
     
-    public void setNrZobowiazania(int nrZobowiazania) {
+    public void setNrZobowiazania(Long nrZobowiazania) {
         this.nrZobowiazania = nrZobowiazania;
     }
 

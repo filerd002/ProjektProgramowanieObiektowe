@@ -2,6 +2,12 @@ package com.example.model;
 // Generated 2018-02-09 18:36:23 by Hibernate Tools 4.3.1
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,10 +26,12 @@ import javax.persistence.Table;
 @Table(name="odczyt_licznika"
     ,schema="public"
 )
+@JsonIdentityInfo(scope = OdczytLicznika.class,generator = ObjectIdGenerators.PropertyGenerator.class , property = "idOdczytLicznika") 
 public class OdczytLicznika  implements java.io.Serializable {
 
 
-     private int idOdczytLicznika;
+     private Long idOdczytLicznika;
+ 
      private Dzialki dzialki;
      private int nrPomiaru;
      private String data;
@@ -34,12 +42,12 @@ public class OdczytLicznika  implements java.io.Serializable {
     }
 
 	
-    public OdczytLicznika(int idOdczytLicznika, Dzialki dzialki, int nrPomiaru) {
+    public OdczytLicznika(Long idOdczytLicznika, Dzialki dzialki, int nrPomiaru) {
         this.idOdczytLicznika = idOdczytLicznika;
         this.dzialki = dzialki;
         this.nrPomiaru = nrPomiaru;
     }
-    public OdczytLicznika(int idOdczytLicznika, Dzialki dzialki, int nrPomiaru, String data, Integer stanLicznika, Double naleznosc) {
+    public OdczytLicznika(Long idOdczytLicznika, Dzialki dzialki, int nrPomiaru, String data, Integer stanLicznika, Double naleznosc) {
        this.idOdczytLicznika = idOdczytLicznika;
        this.dzialki = dzialki;
        this.nrPomiaru = nrPomiaru;
@@ -58,11 +66,11 @@ public class OdczytLicznika  implements java.io.Serializable {
                     generator="Odczyt_licznika_id_seq")
 
     @Column(name="id_odczyt_licznika", unique=true, nullable=false)
-    public int getIdOdczytLicznika() {
+    public Long getIdOdczytLicznika() {
         return this.idOdczytLicznika;
     }
     
-    public void setIdOdczytLicznika(int idOdczytLicznika) {
+    public void setIdOdczytLicznika(Long idOdczytLicznika) {
         this.idOdczytLicznika = idOdczytLicznika;
     }
 

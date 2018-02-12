@@ -2,6 +2,9 @@ package com.example.model;
 // Generated 2018-02-09 18:36:23 by Hibernate Tools 4.3.1
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,10 +23,13 @@ import javax.persistence.Table;
 @Table(name="informacja"
     ,schema="public"
 )
+@JsonIdentityInfo(scope = Informacja.class,generator = ObjectIdGenerators.PropertyGenerator.class , property = "idInformacja") 
+
 public class Informacja  implements java.io.Serializable {
 
 
-     private int idInformacja;
+     private Long idInformacja;
+      
      private Dzialki dzialki;
      private Integer nrInformacji;
      private Integer rokRozliczeniowy;
@@ -34,10 +40,10 @@ public class Informacja  implements java.io.Serializable {
     }
 
 	
-    public Informacja(int idInformacja) {
+    public Informacja(Long idInformacja) {
         this.idInformacja = idInformacja;
     }
-    public Informacja(int idInformacja, Dzialki dzialki, Integer nrInformacji, Integer rokRozliczeniowy, Double stanRozliczenia, String informacja) {
+    public Informacja(Long idInformacja, Dzialki dzialki, Integer nrInformacji, Integer rokRozliczeniowy, Double stanRozliczenia, String informacja) {
        this.idInformacja = idInformacja;
        this.dzialki = dzialki;
        this.nrInformacji = nrInformacji;
@@ -56,11 +62,11 @@ public class Informacja  implements java.io.Serializable {
                     generator="Informacja_id_seq")
     
     @Column(name="id_informacja", unique=true, nullable=false)
-    public int getIdInformacja() {
+    public Long getIdInformacja() {
         return this.idInformacja;
     }
     
-    public void setIdInformacja(int idInformacja) {
+    public void setIdInformacja(Long idInformacja) {
         this.idInformacja = idInformacja;
     }
 

@@ -2,6 +2,9 @@ package com.example.model;
 // Generated 2018-02-09 18:36:23 by Hibernate Tools 4.3.1
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import javax.persistence.*;
 
 /**
@@ -11,10 +14,13 @@ import javax.persistence.*;
 @Table(name="aktualizacja_danych"
     ,schema="public"
 )
+@JsonIdentityInfo(scope = AktualizacjaDanych.class,generator = ObjectIdGenerators.PropertyGenerator.class , property = "idAktualData") 
+
 public class AktualizacjaDanych  implements java.io.Serializable {
 
 
-     private int idAktualData;
+     private Long idAktualData;
+     
      private Dzialki dzialki;
      private int nrAktualizacji;
      private String dataAktualizacji;
@@ -25,12 +31,12 @@ public class AktualizacjaDanych  implements java.io.Serializable {
     }
 
 	
-    public AktualizacjaDanych(int idAktualData, Dzialki dzialki, int nrAktualizacji) {
+    public AktualizacjaDanych(Long idAktualData, Dzialki dzialki, int nrAktualizacji) {
         this.idAktualData = idAktualData;
         this.dzialki = dzialki;
         this.nrAktualizacji = nrAktualizacji;
     }
-    public AktualizacjaDanych(int idAktualData, Dzialki dzialki, int nrAktualizacji, String dataAktualizacji, String sposobPrzekazaniaDanychDoAktualizacji, String zaktualizowaneDane) {
+    public AktualizacjaDanych(Long idAktualData, Dzialki dzialki, int nrAktualizacji, String dataAktualizacji, String sposobPrzekazaniaDanychDoAktualizacji, String zaktualizowaneDane) {
        this.idAktualData = idAktualData;
        this.dzialki = dzialki;
        this.nrAktualizacji = nrAktualizacji;
@@ -48,11 +54,11 @@ public class AktualizacjaDanych  implements java.io.Serializable {
                     generator="Aktualizacja_danych_id_seq")
 
     @Column(name="id_aktual_data", unique=true, nullable=false)
-    public int getIdAktualData() {
+    public Long getIdAktualData() {
         return this.idAktualData;
     }
     
-    public void setIdAktualData(int idAktualData) {
+    public void setIdAktualData(Long idAktualData) {
         this.idAktualData = idAktualData;
     }
 

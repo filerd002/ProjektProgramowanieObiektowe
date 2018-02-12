@@ -14,7 +14,7 @@ import java.util.List;
 public interface InterDzialki {
 
  List<Dzialki> getAll(); 
-  Dzialki getById(int id);
+  Dzialki getById(Long id);
  void add(Dzialki dzialki); 
  void delete(Long id); 
  void update(Dzialki dzialki);

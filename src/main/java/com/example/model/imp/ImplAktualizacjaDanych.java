@@ -106,7 +106,7 @@ public class ImplAktualizacjaDanych implements InterAktualizacjaDanych {
    
     
     
-    public AktualizacjaDanych getById(int id_aktual_data) {
+    public AktualizacjaDanych getById(Long id_aktual_data) {
         AktualizacjaDanych aktualizacjaDanych = null;
         Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -114,7 +114,7 @@ public class ImplAktualizacjaDanych implements InterAktualizacjaDanych {
             trns = session.beginTransaction();
             String queryString = "from AktualizacjaDanych where id_aktual_data= :id_aktual_data";
             Query query = session.createQuery(queryString);
-            query.setInteger("id_aktual_data", id_aktual_data);
+            query.setLong("id_aktual_data", id_aktual_data);
             aktualizacjaDanych = (AktualizacjaDanych) query.uniqueResult();
         } catch (RuntimeException e) {
             e.printStackTrace();

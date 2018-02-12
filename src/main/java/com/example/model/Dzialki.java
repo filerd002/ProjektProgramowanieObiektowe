@@ -2,6 +2,13 @@ package com.example.model;
 // Generated 2018-02-09 18:36:23 by Hibernate Tools 4.3.1
 
 
+import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.deser.std.NumberDeserializers;
+import com.fasterxml.jackson.databind.deser.std.StringDeserializer;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -21,27 +28,36 @@ import javax.persistence.Table;
 @Table(name="dzialki"
     ,schema="public"
 )
+@JsonIdentityInfo(scope = Dzialki.class,generator = ObjectIdGenerators.PropertyGenerator.class , property = "nrDzialki") 
 public class Dzialki  implements java.io.Serializable {
 
-
-     private int nrDzialki;
+     private Long nrDzialki;
+   
      private Dzialkowicz dzialkowicz;
+   
+
      private Integer powierzchnia;
+@JsonProperty(access = Access.WRITE_ONLY)
      private Set<OdczytLicznika> odczytLicznikas = new HashSet<OdczytLicznika>(0);
+  
      private Set<Informacja> informacjas = new HashSet<Informacja>(0);
+       
      private Iban iban;
+  @JsonProperty(access = Access.WRITE_ONLY)
      private Set<WyciagiJs> wyciagiJses = new HashSet<WyciagiJs>(0);
+ 
      private Set<AktualizacjaDanych> aktualizacjaDanyches = new HashSet<AktualizacjaDanych>(0);
+      
      private Set<Zobowiazania> zobowiazanias = new HashSet<Zobowiazania>(0);
 
     public Dzialki() {
     }
 
 	
-    public Dzialki(int nrDzialki) {
+    public Dzialki(Long nrDzialki) {
         this.nrDzialki = nrDzialki;
     }
-    public Dzialki(int nrDzialki, Dzialkowicz dzialkowicz, Integer powierzchnia, Set<OdczytLicznika> odczytLicznikas, Set<Informacja> informacjas, Iban iban, Set<WyciagiJs> wyciagiJses, Set<AktualizacjaDanych> aktualizacjaDanyches, Set<Zobowiazania> zobowiazanias) {
+    public Dzialki(Long nrDzialki, Dzialkowicz dzialkowicz, Integer powierzchnia, Set<OdczytLicznika> odczytLicznikas, Set<Informacja> informacjas, Iban iban, Set<WyciagiJs> wyciagiJses, Set<AktualizacjaDanych> aktualizacjaDanyches, Set<Zobowiazania> zobowiazanias) {
        this.nrDzialki = nrDzialki;
        this.dzialkowicz = dzialkowicz;
        this.powierzchnia = powierzchnia;
@@ -57,11 +73,11 @@ public class Dzialki  implements java.io.Serializable {
 
     
     @Column(name="nr_dzialki", unique=true, nullable=false)
-    public int getNrDzialki() {
+    public Long getNrDzialki() {
         return this.nrDzialki;
     }
     
-    public void setNrDzialki(int nrDzialki) {
+    public void setNrDzialki(Long nrDzialki) {
         this.nrDzialki = nrDzialki;
     }
 

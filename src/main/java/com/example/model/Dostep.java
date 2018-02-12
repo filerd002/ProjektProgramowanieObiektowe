@@ -2,6 +2,10 @@ package com.example.model;
 // Generated 2018-02-09 18:36:23 by Hibernate Tools 4.3.1
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,10 +26,13 @@ import org.hibernate.annotations.Parameter;
     ,schema="public"
     , uniqueConstraints = @UniqueConstraint(columnNames={"login", "role"}) 
 )
+@JsonIdentityInfo(scope = Dostep.class,generator = ObjectIdGenerators.PropertyGenerator.class , property = "nrDzialkowicza") 
+
 public class Dostep  implements java.io.Serializable {
 
 
      private Long nrDzialkowicza;
+        
      private Dzialkowicz dzialkowicz;
      private String login;
      private String password;

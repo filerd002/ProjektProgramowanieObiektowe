@@ -54,9 +54,9 @@ public class WebController {
         return "admin_zarz_dostep";
     }
            
-         @RequestMapping(value="/admin_liczniki")
-    public String admin_liczniki(){
-        return "admin_liczniki";
+         @RequestMapping(value="/admin_zarz_liczniki")
+    public String admin_zarz_liczniki(){
+        return "admin_zarz_liczniki";
     }
          @RequestMapping(value="/admin_upload")
     public String admin_upload(){
@@ -70,15 +70,19 @@ public class WebController {
               return "admin_upload";  
     }
     
-         @RequestMapping(value="/admin_wyciagiJS")
-    public String admin_wyciagiJS(){
-        return "admin_wyciagiJS";
+         @RequestMapping(value="/admin_zarz_wyciagiJS")
+    public String admin_zarz_wyciagiJS(){
+        return "admin_zarz_wyciagiJS";
     }
-         @RequestMapping(value="/admin_raport")
-    public String admin_raport(){
-        return "admin_raport";
+      @RequestMapping(value="/admin_zarz_zobowiazania")
+    public String admin_zarz_zobowiazania(){
+        return "admin_zarz_zobowiazania";
     }
-        
+    
+     @RequestMapping(value="/admin_zarz_bank")
+    public String admin_zarz_bank(){
+        return "admin_zarz_bank";
+    }
     
      @RequestMapping(value="/user")
     public String user(){

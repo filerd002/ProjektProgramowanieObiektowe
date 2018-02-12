@@ -2,6 +2,9 @@ package com.example.model;
 // Generated 2018-02-09 18:36:23 by Hibernate Tools 4.3.1
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,10 +23,13 @@ import org.hibernate.annotations.Parameter;
 @Table(name="iban"
     ,schema="public"
 )
+@JsonIdentityInfo(scope = Iban.class,generator = ObjectIdGenerators.PropertyGenerator.class , property = "nrDzialki") 
+
 public class Iban  implements java.io.Serializable {
 
 
-     private int nrDzialki;
+     private Long nrDzialki;
+    
      private Dzialki dzialki;
      private String kodIban;
      private String nrKonta;
@@ -45,11 +51,11 @@ public class Iban  implements java.io.Serializable {
 
     
     @Column(name="nr_dzialki", unique=true, nullable=false)
-    public int getNrDzialki() {
+    public Long getNrDzialki() {
         return this.nrDzialki;
     }
     
-    public void setNrDzialki(int nrDzialki) {
+    public void setNrDzialki(Long nrDzialki) {
         this.nrDzialki = nrDzialki;
     }
 

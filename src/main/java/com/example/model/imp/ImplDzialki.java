@@ -105,7 +105,7 @@ public class ImplDzialki implements InterDzialki {
    
     
     
-    public Dzialki getById(int nr_dzialki) {
+    public Dzialki getById(Long nr_dzialki) {
         Dzialki dzialki = null;
         Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -113,7 +113,7 @@ public class ImplDzialki implements InterDzialki {
             trns = session.beginTransaction();
             String queryString = "from Dzialki where nr_dzialki= :nr_dzialki";
             Query query = session.createQuery(queryString);
-            query.setInteger("nr_dzialki", nr_dzialki);
+            query.setLong("nr_dzialki", nr_dzialki);
             dzialki = (Dzialki) query.uniqueResult();
         } catch (RuntimeException e) {
             e.printStackTrace();

@@ -14,7 +14,7 @@ import java.util.List;
 public interface InterOdczytLicznika {
 
  List<OdczytLicznika> getAll(); 
-  OdczytLicznika getById(int id);
+  OdczytLicznika getById(Long id);
  void add(OdczytLicznika odczytLicznika); 
  void delete(Long id); 
  void update(OdczytLicznika odczytLicznika);

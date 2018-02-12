@@ -2,6 +2,9 @@ package com.example.model;
 // Generated 2018-02-09 18:36:23 by Hibernate Tools 4.3.1
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,10 +23,13 @@ import javax.persistence.Table;
 @Table(name="wyciagi_js"
     ,schema="public"
 )
+@JsonIdentityInfo(scope = WyciagiJs.class,generator = ObjectIdGenerators.PropertyGenerator.class , property = "idWyciagu") 
+
 public class WyciagiJs  implements java.io.Serializable {
 
 
-     private int idWyciagu;
+     private Long idWyciagu;
+     
      private Dzialki dzialki;
      private int nrWyciagu;
      private Double kwota;
@@ -44,12 +50,12 @@ public class WyciagiJs  implements java.io.Serializable {
     }
 
 	
-    public WyciagiJs(int idWyciagu, Dzialki dzialki, int nrWyciagu) {
+    public WyciagiJs(Long idWyciagu, Dzialki dzialki, int nrWyciagu) {
         this.idWyciagu = idWyciagu;
         this.dzialki = dzialki;
         this.nrWyciagu = nrWyciagu;
     }
-    public WyciagiJs(int idWyciagu, Dzialki dzialki, int nrWyciagu, Double kwota, String data, String opis, Double skladka, Double cynsz, Double awrbp, Double wpisowe, Double energiaRozpoczecieSezonu, Double energiaZakonczenieSezonu, Double dyzurZRokuPoprzedniegoNaBiezacy, Double dyzurZRokuBiezacegoNaNastepny, Double zadluzenieZRokuPoprzedniego, Double licznik) {
+    public WyciagiJs(Long idWyciagu, Dzialki dzialki, int nrWyciagu, Double kwota, String data, String opis, Double skladka, Double cynsz, Double awrbp, Double wpisowe, Double energiaRozpoczecieSezonu, Double energiaZakonczenieSezonu, Double dyzurZRokuPoprzedniegoNaBiezacy, Double dyzurZRokuBiezacegoNaNastepny, Double zadluzenieZRokuPoprzedniego, Double licznik) {
        this.idWyciagu = idWyciagu;
        this.dzialki = dzialki;
        this.nrWyciagu = nrWyciagu;
@@ -77,11 +83,11 @@ public class WyciagiJs  implements java.io.Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
                     generator="Wyciagi_JS_id_seq")
     @Column(name="id_wyciagu", unique=true, nullable=false)
-    public int getIdWyciagu() {
+    public Long getIdWyciagu() {
         return this.idWyciagu;
     }
     
-    public void setIdWyciagu(int idWyciagu) {
+    public void setIdWyciagu(Long idWyciagu) {
         this.idWyciagu = idWyciagu;
     }
 

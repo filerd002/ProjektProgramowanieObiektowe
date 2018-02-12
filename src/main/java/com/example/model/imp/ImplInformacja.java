@@ -105,7 +105,7 @@ public class ImplInformacja implements InterInformacja {
    
     
     
-    public Informacja getById(int id_informacja) {
+    public Informacja getById(Long id_informacja) {
         Informacja informacja = null;
         Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -113,7 +113,7 @@ public class ImplInformacja implements InterInformacja {
             trns = session.beginTransaction();
             String queryString = "from Informacja where id_informacja= :id_informacja";
             Query query = session.createQuery(queryString);
-            query.setInteger("id_informacja", id_informacja);
+            query.setLong("id_informacja", id_informacja);
             informacja = (Informacja) query.uniqueResult();
         } catch (RuntimeException e) {
             e.printStackTrace();
