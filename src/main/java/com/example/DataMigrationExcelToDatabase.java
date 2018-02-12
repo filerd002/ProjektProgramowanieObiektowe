@@ -1,7 +1,21 @@
 package com.example;
 
-import com.example.basic.imp.*;
-import com.example.basic.model.*;
+import com.example.model.Informacja;
+import com.example.model.Dostep;
+import com.example.model.Iban;
+import com.example.model.Zobowiazania;
+import com.example.model.OdczytLicznika;
+import com.example.model.WyciagiJs;
+import com.example.model.Dzialkowicz;
+import com.example.model.Dzialki;
+import com.example.model.imp.ImplDostep;
+import com.example.model.imp.ImplIban;
+import com.example.model.imp.ImplZobowiazania;
+import com.example.model.imp.ImplDzialki;
+import com.example.model.imp.ImplDzialkowicz;
+import com.example.model.imp.ImplWyciagiJs;
+import com.example.model.imp.ImplOdczytLicznika;
+import com.example.model.imp.ImplInformacja;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -72,7 +86,7 @@ File selectedFile = fileChooser.getSelectedFile();
 
                     if (row.getCell(2).getCellType() == HSSFCell.CELL_TYPE_NUMERIC) {
                         int nr_czlonkowski = (int) row.getCell(2).getNumericCellValue();
-                        dzialkowicz.setNrDzialkowicza(nr_czlonkowski);
+                        dzialkowicz.setNrDzialkowicza(Long.valueOf(String.valueOf(nr_czlonkowski)));
                         dzialki.setDzialkowicz(dzialkowicz);
                         dost.setDzialkowicz(dzialkowicz);
                      
@@ -139,7 +153,7 @@ File selectedFile = fileChooser.getSelectedFile();
 
                         if (row.getCell(0).getCellType() == HSSFCell.CELL_TYPE_NUMERIC) {
                             int nr_dzialki = (int) row.getCell(0).getNumericCellValue();
-                            dzialki.setNrDzialki(nr_dzialki);
+                            dzialki.setNrDzialki(Long.valueOf(String.valueOf(nr_dzialki)));
                             System.out.println("nr_dzialki : " + nr_dzialki);
                         }
                         if (row.getCell(1).getCellType() == HSSFCell.CELL_TYPE_NUMERIC) {
@@ -190,7 +204,7 @@ File selectedFile = fileChooser.getSelectedFile();
                     if (row.getCell(0).getCellType() == HSSFCell.CELL_TYPE_NUMERIC) {
                         int nr_dzialki = (int) row.getCell(0).getNumericCellValue();
                         Dzialki dzialki = new Dzialki();
-                        dzialki.setNrDzialki(nr_dzialki);
+                        dzialki.setNrDzialki(Long.valueOf(String.valueOf(nr_dzialki)));
                         iban.setDzialki(dzialki);
                         System.out.println("nr_dzialki :" + nr_dzialki);
 
@@ -230,7 +244,7 @@ File selectedFile = fileChooser.getSelectedFile();
                     if (row.getCell(0).getCellType() == HSSFCell.CELL_TYPE_FORMULA) {
                         int nr_dzialki = (int) row.getCell(0).getNumericCellValue();
                         Dzialki dzialki = new Dzialki();
-                        dzialki.setNrDzialki(nr_dzialki);
+                        dzialki.setNrDzialki(Long.valueOf(String.valueOf(nr_dzialki)));
                         informacja.setDzialki(dzialki);
                         informacja.setNrInformacji(1);
                         informacja.setRokRozliczeniowy(2017);
@@ -273,7 +287,7 @@ File selectedFile = fileChooser.getSelectedFile();
                     if (row.getCell(0).getCellType() == HSSFCell.CELL_TYPE_NUMERIC) {
                         int nr_dzialki = (int) row.getCell(0).getNumericCellValue();
                         Dzialki dzialki = new Dzialki();
-                        dzialki.setNrDzialki(nr_dzialki);
+                        dzialki.setNrDzialki(Long.valueOf(String.valueOf(nr_dzialki)));
                         odczytLicznika.setDzialki(dzialki);
                         odczytLicznika.setNrPomiaru(0);
                         odczytLicznika.setData("2016-09-11");
@@ -303,7 +317,7 @@ File selectedFile = fileChooser.getSelectedFile();
                     if (row.getCell(0).getCellType() == HSSFCell.CELL_TYPE_NUMERIC) {
                         int nr_dzialki = (int) row.getCell(0).getNumericCellValue();
                         Dzialki dzialki = new Dzialki();
-                        dzialki.setNrDzialki(nr_dzialki);
+                        dzialki.setNrDzialki(Long.valueOf(String.valueOf(nr_dzialki)));
                         odczytLicznika.setDzialki(dzialki);
                         odczytLicznika.setNrPomiaru(1);
                         odczytLicznika.setData("czerwiec 2017");
@@ -314,7 +328,7 @@ File selectedFile = fileChooser.getSelectedFile();
                             System.out.println("stan_licznika :" + stan_licznika);
 
                         }
-                        if (row.getCell(3).getCellType() == HSSFCell.CELL_TYPE_NUMERIC) {
+                        if (row.getCell(3).getCellType() == HSSFCell.CELL_TYPE_FORMULA) {
                             Double naleznosc = row.getCell(3).getNumericCellValue();
                             odczytLicznika.setNaleznosc(naleznosc);
                             System.out.println("naleznosc :" + naleznosc);
@@ -339,7 +353,7 @@ File selectedFile = fileChooser.getSelectedFile();
                     if (row.getCell(0).getCellType() == HSSFCell.CELL_TYPE_NUMERIC) {
                         int nr_dzialki = (int) row.getCell(0).getNumericCellValue();
                         Dzialki dzialki = new Dzialki();
-                        dzialki.setNrDzialki(nr_dzialki);
+                        dzialki.setNrDzialki(Long.valueOf(String.valueOf(nr_dzialki)));
                         odczytLicznika.setDzialki(dzialki);
                         odczytLicznika.setNrPomiaru(2);
                         odczytLicznika.setData("2017-09-24");
@@ -350,7 +364,7 @@ File selectedFile = fileChooser.getSelectedFile();
                             System.out.println("stan_licznika :" + stan_licznika);
 
                         }
-                        if (row.getCell(5).getCellType() == HSSFCell.CELL_TYPE_NUMERIC) {
+                        if (row.getCell(5).getCellType() == HSSFCell.CELL_TYPE_FORMULA) {
                             Double naleznosc = row.getCell(5).getNumericCellValue();
                             odczytLicznika.setNaleznosc(naleznosc);
                             System.out.println("naleznosc :" + naleznosc);
@@ -384,7 +398,7 @@ File selectedFile = fileChooser.getSelectedFile();
                     if ((row.getCell(1).getCellType() == HSSFCell.CELL_TYPE_NUMERIC) && (int) row.getCell(1).getNumericCellValue() > 0) {
                         int nr_dzialki = (int) row.getCell(1).getNumericCellValue();
                         Dzialki dzialki = new Dzialki();
-                        dzialki.setNrDzialki(nr_dzialki);
+                        dzialki.setNrDzialki(Long.valueOf(String.valueOf(nr_dzialki)));
                         wyciagiJs.setDzialki(dzialki);
                         System.out.println("nr_dzialki :" + nr_dzialki);
 
@@ -490,7 +504,7 @@ File selectedFile = fileChooser.getSelectedFile();
                     if (row.getCell(0).getCellType() == HSSFCell.CELL_TYPE_FORMULA) {
                         int nr_dzialki = (int) row.getCell(0).getNumericCellValue();
                         Dzialki dzialki = new Dzialki();
-                        dzialki.setNrDzialki(nr_dzialki);
+                        dzialki.setNrDzialki(Long.valueOf(String.valueOf(nr_dzialki)));
                         zobowiazania.setDzialki(dzialki);
                         zobowiazania.setRokRozliczeniowy(2017);
                         System.out.println("nr_dzialki :" + nr_dzialki);

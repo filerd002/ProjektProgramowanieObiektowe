@@ -83,12 +83,24 @@
                 <artifactId>spring-boot-devtools</artifactId>
                 <optional>true</optional>
             </dependency> 
+    <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-rest</artifactId>
+    </dependency>
                 
     <dependency>
     <groupId>org.webjars</groupId>
     <artifactId>bootstrap</artifactId>
     <version>3.3.7</version>
 </dependency>
+
+		<!-- https://mvnrepository.com/artifact/net.sourceforge.nekohtml/nekohtml -->
+		<dependency>
+			<groupId>net.sourceforge.nekohtml</groupId>
+			<artifactId>nekohtml</artifactId>
+			<version>1.9.21</version><!--$NO-MVN-MAN-VER$ -->
+		</dependency>
+
 
         <!-- Hibernate framework -->
   <dependency>
@@ -218,6 +230,10 @@
          <version>3.5</version>
          <type>jar</type>
       </dependency>
+      
+
+      
+      
    </dependencies>
 
    

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+
+        <title>Panel Administratora</title>
+        <link rel="stylesheet" type="text/css"
+              href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" media="all"  
+              href="../css/admin.css"  th:href="@{/css/admin.css}" />
+
+        
+        <meta charset="utf-8" />
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"/>
+        <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css"/>
+        <link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.5/css/select.dataTables.min.css"/>
+        <link rel="stylesheet" type="text/css" media="all"  
+              href="../css/editor.dataTables.min.css"  th:href="@{/css/editor.dataTables.min.css}" />
+
+        <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+
+        <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdn.datatables.net/select/1.2.5/js/dataTables.select.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
+
+
+
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse">
+            <div  class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" th:href="@{/admin}">Panel Administratora </a>
+                </div>
+
+            </div>
+        </nav>
+        <nav class="navbar navbar-inverse">
+            <div  class="container">
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li ><a  th:href="@{/admin}">Start</a></li>     
+                         <li ><a  th:href="@{/admin_zarz_user}">Zarz. użytkownikami</a></li>
+                              <li ><a  th:href="@{/admin_zarz_dzialka}">Zarz. działkami</a></li>
+                             <li ><a  th:href="@{/admin_zarz_dostep}">Zarz. dostepem</a></li>  
+                             <li><a  th:href="@{/admin_zarz_liczniki}">Zarz. Licznikami</a></li>
+                             <li><a  th:href="@{/admin_zarz_zobowiazania}">Zarz. Zobowiazaniami</a></li>
+                             <li ><a  th:href="@{/admin_zarz_wyciagiJS}">Zarz. Wyciągami</a></li>
+                          <li class="active"><a  th:href="@{/admin_zarz_bank}">Zarz. kontami bankowymi</a></li>
+                               <li ><a  th:href="@{/admin_upload}">Upload​ ​dokumentów​</a></li>
+                       <li style="  position: absolute; left: 94%; background-color: black">
+
+                            <a th:href="@{/login?logout}" onclick="$('#form').submit();">
+                                Wyloguj
+                            </a>
+                            <form style="visibility: hidden" id="form" method="post"  th:action="@{/logout}"></form>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+
+ 
+        <table id="admin_zarz_bank_Table" class="display" cellspacing="0" width="100%">
+
+            <!-- Header Table -->
+            <thead class="display headAndFooter">
+                <tr>
+                    <th>Nr działki</th>
+                    <th>Iban</th>
+                    <th>Nr konta</th>        
+                </tr>
+            </thead>
+
+            <!-- Footer Table -->
+            <tfoot class="display headAndFooter">
+                <tr>
+      <th>Nr działki</th>
+                    <th>Iban</th>
+                    <th>Nr konta</th>   
+                </tr>
+            </tfoot>
+        </table>
+        <script src="/jQuery-2.1.4.min.js"></script>
+        <script src="/jquery.dataTables.js"></script>
+        <script src="/dataTables.bootstrap.min.js"></script>
+        <script src="/jquery.spring-friendly.js"></script>
+
+        <script src="../../js/dataTables.editor.min.js"></script>
+        <script>
+                                var editor;
+
+                                $(document).ready(function () {
+
+
+                                    editor = new $.fn.dataTable.Editor({
+
+                                         ajax: {
+                                                        create: {
+           		
+                                                url: '/admin_zarz_bank/add',                                      
+                                                   type: 'POST',
+                                                dataType: 'json',     
+                                                  contentType: 'application/json; charset=utf-8',
+                                                data: function (d) {
+                                                    var obj;
+                                                    for (var key in d.data) {
+                                                        obj = d.data[key];
+                                                        break;
+                                                    }
+                                                    return JSON.stringify(obj);
+                                                },
+                                                
+                                                success: function (data) {
+                                                    table.clear().draw();
+                                                    table.ajax.reload();
+                                                },
+                                                error: function (e) {
+                                                    alert("ERROR: ", e);
+                                                }
+
+
+
+                                                        },
+                                                        edit: {
+                                                                type: 'PUT',
+                                                             url: "/admin_zarz_bank/update",
+                                                dataType: 'json',
+                                                contentType: 'application/json; charset=utf-8',
+                                                
+                                                data: function (d) {
+                                                    var obj;
+                                                    for (var key in d.data) {
+                                                        obj = d.data[key];
+                                                        break;
+                                                    }
+                                                    return JSON.stringify(obj);
+                                                },
+                                                success: function (data) {
+                                                    table.clear().draw();
+                                                    table.ajax.reload();
+                                                },
+                                                error: function (e) {
+                                                    alert("ERROR: ", e);
+                                                }
+
+                                                        },
+                                                        remove: {
+                                                
+                                                                type: 'DELETE',
+                                                               url: "/admin_zarz_bank/delete",
+                                                dataType: 'json',
+                                                contentType: 'application/json; charset=utf-8',
+                                              
+                                             data: function (d) {
+                                                    var obj;
+                                                    for (var key in d.data) {
+                                                        obj = d.data[key];
+                                                        break;
+                                                    }
+                                                    JSON.stringify(obj);
+                                                    return {"id" : obj["nrDzialki"]};
+                                                },
+                                          success: function (data) {
+                                                    table.clear().draw();
+                                                    table.ajax.reload();
+                                                },
+                                                error: function (e) {
+                                                      table.clear().draw();
+                                                    table.ajax.reload();
+                                                }            
+
+                                            }
+                                                },
+                                        "table": "#admin_zarz_bank_Table",
+                                        idSrc: "nrDzialki",
+                                        "fields": [{
+                                                "label": "Nr działki",
+                                                "name": "nrDzialki"
+                                            }, {
+                                                   "label": "Iban",
+                                                "name": "kodIban"
+                                            }, {
+                                               "label": "Nr konta",
+                                                "name": "nrKonta"
+                                            }
+                                        ]
+                                    });
+   
+                                    var table = $('#admin_zarz_bank_Table').DataTable({
+                                          dom: "Bfrtip",
+                                        "processing": true,
+                                        "serverSide": false,
+                                        "sAjaxSource": "/admin_zarz_bank/get",
+                                        "sAjaxDataProp": "",
+                                       
+                                          columns: [
+                                            {data: "nrDzialki"},
+                                            {data: "kodIban"},
+                                             {data: "nrKonta"}
+                                        ],
+
+                                        select: true,
+                                        idSrc: "nrDzialki",
+                                                buttons: [
+
+                                                        {extend: "create", editor: editor},
+                                                        {extend: "edit",   editor: editor},
+                                                        {extend: "remove", editor: editor},
+                                            {extend: 'pdfHtml5', orientation: 'landscape',
+                pageSize: 'LEGAL',  download: 'open'}
+                                                ]
+                                    });
+                                });
+
+// Helper function to serialize all the form fields into a JSON string
+                                function formToJSON() {
+                                        return JSON.stringify({
+                                                "nrDzialki": $('#nrDzialki').val(),
+                                                "kodIban": $('#kodIban').val(),                                       
+                                                "nrKonta": $('#nrKonta').val()
+                                            
+                                            });
+                                }
+                            
+
+
+        </script>
+
+
+
+    </body>
+</html>
