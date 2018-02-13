@@ -37,7 +37,7 @@
                 <li class="active"><a  th:href="@{/admin_upload}">Upload​ ​dokumentów​</a></li>
                        <li style="  position: absolute; left: 94%; background-color: black">
 
-                            <a th:href="@{/login?logout}" onclick="$('#form').submit();">
+                            <a  name ="wylog"  th:href="@{/login?logout}" onclick="$('#form').submit();">
                                 Wyloguj
                             </a>
                             <form style="visibility: hidden" id="form" method="post"  th:action="@{/logout}"></form>
