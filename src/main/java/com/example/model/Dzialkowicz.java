@@ -1,6 +1,5 @@
 package com.example.model;
-// Generated 2018-02-02 20:24:56 by Hibernate Tools 4.3.1
-
+// Generated 2018-02-14 00:36:07 by Hibernate Tools 4.3.1
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
