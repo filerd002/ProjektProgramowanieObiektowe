@@ -410,7 +410,7 @@ File selectedFile = fileChooser.getSelectedFile();
                             wyciagiJs.setNrWyciagu(0);
                         }
 
-                        if (row.getCell(2).getCellType() == HSSFCell.CELL_TYPE_FORMULA) {
+                        if (row.getCell(2).getCellType() == HSSFCell.CELL_TYPE_FORMULA || row.getCell(2).getCellType() == HSSFCell.CELL_TYPE_NUMERIC) {
                             Double kwota = row.getCell(2).getNumericCellValue();
                             wyciagiJs.setKwota(kwota);
                             System.out.println("kwota :" + kwota);

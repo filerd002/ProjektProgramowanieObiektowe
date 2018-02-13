@@ -124,5 +124,26 @@ public class ImplDostep implements InterDostep {
         }
         return dostep;
     }
+    
+    
+    public Dostep getByLogin(String login) {
+        Dostep dostep = null;
+        Transaction trns = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            trns = session.beginTransaction();
+            String queryString = "from Dostep where login= :login";
+            Query query = session.createQuery(queryString);
+            query.setString("login", login);
+            dostep = (Dostep) query.uniqueResult();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        } finally {
+            session.flush();
+            session.close();
+        }
+        return dostep;
+    }
+    
    
 }

@@ -14,6 +14,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.example.HibernateUtil;
+import com.example.model.Dzialkowicz;
 
 
 import com.example.model.inter.InterDzialki;
@@ -123,5 +124,26 @@ public class ImplDzialki implements InterDzialki {
         }
         return dzialki;
     }
-   
+    
+    
+       public Dzialki getByIdDzialkowicz(Long nr_czlonkowski)
+   {
+        Dzialki dzialki = null;
+        Transaction trns = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            trns = session.beginTransaction();
+            String queryString = "from Dzialki where nr_czlonkowski= :nr_czlonkowski";
+            Query query = session.createQuery(queryString);
+            query.setLong("nr_czlonkowski", nr_czlonkowski);
+            dzialki = (Dzialki) query.uniqueResult();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        } finally {
+            session.flush();
+            session.close();
+        }
+        return dzialki;
+    }
+    
 }

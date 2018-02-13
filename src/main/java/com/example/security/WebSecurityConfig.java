@@ -47,7 +47,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.permitAll();
 		http.exceptionHandling().accessDeniedPage("/403");
                 
-                
+              
                 
 	}
 
