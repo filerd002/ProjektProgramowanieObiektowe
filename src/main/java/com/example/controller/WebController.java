@@ -8,8 +8,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import static com.example.DataMigrationExcelToDatabase.readFromExcelAndSaveToDatabase;
+import com.example.model.Dostep;
+import com.example.model.Dzialki;
 import com.example.model.imp.ImplDzialkowicz;
 import com.example.model.Dzialkowicz;
+import com.example.model.imp.ImplDostep;
+import com.example.model.imp.ImplDzialki;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import java.io.FileInputStream;
 import java.util.ArrayList;
@@ -20,12 +24,16 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import java.util.Collection;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 
 @Controller
 public class WebController {
    
- 
 
 
     
@@ -86,12 +94,14 @@ public class WebController {
     
      @RequestMapping(value="/user")
     public String user(){
+
         return "user";
     }
     
     
       @RequestMapping(value="/user_Rozrachunki")
     public String user_Rozrachunki(){
+        
         return "user_Rozrachunki";
     }
        @RequestMapping(value="/user_Zobowiazania")
@@ -108,13 +118,14 @@ public class WebController {
         return "user_licznik";
     }
     
-          @RequestMapping(value="/user_ustawienia")
-    public String user_ustawienia(){
-        return "user_ustawienia";
+          @RequestMapping(value="/user_konto")
+    public String user_konto(){
+        return "user_konto";
     }
   
     @RequestMapping(value={"/login"})
     public String login(){
+            
         return "login";
     }
    

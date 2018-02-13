@@ -1,4 +1,4 @@
-package com.example.service;
+package com.example.service.impl;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.model.WyciagiJs;
 import com.example.repository.Admin_zarz_wyciagiJS_Repository;
+import com.example.service.Admin_zarz_wyciagiJS_Service;
 
 
 @Service("Admin_zarz_wyciagiJS_Service")

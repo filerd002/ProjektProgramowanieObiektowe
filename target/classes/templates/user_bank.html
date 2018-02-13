@@ -9,6 +9,7 @@
 	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" media="all"  
      href="../css/user.css"  th:href="@{/css/user.css}" />
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
  </head>
  <body>
      <nav class="navbar navbar-inverse">
@@ -28,7 +29,7 @@
                         <li><a href="#zobowiazania" th:href="@{/user_Zobowiazania}">Zobowiązania</a></li>
                         <li class="active"><a href="#bank" th:href="@{/user_bank}">Konto bankowe</a></li>
                           <li><a href="#licznik" th:href="@{/user_licznik}">Odczyt liczników</a></li>
-                                <li ><a  th:href="@{/user_ustawienia}">Ustawienia</a></li>
+                            <li ><a  th:href="@{/user_konto}">Konto</a></li>
                                    <li style="  position: absolute; left: 94%; background-color: black">
 
                             <a th:href="@{/login?logout}" onclick="$('#form').submit();">
@@ -42,7 +43,32 @@
             </div>
         </nav>
 
-        <br/>
+    
+        <div class="box">
+            <center>    <h2>Konto bankowe dla przelewów</h2>
+                
+            <h4 class="kodIban"><br/>IBAN: </h4>
+              <h4 class="nrKonta">Nr konta: </h4></center>
+
+        </div>
+        <script>
+            $(document).ready(function () {
+                $.ajax({
+                     dataType: "json",
+                    url: "/user/get"
+                    
+                }).then(function (data) {
+                      
+                  
+                    $('.kodIban').append(data.dzialkis[0].iban.kodIban);
+                 $('.nrKonta').append(data.dzialkis[0].iban.nrKonta);
+
+
+
+                });
+            });
+
+        </script>
 
 
 

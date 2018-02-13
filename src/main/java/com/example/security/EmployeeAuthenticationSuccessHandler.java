@@ -31,7 +31,8 @@ public class EmployeeAuthenticationSuccessHandler implements AuthenticationSucce
 
 		boolean hasUserRole = false;
 		boolean hasAdminRole = false;
-		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();        
+             
 		for (GrantedAuthority grantedAuthority : authorities) {
 			if (grantedAuthority.getAuthority().equals("ROLE_USER")) {
 				hasUserRole = true;
@@ -49,6 +50,7 @@ public class EmployeeAuthenticationSuccessHandler implements AuthenticationSucce
 		} else {
 			throw new IllegalStateException();
 		}
+                
 	}
 
 }
