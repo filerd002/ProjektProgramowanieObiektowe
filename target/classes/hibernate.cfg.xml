@@ -55,15 +55,6 @@ Contributor(s):
     <mapping class="com.example.model.Dzialkowicz"/>
     <mapping class="com.example.model.Iban"/>
     <mapping class="com.example.model.Informacja"/>
-    <mapping class="com.example.model.model.Informacja"/>
-    <mapping class="com.example.model.model.Dzialkowicz"/>
-    <mapping class="com.example.model.model.Zobowiazania"/>
-    <mapping class="com.example.model.model.Iban"/>
-    <mapping class="com.example.model.model.Dostep"/>
-    <mapping class="com.example.model.model.WyciagiJs"/>
-    <mapping class="com.example.model.model.AktualizacjaDanych"/>
-    <mapping class="com.example.model.model.Dzialki"/>
-    <mapping class="com.example.model.model.OdczytLicznika"/>
     <mapping class="com.example.model.inter.InterZobowiazania"/>
     <mapping class="com.example.model.inter.InterInformacja"/>
     <mapping class="com.example.model.inter.InterDzialki"/>
