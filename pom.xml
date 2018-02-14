@@ -106,7 +106,7 @@
   <dependency>
     <groupId>org.hibernate</groupId>
     <artifactId>hibernate-core</artifactId>
-   <version>5.2.12.Final</version>
+   <version>4.3.11.Final</version>
    <type>jar</type>
   </dependency>
 
@@ -142,7 +142,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-   <version>5.2.12.Final</version>
+   <version>4.3.6.Final</version>
         </dependency>
                 <dependency>
             <groupId>junit</groupId>
