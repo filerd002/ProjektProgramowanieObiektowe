@@ -1,6 +1,8 @@
 # ProjektProgramowanieObiektowe
 Filip Erdmann Maciej Wysocki
 
+https://zirod.herokuapp.com
+
 Wykorzystane zostaną technologie: 
 -Spring boot 
 -thymeleaf 
