@@ -10,45 +10,26 @@ package com.example;
  * @author erdi5
  */
 
-
-import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
-import org.hibernate.service.ServiceRegistryBuilder;
-
-/**
- * Hibernate Utility class with a convenient method to get Session Factory
- * object.
- *
- * @author Filip
- */
-public class HibernateUtil {
  
+public class HibernateUtil {
     private static SessionFactory sessionFactory;
-    private static ServiceRegistry serviceRegistry;
-
-    static
-    {
-        try
-        {
-//          Configuration configuration = new Configuration();
+     
+    public static SessionFactory getSessionFactory() {
+        if (sessionFactory == null) {
+            // loads configuration and mappings
             Configuration configuration = new Configuration().configure();
-
-            serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
-            sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+            ServiceRegistry serviceRegistry
+                = new StandardServiceRegistryBuilder()
+                    .applySettings(configuration.getProperties()).build();
+             
+            // builds a session factory from the service registry
+            sessionFactory = configuration.buildSessionFactory(serviceRegistry);            
         }
-        catch (HibernateException he)
-        {
-            System.err.println("Error creating Session: " + he);
-            throw new ExceptionInInitializerError(he);
-        }
-    }
-
-    public static SessionFactory getSessionFactory()
-    {
+         
         return sessionFactory;
-    } 
+    }
 }
