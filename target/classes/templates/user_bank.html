@@ -51,24 +51,7 @@
               <h4 class="nrKonta">Nr konta: </h4></center>
 
         </div>
-        <script>
-            $(document).ready(function () {
-                $.ajax({
-                     dataType: "json",
-                    url: "/user/get"
-                    
-                }).then(function (data) {
-                      
-                  
-                    $('.kodIban').append(data.dzialkis[0].iban.kodIban);
-                 $('.nrKonta').append(data.dzialkis[0].iban.nrKonta);
-
-
-
-                });
-            });
-
-        </script>
+        <script src="../../js/user_bank.js"></script>
 
 
 

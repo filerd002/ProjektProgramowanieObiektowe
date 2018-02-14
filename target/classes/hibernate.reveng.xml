@@ -40,14 +40,14 @@ made subject to such option by the copyright holder.
 Contributor(s):
 -->
 <hibernate-reverse-engineering>
-  <schema-selection match-catalog="postgres" match-schema="public"/>
+  <schema-selection match-catalog="dckqdg5981rspt"/>
+  <table-filter match-name="aktualizacja_danych"/>
+  <table-filter match-name="dzialki"/>
+  <table-filter match-name="dostep"/>
+  <table-filter match-name="zobowiazania"/>
   <table-filter match-name="wyciagi_js"/>
-  <table-filter match-name="iban"/>
   <table-filter match-name="informacja"/>
   <table-filter match-name="odczyt_licznika"/>
-  <table-filter match-name="dzialki"/>
-  <table-filter match-name="zobowiazania"/>
   <table-filter match-name="dzialkowicz"/>
-  <table-filter match-name="dostep"/>
-  <table-filter match-name="aktualizacja_danych"/>
+  <table-filter match-name="iban"/>
 </hibernate-reverse-engineering>
