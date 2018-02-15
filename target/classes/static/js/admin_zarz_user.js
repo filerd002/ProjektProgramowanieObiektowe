@@ -45,7 +45,8 @@
                                                     return JSON.stringify(obj);
                                                 },
                                                 success: function (data) {
-                                            alert(data);
+                                                  table.clear().draw();
+                                                    table.ajax.reload();
                                                 },
                                                 error: function (e) {
                                                     alert("ERROR: ", e);
