@@ -1,5 +1,5 @@
 # ProjektProgramowanieObiektowe
-Filip Erdmann Maciej Wysocki
+Filip Erdmann Maciej Wysocki Mikołaj Dalecki
 
 Wykorzystane zostaną technologie: 
 -Spring boot 
