@@ -91,7 +91,7 @@ CREATE TABLE Informacja
   "nr_dzialki" integer,
   "nr_informacji" integer,
   "rok_rozliczeniowy" integer,
-  "stan_rozliczenia" double precision,
+  "stan_rozliczenia" numeric(17,2),
   "informacja" character varying(252),
    PRIMARY KEY ("id_informacja")
 )
@@ -111,7 +111,7 @@ CREATE TABLE Odczyt_licznika
   "nr_pomiaru" integer NOT NULL,
   "data" character varying(255),
   "stan_licznika" integer,
-  "naleznosc" double precision,
+  "naleznosc" numeric(17,2),
 PRIMARY KEY (id_odczyt_licznika)
 )
 WITH (
@@ -127,19 +127,19 @@ CREATE TABLE Wyciagi_JS
   "id_wyciagu" INTEGER DEFAULT NEXTVAL('Wyciagi_JS_id_seq')  NOT NULL,
   "nr_wyciagu" integer NOT NULL,
   "nr_dzialki" integer NOT NULL,
-  "kwota" double precision,
+  "kwota" numeric(17,2),
   "data" character varying(255),
   "opis" character(255),
-  "skladka" double precision,
-  "cynsz" double precision,
-  "awrbp" double precision,
-  "wpisowe" double precision,
-  "energia_rozpoczecie_sezonu" double precision,
-  "energia_zakonczenie_sezonu" double precision,
-  "dyzur_z_roku_poprzedniego_na_biezacy" double precision,
-  "dyzur_z_roku_biezacego_na_nastepny" double precision,
-  "zadluzenie_z_roku_poprzedniego" double precision,
-  "licznik" double precision,
+  "skladka" numeric(17,2),
+  "cynsz" numeric(17,2),
+  "awrbp" numeric(17,2),
+  "wpisowe" numeric(17,2),
+  "energia_rozpoczecie_sezonu" numeric(17,2),
+  "energia_zakonczenie_sezonu" numeric(17,2),
+  "dyzur_z_roku_poprzedniego_na_biezacy" numeric(17,2),
+  "dyzur_z_roku_biezacego_na_nastepny" numeric(17,2),
+  "zadluzenie_z_roku_poprzedniego" numeric(17,2),
+  "licznik" numeric(17,2),
    PRIMARY KEY ("id_wyciagu")
 )
 WITH (
@@ -155,17 +155,17 @@ CREATE TABLE Zobowiazania
   "nr_zobowiazania" INTEGER DEFAULT NEXTVAL('Zobowiazania_id_seq')  NOT NULL,
   "rok_rozliczeniowy" integer NOT NULL,
   "nr_dzialki" integer NOT NULL,
-  "bilans_otwarcia" double precision,
-  "skladka" double precision,
-  "czynsz" double precision,
-  "anr" double precision,
-  "wpisowe" double precision,
-  "energia_rozpocecie_sezonu" double precision,
-  "energia_zakonczenia_seoznu" double precision,
-  "dyzur_z_roku_poprzedniego_na_biezacy" double precision,
-  "dyzur_z_roku_biezacego_na_nastepny" double precision,
-  "zadluzenie_z_roku_poprzedniego" double precision,
-  "zobowiazania_razem_z_bo" double precision,
+  "bilans_otwarcia" numeric(17,2),
+  "skladka" numeric(17,2),
+  "czynsz" numeric(17,2),
+  "anr" numeric(17,2),
+  "wpisowe" numeric(17,2),
+  "energia_rozpocecie_sezonu" numeric(17,2),
+  "energia_zakonczenia_seoznu" numeric(17,2),
+  "dyzur_z_roku_poprzedniego_na_biezacy" numeric(17,2),
+  "dyzur_z_roku_biezacego_na_nastepny" numeric(17,2),
+  "zadluzenie_z_roku_poprzedniego" numeric(17,2),
+  "zobowiazania_razem_z_bo" numeric(17,2),
    PRIMARY KEY ("nr_zobowiazania")
 )
 WITH (

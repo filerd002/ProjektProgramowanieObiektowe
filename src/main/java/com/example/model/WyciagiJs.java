@@ -112,7 +112,7 @@ public class WyciagiJs  implements java.io.Serializable {
     }
 
     
-    @Column(name="kwota", precision=17, scale=17)
+    @Column(name="kwota", precision=17, scale=2)
     public Double getKwota() {
         return this.kwota;
     }
@@ -142,7 +142,7 @@ public class WyciagiJs  implements java.io.Serializable {
     }
 
     
-    @Column(name="skladka", precision=17, scale=17)
+    @Column(name="skladka", precision=17, scale=2)
     public Double getSkladka() {
         return this.skladka;
     }
@@ -152,7 +152,7 @@ public class WyciagiJs  implements java.io.Serializable {
     }
 
     
-    @Column(name="cynsz", precision=17, scale=17)
+    @Column(name="cynsz", precision=17, scale=2)
     public Double getCynsz() {
         return this.cynsz;
     }
@@ -162,7 +162,7 @@ public class WyciagiJs  implements java.io.Serializable {
     }
 
     
-    @Column(name="awrbp", precision=17, scale=17)
+    @Column(name="awrbp", precision=17, scale=2)
     public Double getAwrbp() {
         return this.awrbp;
     }
@@ -172,7 +172,7 @@ public class WyciagiJs  implements java.io.Serializable {
     }
 
     
-    @Column(name="wpisowe", precision=17, scale=17)
+    @Column(name="wpisowe", precision=17, scale=2)
     public Double getWpisowe() {
         return this.wpisowe;
     }
@@ -182,7 +182,7 @@ public class WyciagiJs  implements java.io.Serializable {
     }
 
     
-    @Column(name="energia_rozpoczecie_sezonu", precision=17, scale=17)
+    @Column(name="energia_rozpoczecie_sezonu", precision=17, scale=2)
     public Double getEnergiaRozpoczecieSezonu() {
         return this.energiaRozpoczecieSezonu;
     }
@@ -192,7 +192,7 @@ public class WyciagiJs  implements java.io.Serializable {
     }
 
     
-    @Column(name="energia_zakonczenie_sezonu", precision=17, scale=17)
+    @Column(name="energia_zakonczenie_sezonu", precision=17, scale=2)
     public Double getEnergiaZakonczenieSezonu() {
         return this.energiaZakonczenieSezonu;
     }
@@ -202,7 +202,7 @@ public class WyciagiJs  implements java.io.Serializable {
     }
 
     
-    @Column(name="dyzur_z_roku_poprzedniego_na_biezacy", precision=17, scale=17)
+    @Column(name="dyzur_z_roku_poprzedniego_na_biezacy", precision=17, scale=2)
     public Double getDyzurZRokuPoprzedniegoNaBiezacy() {
         return this.dyzurZRokuPoprzedniegoNaBiezacy;
     }
@@ -212,7 +212,7 @@ public class WyciagiJs  implements java.io.Serializable {
     }
 
     
-    @Column(name="dyzur_z_roku_biezacego_na_nastepny", precision=17, scale=17)
+    @Column(name="dyzur_z_roku_biezacego_na_nastepny", precision=17, scale=2)
     public Double getDyzurZRokuBiezacegoNaNastepny() {
         return this.dyzurZRokuBiezacegoNaNastepny;
     }
@@ -222,7 +222,7 @@ public class WyciagiJs  implements java.io.Serializable {
     }
 
     
-    @Column(name="zadluzenie_z_roku_poprzedniego", precision=17, scale=17)
+    @Column(name="zadluzenie_z_roku_poprzedniego", precision=17, scale=2)
     public Double getZadluzenieZRokuPoprzedniego() {
         return this.zadluzenieZRokuPoprzedniego;
     }
@@ -232,7 +232,7 @@ public class WyciagiJs  implements java.io.Serializable {
     }
 
     
-    @Column(name="licznik", precision=17, scale=17)
+    @Column(name="licznik", precision=17, scale=2)
     public Double getLicznik() {
         return this.licznik;
     }
