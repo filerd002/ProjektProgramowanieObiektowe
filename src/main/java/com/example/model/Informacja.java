@@ -101,7 +101,7 @@ public class Informacja  implements java.io.Serializable {
     }
 
     
-    @Column(name="stan_rozliczenia", precision=17, scale=17)
+    @Column(name="stan_rozliczenia", precision=17, scale=2)
     public Double getStanRozliczenia() {
         return this.stanRozliczenia;
     }
