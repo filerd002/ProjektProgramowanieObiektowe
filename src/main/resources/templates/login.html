@@ -3,40 +3,47 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     <head>
         <title>Logowanie </title>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.css" />
-        <link rel="stylesheet/less" type="text/css" href="formChanges.less" />
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"/>
-        <link rel="stylesheet" type="text/css" media="all"  
-              href="../css/login.css"  th:href="@{/css/login.css}" />
+        <!--<link rel="stylesheetsheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.css" />-->
+        <!--<link rel="stylesheet/less" type="text/css" href="formChanges.less" />-->
+        <!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"/>-->
+        <!--<link rel="stylesheet" type="text/css" media="all" href="../css/login.css"  th:href="@{/css/login.css}" />-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous" />
+
+            <link rel="stylesheet" type="text/css" media="all" href="../css/font-awesome.min.css"  th:href="@{/css/font-awesome.min.css}" />
     </head>
     <body>
-        <center><img th:src="@{/images/login.jpg}" class="img" alt="Logo" />
-        </center> 
-        <center> <div id="box">
-                <center>  <h2>Wprowadz dane</h2>   </center>
-                <center>   <form th:action="@{/login}" method="post">
+        <div class="container col-lg-4 m-auto p-5 text-center ">
+            <img  th:src="@{/images/key-for-login.png}" src="../images/key-for-login.png" class="card-img-top" alt="Logo" width="50"/>
+            <div id="box" class="card-body">
+                <h1 class="card-title">Wprowadź dane</h1>
+                <form th:action="@{/login}" method="post" class="m-auto">
 
-
-                        <div class="form-group has-feedback has-feedback-left">
-                            <label class="control-label">Login:</label>
-                            <input  type="text"  name="username" class="form-control" placeholder="Username" />
-                            <i class="form-control-feedback glyphicon glyphicon-user"></i>
+                    <div class="form-group row has-feedback has-feedback-left">
+                        <label class="col-form-label col-sm-2 form-control-lg">Login:</label>
+                        <div class="col-sm-10">
+                            <input  type="text"  name="username" class="form-control form-control-lg" placeholder="Username" />
                         </div>
-                        <div class="form-group has-feedback has-feedback-left">
-                            <label class="control-label">Haslo:</label>
-                            <input type="password" name="password" class="form-control" placeholder="Password" />
-                            <i class="form-control-feedback glyphicon glyphicon-lock"></i>
+                    </div>
+                    <div class="form-group row">
+
+                        <label class="col-form-label col-sm-2 form-control-lg">Haslo:</label>
+                        <div class="col-sm-10">
+                            <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" />
                         </div>
+                    </div>
 
-                        <div><input name="Zaloguj" class="button1" type="submit"  value="Zaloguj" /></div>    
-                    </form>   </center>
+                    <div>
+                        <input name="Zaloguj" class="button1 btn btn-primary btn-lg" type="submit"  value="Zaloguj" />
+                    </div>
+                </form>  
 
-                <center>  <div th:if="${param.error}"  >
-                        <h4> Wprowadzone dane są niepawidłowe!</h4>         
-                    </div>   </center>
-                <center><div th:if="${param.logout}" >
-                        <h4>  Zostałeś wylogowany! </h4> 
-                    </div>   </center>
-            </div>  </center>
+                <div th:if="${param.error}" class="alert-danger" >
+                    <h4> Wprowadzone dane są niepawidłowe!</h4>         
+                </div>   
+                <div th:if="${param.logout}" >
+                    <h4>  Zostałeś wylogowany! </h4> 
+                </div>  
+            </div>
+        </div>
     </body>
 </html>
