@@ -100,7 +100,7 @@ public class Zobowiazania  implements java.io.Serializable {
     }
 
     
-    @Column(name="bilans_otwarcia", precision=17, scale=17)
+    @Column(name="bilans_otwarcia", precision=17, scale=2)
     public Double getBilansOtwarcia() {
         return this.bilansOtwarcia;
     }
@@ -110,7 +110,7 @@ public class Zobowiazania  implements java.io.Serializable {
     }
 
     
-    @Column(name="skladka", precision=17, scale=17)
+    @Column(name="skladka", precision=17, scale=2)
     public Double getSkladka() {
         return this.skladka;
     }
@@ -120,7 +120,7 @@ public class Zobowiazania  implements java.io.Serializable {
     }
 
     
-    @Column(name="czynsz", precision=17, scale=17)
+    @Column(name="czynsz", precision=17, scale=2)
     public Double getCzynsz() {
         return this.czynsz;
     }
@@ -130,7 +130,7 @@ public class Zobowiazania  implements java.io.Serializable {
     }
 
     
-    @Column(name="anr", precision=17, scale=17)
+    @Column(name="anr", precision=17, scale=2)
     public Double getAnr() {
         return this.anr;
     }
@@ -140,7 +140,7 @@ public class Zobowiazania  implements java.io.Serializable {
     }
 
     
-    @Column(name="wpisowe", precision=17, scale=17)
+    @Column(name="wpisowe", precision=17, scale=2)
     public Double getWpisowe() {
         return this.wpisowe;
     }
@@ -150,7 +150,7 @@ public class Zobowiazania  implements java.io.Serializable {
     }
 
     
-    @Column(name="energia_rozpocecie_sezonu", precision=17, scale=17)
+    @Column(name="energia_rozpocecie_sezonu", precision=17, scale=2)
     public Double getEnergiaRozpocecieSezonu() {
         return this.energiaRozpocecieSezonu;
     }
@@ -160,7 +160,7 @@ public class Zobowiazania  implements java.io.Serializable {
     }
 
     
-    @Column(name="energia_zakonczenia_seoznu", precision=17, scale=17)
+    @Column(name="energia_zakonczenia_seoznu", precision=17, scale=2)
     public Double getEnergiaZakonczeniaSeoznu() {
         return this.energiaZakonczeniaSeoznu;
     }
@@ -170,7 +170,7 @@ public class Zobowiazania  implements java.io.Serializable {
     }
 
     
-    @Column(name="dyzur_z_roku_poprzedniego_na_biezacy", precision=17, scale=17)
+    @Column(name="dyzur_z_roku_poprzedniego_na_biezacy", precision=17, scale=2)
     public Double getDyzurZRokuPoprzedniegoNaBiezacy() {
         return this.dyzurZRokuPoprzedniegoNaBiezacy;
     }
@@ -180,7 +180,7 @@ public class Zobowiazania  implements java.io.Serializable {
     }
 
     
-    @Column(name="dyzur_z_roku_biezacego_na_nastepny", precision=17, scale=17)
+    @Column(name="dyzur_z_roku_biezacego_na_nastepny", precision=17, scale=2)
     public Double getDyzurZRokuBiezacegoNaNastepny() {
         return this.dyzurZRokuBiezacegoNaNastepny;
     }
@@ -190,7 +190,7 @@ public class Zobowiazania  implements java.io.Serializable {
     }
 
     
-    @Column(name="zadluzenie_z_roku_poprzedniego", precision=17, scale=17)
+    @Column(name="zadluzenie_z_roku_poprzedniego", precision=17, scale=2)
     public Double getZadluzenieZRokuPoprzedniego() {
         return this.zadluzenieZRokuPoprzedniego;
     }
@@ -200,7 +200,7 @@ public class Zobowiazania  implements java.io.Serializable {
     }
 
     
-    @Column(name="zobowiazania_razem_z_bo", precision=17, scale=17)
+    @Column(name="zobowiazania_razem_z_bo", precision=17, scale=2)
     public Double getZobowiazaniaRazemZBo() {
         return this.zobowiazaniaRazemZBo;
     }
