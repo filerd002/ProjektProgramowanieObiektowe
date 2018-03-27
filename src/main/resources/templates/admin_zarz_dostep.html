@@ -76,6 +76,18 @@
         .dataTables_filter, .dataTables_info, .paginate_button {
             color: #c0c0c0 !important;
         }
+
+        span.ellipsis {
+            color: #bbbbbb !important;
+        }
+
+        a.paginate_button {
+            background-color: #4E5D6C;
+        }
+
+        a.previous, a.next {
+            background-color: #8d9dad;
+        }
     </style>
 </head>
 <body>
@@ -89,6 +101,7 @@
             <div class="navbar-nav">
                 <a class="nav-item nav-link" th:href="@{/admin}">Start</a>
                 <a class="nav-item nav-link" th:href="@{/admin_zarz_user}">Zarz. użytkownikami</a>
+                <a class="nav-item nav-link" th:href="@{/admin_zarz_dzialka}">Zarz. działkami</a>
                 <a class="nav-item nav-link active" th:href="@{/admin_zarz_dostep}">Zarz. dostepem</a>
                 <a class="nav-item nav-link" th:href="@{/admin_zarz_liczniki}">Zarz. Licznikami</a>
                 <a class="nav-item nav-link" th:href="@{/admin_zarz_zobowiazania}">Zarz. Zobowiazaniami</a>
@@ -102,7 +115,7 @@
         </div>
     </nav>
 
-    <div class="container col-lg-12 mt-5">
+    <div class="container col-xs-12 col-sm-12 col-lg-12  mt-5">
         <table id="admin_zarz_dostep_Table" class="display compact" cellspacing="0" width="100%">
 
             <!-- Header Table -->

@@ -11,7 +11,7 @@ and open the template in the editor.
     <link rel="stylesheet" type="text/css" media="all" href="../css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}" />
 
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap-filestyle.min.js"></script>
+    <!--<script type="text/javascript" src="js/bootstrap-filestyle.min.js"></script>-->
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -31,9 +31,9 @@ and open the template in the editor.
                     <form class="m-auto col-lg-12" method="POST" enctype="multipart/form-data" th:action="@{/migration}">
                         <div class="form-group row">
 
-                            <input type="file" class="form-control-file col-lg-10" id="filestyle" name="file" />
+                            <input type="file" class="form-control-file col-sm-10" id="filestyle" name="file" />
 
-                            <input class="btn btn-primary text-right col-lg-2" type="submit" value="Upload" />
+                            <input class="btn btn-primary text-right col-sm-2" type="submit" value="Upload" />
 
                         </div>
                     </form>

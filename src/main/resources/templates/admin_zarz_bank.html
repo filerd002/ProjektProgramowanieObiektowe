@@ -9,7 +9,6 @@
     <meta charset="utf-8" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.5/css/select.dataTables.min.css" />
@@ -78,6 +77,18 @@
         .dataTables_filter, .dataTables_info, .paginate_button {
             color: #c0c0c0 !important;
         }
+
+        span.ellipsis {
+            color: #bbbbbb !important;
+        }
+
+        a.paginate_button {
+            background-color: #4E5D6C;
+        }
+
+        a.previous, a.next {
+            background-color: #8d9dad;
+        }
     </style>
 
 
@@ -93,6 +104,7 @@
             <div class="navbar-nav">
                 <a class="nav-item nav-link" th:href="@{/admin}">Start</a>
                 <a class="nav-item nav-link" th:href="@{/admin_zarz_user}">Zarz. użytkownikami</a>
+                <a class="nav-item nav-link" th:href="@{/admin_zarz_dzialka}">Zarz. działkami</a>
                 <a class="nav-item nav-link" th:href="@{/admin_zarz_dostep}">Zarz. dostepem</a>
                 <a class="nav-item nav-link" th:href="@{/admin_zarz_liczniki}">Zarz. Licznikami</a>
                 <a class="nav-item nav-link" th:href="@{/admin_zarz_zobowiazania}">Zarz. Zobowiazaniami</a>
@@ -105,7 +117,7 @@
             <form style="visibility: hidden" id="form" method="post" th:action="@{/logout}"></form>
         </div>
     </nav>
-    <div class="container col-lg-12 mt-5">
+    <div class="container col-xs-12 col-sm-12 col-lg-12  mt-5">
 
         <table id="admin_zarz_bank_Table" class="display compact" cellspacing="0" width="100%">
 
