@@ -103,6 +103,7 @@
             <div class="navbar-nav">
                 <a class="nav-item nav-link" th:href="@{/admin}">Start</a>
                 <a class="nav-item nav-link" th:href="@{/admin_zarz_user}">Zarz. użytkownikami</a>
+                <a class="nav-item nav-link" th:href="@{/admin_zarz_dzialka}">Zarz. działkami</a>
                 <a class="nav-item nav-link" th:href="@{/admin_zarz_dostep}">Zarz. dostepem</a>
                 <a class="nav-item nav-link active" th:href="@{/admin_zarz_liczniki}">Zarz. Licznikami</a>
                 <a class="nav-item nav-link" th:href="@{/admin_zarz_zobowiazania}">Zarz. Zobowiazaniami</a>
@@ -115,7 +116,7 @@
             <form style="visibility: hidden" id="form" method="post" th:action="@{/logout}"></form>
         </div>
     </nav>
-    <div class="container col-lg-12 mt-5">
+    <div class="container col-xs-12 col-sm-12 col-lg-12  mt-5">
         <table id="admin_zarz_liczniki_Table" class="display compact" cellspacing="0" width="100%">
 
             <!-- Header Table -->
