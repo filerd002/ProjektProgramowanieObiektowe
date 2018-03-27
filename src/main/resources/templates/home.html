@@ -3,25 +3,25 @@
       xmlns:th="http://www.thymeleaf.org" 
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     <head>
-        
         <title>Witam</title>
-  
-         <link rel="stylesheet" type="text/css" media="all"  
-     href="../css/home.css"  th:href="@{/css/home.css}" />
-  
+        <!--        <link rel="stylesheet" type="text/css" media="all"  
+                      href="../css/home.css"  th:href="@{/css/home.css}" />-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous" />
+        <link rel="stylesheet" type="text/css" media="all" href="../css/font-awesome.min.css"  th:href="@{/css/font-awesome.min.css}" />
 
-
-     
     </head>
     <body>
-       <center> <div id="box">
-        <center><h1 >Zarządzanie​ ​ i​ ​ rozliczanie​ ​ ogródków​ ​ działkowych</h1></center>
+        <div class="container">
+            <div id="box" class="text-center jumbotron mt-5">
+                <h1 class="display-2" >Zarządzanie​ ​ i​ ​ rozliczanie​ ​ ogródków​ ​ działkowych</h1>
 
-          <center> <p>Kliknij aby przejść do panelu logowania:</p>   </center>
-         
-        
-            
-           <center><div><input class="button1" id="Tutaj" type="button"  value="Zaloguj"  onclick="window.location.href='/login'" /></div></center>
- </div></center>
+                <hr class="my-4">
+                    <p class="lead">Kliknij aby przejść do panelu logowania:</p>
+
+                    <div>
+                        <input class="button1 btn btn-primary btn-lg" id="Tutaj" type="button"  value="Zaloguj"  onclick="window.location.href='/login'" />
+                    </div>
+            </div>
+        </div>
     </body>
 </html>
