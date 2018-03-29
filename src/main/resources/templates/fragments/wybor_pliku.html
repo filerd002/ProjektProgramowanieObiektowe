@@ -5,46 +5,53 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-    <head>
-              <title>Wybor</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"  crossorigin="anonymous"/>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<head>
+    <title>Wybor</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" media="all" href="../css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}" />
+
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap-filestyle.min.js"> </script>
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  
-    </head>
-    <body>
-        <div th:fragment="wybor_pliku">
-        <center><div class="container">
+    <!--<script type="text/javascript" src="js/bootstrap-filestyle.min.js"></script>-->
 
-        <form method="POST" enctype="multipart/form-data" th:action="@{/migration}">
-           
-                 <h3>Wybór pliku dla migracji danych z xls do bazy danych:</h3> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-			<table>
-				<tr><td><input type="file" id="filestyle"  name="file"/></td></tr>
-                            
-                                <tr><td></td><td><input class="button1" type="submit" value="Upload" /></td></tr>
-			</table>
-		</form>
-                
-                
-                
+</head>
+<body>
+    <div th:fragment="wybor_pliku">
+        <div class="container col-lg-5 ">
+            <div class="card">
+                <div class="card-header">
+                    Przywracanie bazy danych
+                </div>
+                <div class="card-body">
+                    <h3 class="text-center">Wybór pliku dla migracji danych z xls do bazy danych:</h3>
+                    <hr />
+                    <form class="m-auto col-lg-12" method="POST" enctype="multipart/form-data" th:action="@{/migration}">
+                        <div class="form-group row">
 
-	</div>
-        </center> 
-  
+                            <input type="file" class="form-control-file col-sm-10" id="filestyle" name="file" />
+
+                            <input class="btn btn-primary text-right col-sm-2" type="submit" value="Upload" />
+
+                        </div>
+                    </form>
+                </div>
+            </div>
 
 
-	<div>
-		<ul>
-			<li th:each="file : ${files}">
-				<a th:href="${file}" th:text="${file}" />
-			</li>
-		</ul>
-	</div>
         </div>
-    </body>
+
+
+
+        <div>
+            <ul>
+                <li th:each="file : ${files}">
+                    <a th:href="${file}" th:text="${file}" />
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
 </html>
