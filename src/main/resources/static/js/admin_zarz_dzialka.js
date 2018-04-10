@@ -113,20 +113,20 @@ $(document).ready(function () {
                 if (!powierzchnia.val()) {
                     powierzchnia.error('Proszę podać powierzchnie działki');
                 } else {
-                    if (!isNumber(powierzchnia.val())){
+                    if (!isNumber(powierzchnia.val())) {
                         powierzchnia.error('Proszę podać poprawną powierzchnie działki');
                     }
-                    
+
                 }
             }
-   if (!dzialkowicz.isMultiValue()) {
+            if (!dzialkowicz.isMultiValue()) {
                 if (!dzialkowicz.val()) {
                     dzialkowicz.error('Proszę podać numer działkowicza');
                 } else {
-                    if (!isNumber(dzialkowicz.val())){
+                    if (!isNumber(dzialkowicz.val())) {
                         dzialkowicz.error('Proszę podać poprawny numer działkowicza');
                     }
-                    
+
                 }
             }
 

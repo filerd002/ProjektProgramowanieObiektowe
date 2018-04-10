@@ -103,6 +103,78 @@
                                         ]
                                     });
 
+   editor
+            .field('dzialkowicz.nrDzialkowicza')
+            .disable();
+
+    editor.on('preSubmit', function (e, o, action) {
+
+        if (action !== 'remove') {
+            var login = this.field('login');
+            var password = this.field('password');
+            var enabled = this.field('enabled');
+            var role = this.field('role');
+
+
+            if (!login.isMultiValue()) {
+                if (!login.val()) {
+                    login.error('Proszę podać login');
+                }
+            else{
+                if (login.val().length < 4) {
+                    login.error('login nie może być krótsze niż 4 znaki');
+                }
+            }
+        }
+        
+            if (!password.isMultiValue()) {
+                if (!password.val()) {
+                    password.error('Proszę podać hasło');
+                }
+                else{
+                if (!validatePassword(password.val())) {
+                    password.error('Hasło musi zawierać: osiem znaków, w tym: 1 wielka litera, 1 mała litera i 1 cyfra');
+                    }
+                }
+
+            }
+            
+            if (!enabled.isMultiValue()) {
+                if (!enabled.val()) {
+                    enabled.error('Proszę wprowadzić wartość true lub false');
+                }
+                else{
+                if (String(enabled.val())!=='true' && String(enabled.val())!=='false') {
+                    enabled.error('Proszę wprowadzić wartość true lub false');
+                    }
+                }
+            }
+                if (!role.isMultiValue()) {
+                if (!role.val()) {
+                    role.error('Proszę wprowadzić wartość ROLE_USER lub ROLE_ADMIN');
+                }
+                else{
+                if (String(role.val())!=='ROLE_USER' && role(enabled.val())!=='ROLE_ADMIN') {
+                    role.error('Proszę wprowadzić wartość ROLE_USER lub ROLE_ADMIN');
+                    }
+                }
+            }
+
+
+
+
+
+            if (this.inError()) {
+                return false;
+            }
+        }
+    });
+
+ 
+     function validatePassword(password) {
+        var re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+        return re.test(String(password));
+    }
 
 
 
