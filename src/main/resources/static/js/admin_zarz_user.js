@@ -199,16 +199,14 @@ $(document).ready(function () {
                 if (!kodPocztowy.val()) {
                     kodPocztowy.error('Proszę podać kod pocztowy');
                 }
-
-                if (validateCodePost()(kodPocztowy.val()) !== true) {
+                else{
+                if (!validateCodePost(kodPocztowy.val())) {
                     kodPocztowy.error('Niepoprawny kod pocztowy');
 
                 }
-
+                }
             }
-
-
-            if (!miasto.isMultiValue()) {
+               if (!miasto.isMultiValue()) {
                 if (!miasto.val()) {
                     miasto.error('Proszę podać nazwę miasta');
                 }
@@ -221,35 +219,35 @@ $(document).ready(function () {
                 }
             }
 
-
-
-
-            if (!telefon.isMultiValue()) {
-
+      
+            
+              if (!telefon.isMultiValue()) {
                 if (!telefon.val()) {
-
-
-
-                    if (telefon.val().length >= 13) {
-                        telefon.error('Numer telefonu nie może być dłuższy niż 13 znaków');
-                    }
-                    if (telefon.val().length <= 9) {
-                        telefon.error('Numer telefonu nie może być  krótsze niż 9 znaki');
+                    telefon.error('Proszę podać numer telefonu');
+                }
+                else{
+                if (!validateTel(telefon.val())) {
+                    telefon.error('Niepoprawny numer telefonu');
                     }
                 }
+
             }
 
             if (!email.isMultiValue()) {
                 if (!email.val()) {
                     email.error('Proszę podać email');
                 }
-
-                if (validateEmail(email.val()) !== true) {
+                else{
+                if (!validateEmail(email.val())) {
                     email.error('Niepoprawny adres email');
-
+                    }
                 }
 
             }
+
+            
+            
+
 
 
             if (this.inError()) {
@@ -265,8 +263,13 @@ $(document).ready(function () {
 
 
     function validateCodePost(code) {
-        var re = /[0-9]{2}-[0-9]{3}/g;
+        var re = /[0-9]{2}-[0-9]{3}/;
         return re.test(String(code).toLowerCase());
+    }
+    
+    function validateTel(tel) {
+        var re = /^[0-9\+]{8,13}$/;
+        return re.test(String(tel));
     }
 
     var table = $('#admin_zarz_user_Table').DataTable({
