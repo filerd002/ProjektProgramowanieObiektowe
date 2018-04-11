@@ -96,7 +96,9 @@ $(document).ready(function () {
                 "name": "nrPomiaru"
             }, {
                 "label": "data",
-                "name": "data"
+                "name": "data",
+                 "type":  'date',
+                 def:   function () { return new Date(); }
             }, {
                 "label": "Stan licznika",
                 "name": "stanLicznika"

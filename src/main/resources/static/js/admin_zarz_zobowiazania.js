@@ -93,6 +93,7 @@ $(document).ready(function () {
             }, {
                 "label": "Rok rozliczeniowy",
                 "name": "rokRozliczeniowy"
+               
             }, {
                 "label": "Bilans otwarcia",
                 "name": "bilansOtwarcia"

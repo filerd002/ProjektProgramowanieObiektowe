@@ -98,7 +98,9 @@ $(document).ready(function () {
                 "name": "kwota"
             }, {
                 "label": "Data",
-                "name": "data"
+                "name": "data",
+                 "type":  'date',
+                 def:   function () { return new Date(); }
             }, {
                 "label": "Opis",
                 "name": "opis"
