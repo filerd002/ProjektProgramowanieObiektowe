@@ -2,9 +2,12 @@ var editor;
 
 $(document).ready(function () {
 
+  $.extend( $.fn.dataTable.Editor.display.envelope.conf, {
+        attach: 'head'
+    } );
 
     editor = new $.fn.dataTable.Editor({
-
+     display: 'envelope',
          ajax: {
                         create: {
            		
