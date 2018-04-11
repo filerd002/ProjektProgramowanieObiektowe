@@ -94,7 +94,30 @@ $(document).ready(function () {
                 "label": "Nr członkowski",
                 "name": "dzialkowicz.nrDzialkowicza"
             }
-        ]
+        ],
+          i18n: {
+            create: {
+                button: "Nowy",
+                title:  "Tworzenie nowej działki",
+                submit: "Stwórz"
+            },
+            edit: {
+                button: "Zmodyfikuj",
+                title:  "Modyfikacja wybranej działki",
+                submit: "Modyfikuj"
+            },
+             remove: {
+                button: "Usuń",
+                title:  "Usuwanie wybranej działki",
+                submit: "Usuń",
+                confirm: {
+                    1: "Czy na pewno chcesz usunąć?"
+                }
+            },
+            error: {
+                system: "Wystąpił błąd, skontaktuj się z administratorem systemu"
+            }
+        }
     });
 
 
@@ -151,7 +174,14 @@ $(document).ready(function () {
         "sAjaxSource": "/admin_zarz_dzialka/get",
         "sAjaxDataProp": "",
         "language": {
-            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Polish.json"
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Polish.json",
+            select: {
+                rows: {
+                    _: "Zaznaczono %d wierszy",
+                    0: "Kliknij w wiersz aby go zaznaczyć",
+                    1: "Zaznaczono 1 wiersz"
+                }
+            }
         },
           columns: [
             {data: "nrDzialki"},
