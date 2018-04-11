@@ -299,7 +299,6 @@
 
 
 
-
                                     var table = $('#admin_zarz_wyciagiJS_Table').DataTable({
                                           dom: "Bfrtip",
                                         "processing": true,
