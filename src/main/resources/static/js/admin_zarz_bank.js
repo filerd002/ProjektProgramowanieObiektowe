@@ -97,6 +97,62 @@
                                         ]
                                     });
    
+   
+ editor.field('nrDzialki')
+            .disable();
+
+    editor.on('preSubmit', function (e, o, action) {
+
+        if (action !== 'remove') {
+          
+            var kodIban = this.field('kodIban');
+                var nrKonta = this.field('nrKonta');
+
+
+
+                 if (!kodIban.isMultiValue()) {
+                if (!kodIban.val()) {
+                    kodIban.error('Proszę podać kod IBAN');
+                } else {
+                    if (!validateIban()(kodIban.val())) {
+                        kodIban.error('Proszę podać poprawny format kodu IBAN PLXX XXXX XXXX XXXX XXXX XXXX XXXX');
+                    }
+
+                }
+            }
+            
+              if (!nrKonta.isMultiValue()) {
+                if (!nrKonta.val()) {
+                    nrKonta.error('Proszę podać numer konta');
+                } else {
+                    if (!validateBank()()(nrKonta.val())) {
+                        nrKonta.error('Proszę podać poprawny format numeru konta XX XXXX XXXX XXXX XXXX XXXX XXXX');
+                    }
+
+                }
+            }
+
+
+            if (this.inError()) {
+                return false;
+            }
+        }
+    });
+   
+   
+   
+   
+   
+  function validateIban(iban) {
+        var re =/[a-zA-Z]{2}(\d{2}) (\d{4}) (\d{4}) (\d{4}) (\d{4}) (\d{4}) (\d{4})/;
+        return re.test(String(iban));
+    }
+    
+  function validateBank(bank) {
+        var re =/(\d{2}) (\d{4}) (\d{4}) (\d{4}) (\d{4}) (\d{4}) (\d{4})/;
+        return re.test(String(bank));
+    }
+   
                                     var table = $('#admin_zarz_bank_Table').DataTable({
                                           dom: "Bfrtip",
                                         "processing": true,
