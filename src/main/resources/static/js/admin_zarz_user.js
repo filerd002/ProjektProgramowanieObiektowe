@@ -3,6 +3,7 @@ var editor;
 $(document).ready(function () {
 
 
+
     editor = new $.fn.dataTable.Editor({
 
          ajax: {
@@ -278,7 +279,9 @@ $(document).ready(function () {
         "serverSide": false,
         "sAjaxSource": "/admin_zarz_user/get",
         "sAjaxDataProp": "",
-
+           "language": {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Polish.json"
+        },
           columns: [
             {data: "nrDzialkowicza"},
             {data: "imie"},
@@ -293,7 +296,7 @@ $(document).ready(function () {
             {data: "email"}
 
         ],
-
+       
         select: true,
         idSrc: "nrDzialkowicza",
                 buttons: [
@@ -305,6 +308,8 @@ $(document).ready(function () {
                 pageSize: 'LEGAL', download: 'open'}
                 ]
     });
+    
+    
 });
 
 // Helper function to serialize all the form fields into a JSON string

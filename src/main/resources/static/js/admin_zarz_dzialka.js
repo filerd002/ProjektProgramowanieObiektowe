@@ -150,7 +150,9 @@ $(document).ready(function () {
         "serverSide": false,
         "sAjaxSource": "/admin_zarz_dzialka/get",
         "sAjaxDataProp": "",
-
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Polish.json"
+        },
           columns: [
             {data: "nrDzialki"},
             {data: "powierzchnia"},
