@@ -95,20 +95,20 @@ $(document).ready(function () {
                 "name": "dzialkowicz.nrDzialkowicza"
             }
         ],
-          i18n: {
+        i18n: {
             create: {
                 button: "Nowy",
-                title:  "Tworzenie nowej działki",
+                title: "Tworzenie nowej działki",
                 submit: "Stwórz"
             },
             edit: {
                 button: "Zmodyfikuj",
-                title:  "Modyfikacja wybranej działki",
+                title: "Modyfikacja wybranej działki",
                 submit: "Modyfikuj"
             },
-             remove: {
+            remove: {
                 button: "Usuń",
-                title:  "Usuwanie wybranej działki",
+                title: "Usuwanie wybranej działki",
                 submit: "Usuń",
                 confirm: {
                     1: "Czy na pewno chcesz usunąć?"
@@ -193,9 +193,18 @@ $(document).ready(function () {
         idSrc: "nrDzialki",
                 buttons: [
 
-                        {extend: "create", editor: editor},
-                        {extend: "edit",   editor: editor},
-                        {extend: "remove", editor: editor},
+                       {extend: "create", editor: editor,
+                formButtons: ['Stwórz', {text: 'Powrót', action: function () {
+                            this.close();
+                        }}]},
+                        {extend: "edit",   editor: editor,
+                formButtons: ['Modyfikuj', {text: 'Powrót', action: function () {
+                            this.close();
+                        }}]},
+                        {extend: "remove", editor: editor,
+                formButtons: ['Usuń', {text: 'Powrót', action: function () {
+                            this.close();
+                        }}]},
             {extend: 'pdfHtml5', orientation: 'landscape',
                 pageSize: 'LEGAL', download: 'open'}
                 ]

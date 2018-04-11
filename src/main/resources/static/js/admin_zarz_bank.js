@@ -95,21 +95,21 @@ $(document).ready(function () {
                 "name": "nrKonta"
             }
         ],
-        
-          i18n: {
+
+        i18n: {
             create: {
                 button: "Nowy",
-                title:  "Tworzenie nowego konta bankowego",
+                title: "Tworzenie nowego konta bankowego",
                 submit: "Stwórz"
             },
             edit: {
                 button: "Zmodyfikuj",
-                title:  "Modyfikacja wybranego konta",
+                title: "Modyfikacja wybranego konta",
                 submit: "Modyfikuj"
             },
-             remove: {
+            remove: {
                 button: "Usuń",
-                title:  "Usuwanie wybranego konta",
+                title: "Usuwanie wybranego konta",
                 submit: "Usuń",
                 confirm: {
                     1: "Czy na pewno chcesz usunąć?"
@@ -203,9 +203,18 @@ $(document).ready(function () {
         idSrc: "nrDzialki",
                 buttons: [
 
-                        {extend: "create", editor: editor},
-                        {extend: "edit",   editor: editor},
-                        {extend: "remove", editor: editor},
+                         {extend: "create", editor: editor,
+                formButtons: ['Stwórz', {text: 'Powrót', action: function () {
+                            this.close();
+                        }}]},
+                        {extend: "edit",   editor: editor,
+                formButtons: ['Modyfikuj', {text: 'Powrót', action: function () {
+                            this.close();
+                        }}]},
+                        {extend: "remove", editor: editor,
+                formButtons: ['Usuń', {text: 'Powrót', action: function () {
+                            this.close();
+                        }}]},
             {extend: 'pdfHtml5', orientation: 'landscape',
                 pageSize: 'LEGAL', download: 'open'}
                 ]

@@ -42,14 +42,14 @@ $(document).ready(function () {
                 "name": "password"
             }
         ],
-        
-          i18n: {         
+
+        i18n: {
             edit: {
                 button: "Zmień nazwę lub hasło",
-                title:  "Zmiana nazwy lub hasła",
-                submit: "Zatwierdz zmianę"
+                title: "Zmiana nazwy lub hasła",
+                submit: "Zatwierdz"
             },
-             
+
             error: {
                 system: "Wystąpił błąd, skontaktuj się z administratorem systemu"
             }
@@ -128,7 +128,10 @@ $(document).ready(function () {
         select: true,
         idSrc: "nrDzialkowicza",
                 buttons: [
-                                                             {extend: "edit",   editor: editor},
+                        {extend: "edit",   editor: editor,
+                formButtons: ['Zatwierdz', {text: 'Powrót', action: function () {
+                            this.close();
+                        }}]},             
             {extend: 'pdfHtml5', orientation: 'landscape',
                 pageSize: 'LEGAL', download: 'open'}
                 ]

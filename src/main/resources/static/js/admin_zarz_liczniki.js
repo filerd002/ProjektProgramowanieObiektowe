@@ -97,8 +97,10 @@ $(document).ready(function () {
             }, {
                 "label": "data",
                 "name": "data",
-                 "type":  'date',
-                 def:   function () { return new Date(); }
+                "type": 'date',
+                def: function () {
+                    return new Date();
+                }
             }, {
                 "label": "Stan licznika",
                 "name": "stanLicznika"
@@ -107,21 +109,21 @@ $(document).ready(function () {
                 "name": "naleznosc"
             }
         ],
-        
-          i18n: {
+
+        i18n: {
             create: {
                 button: "Nowy",
-                title:  "Tworzenie nowego odczytu licznika",
+                title: "Tworzenie nowego odczytu licznika",
                 submit: "Stwórz"
             },
             edit: {
                 button: "Zmodyfikuj",
-                title:  "Modyfikacja wybranego odczytu licznika",
+                title: "Modyfikacja wybranego odczytu licznika",
                 submit: "Modyfikuj"
             },
-             remove: {
+            remove: {
                 button: "Usuń",
-                title:  "Usuwanie wybranego odczytu licznika",
+                title: "Usuwanie wybranego odczytu licznika",
                 submit: "Usuń",
                 confirm: {
                     1: "Czy na pewno chcesz usunąć?"
@@ -255,10 +257,18 @@ $(document).ready(function () {
         select: true,
         idSrc: "idOdczytLicznika",
                 buttons: [
-
-                        {extend: "create", editor: editor},
-                        {extend: "edit",   editor: editor},
-                        {extend: "remove", editor: editor},
+                {extend: "create", editor: editor,
+                formButtons: ['Stwórz', {text: 'Powrót', action: function () {
+                            this.close();
+                        }}]},
+                        {extend: "edit",   editor: editor,
+                formButtons: ['Modyfikuj', {text: 'Powrót', action: function () {
+                            this.close();
+                        }}]},
+                        {extend: "remove", editor: editor,
+                formButtons: ['Usuń', {text: 'Powrót', action: function () {
+                            this.close();
+                        }}]},
             {extend: 'pdfHtml5', orientation: 'landscape',
                 pageSize: 'LEGAL', download: 'open'}
                 ]

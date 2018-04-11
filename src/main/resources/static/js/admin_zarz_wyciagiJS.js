@@ -99,8 +99,10 @@ $(document).ready(function () {
             }, {
                 "label": "Data",
                 "name": "data",
-                 "type":  'date',
-                 def:   function () { return new Date(); }
+                "type": 'date',
+                def: function () {
+                    return new Date();
+                }
             }, {
                 "label": "Opis",
                 "name": "opis"
@@ -136,21 +138,21 @@ $(document).ready(function () {
                 "name": "licznik"
             }
         ],
-        
-          i18n: {
+
+        i18n: {
             create: {
                 button: "Nowy",
-                title:  "Tworzenie nowego wyciągu bankowego",
+                title: "Tworzenie nowego wyciągu bankowego",
                 submit: "Stwórz"
             },
             edit: {
                 button: "Zmodyfikuj",
-                title:  "Modyfikacja wybranego wyciągu bankowego",
+                title: "Modyfikacja wybranego wyciągu bankowego",
                 submit: "Modyfikuj"
             },
-             remove: {
+            remove: {
                 button: "Usuń",
-                title:  "Usuwanie wybranego wyciągu bankowego",
+                title: "Usuwanie wybranego wyciągu bankowego",
                 submit: "Usuń",
                 confirm: {
                     1: "Czy na pewno chcesz usunąć?"
@@ -369,10 +371,18 @@ $(document).ready(function () {
         select: true,
         idSrc: "idWyciagu",
                 buttons: [
-
-                        {extend: "create", editor: editor},
-                        {extend: "edit",   editor: editor},
-                        {extend: "remove", editor: editor},
+                {extend: "create", editor: editor,
+                formButtons: ['Stwórz', {text: 'Powrót', action: function () {
+                            this.close();
+                        }}]},
+                        {extend: "edit",   editor: editor,
+                formButtons: ['Modyfikuj', {text: 'Powrót', action: function () {
+                            this.close();
+                        }}]},
+                        {extend: "remove", editor: editor,
+                formButtons: ['Usuń', {text: 'Powrót', action: function () {
+                            this.close();
+                        }}]},
             {extend: 'pdfHtml5', orientation: 'landscape',
                 pageSize: 'LEGAL', download: 'open'}
                 ]

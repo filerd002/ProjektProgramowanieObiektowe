@@ -101,21 +101,21 @@ $(document).ready(function () {
                 "name": "role"
             }
         ],
-        
-          i18n: {
+
+        i18n: {
             create: {
                 button: "Nowy",
-                title:  "Tworzenie nowego dostepu",
+                title: "Tworzenie nowego dostepu",
                 submit: "Stwórz"
             },
             edit: {
                 button: "Zmodyfikuj",
-                title:  "Modyfikacja wybranego dostep",
+                title: "Modyfikacja wybranego dostep",
                 submit: "Modyfikuj"
             },
-             remove: {
+            remove: {
                 button: "Usuń",
-                title:  "Usuwanie wybranego dostep",
+                title: "Usuwanie wybranego dostep",
                 submit: "Usuń",
                 confirm: {
                     1: "Czy na pewno chcesz usunąć?"
@@ -223,9 +223,18 @@ $(document).ready(function () {
         idSrc: "dzialkowicz.nrDzialkowicza",
                 buttons: [
 
-                        {extend: "create", editor: editor},
-                        {extend: "edit",   editor: editor},
-                        {extend: "remove", editor: editor},
+                     {extend: "create", editor: editor,
+                formButtons: ['Stwórz', {text: 'Powrót', action: function () {
+                            this.close();
+                        }}]},
+                        {extend: "edit",   editor: editor,
+                formButtons: ['Modyfikuj', {text: 'Powrót', action: function () {
+                            this.close();
+                        }}]},
+                        {extend: "remove", editor: editor,
+                formButtons: ['Usuń', {text: 'Powrót', action: function () {
+                            this.close();
+                        }}]},
             {extend: 'pdfHtml5', orientation: 'landscape',
                 pageSize: 'LEGAL', download: 'open'}
                 ]
