@@ -107,7 +107,89 @@
                                         ]
                                     });
 
+ editor.field('idOdczytLicznika')
+            .disable();
 
+    editor.on('preSubmit', function (e, o, action) {
+
+        if (action !== 'remove') {
+            var nrDzialki = this.field('dzialki.nrDzialki');
+            var nrPomiaru = this.field('nrPomiaru');
+            var data = this.field('data');
+            var stanLicznika = this.field('stanLicznika');
+            var naleznosc = this.field('naleznosc');
+
+
+            if (!nrDzialki.isMultiValue()) {
+                if (!nrDzialki.val()) {
+                    nrDzialki.error('Proszę podać numer działki');
+                } else {
+                    if (!isNumber(nrDzialki.val())) {
+                        nrDzialki.error('Proszę podać poprawny numer działki');
+                    }
+
+                }
+            }
+            
+            if (!nrPomiaru.isMultiValue()) {
+                if (!nrPomiaru.val()) {
+                    nrPomiaru.error('Proszę podać numer pomiaru');
+                } else {
+                    if (!isNumber(nrPomiaru.val())) {
+                        nrPomiaru.error('Proszę podać poprawny numer pomiaru');
+                    }
+
+                }
+            }
+                 if (!data.isMultiValue()) {
+                if (!data.val()) {
+                    data.error('Proszę podać date pomiaru');
+                } else {
+                    if (!validateDate(data.val())) {
+                        data.error('Proszę podać poprawny format daty pomiaru RRRR-MM-DD');
+                    }
+
+                }
+            }
+             if (!stanLicznika.isMultiValue()) {
+                if (!stanLicznika.val()) {
+                    stanLicznika.error('Proszę podać stan licznika');
+                } else {
+                    if (!isNumber(stanLicznika.val())) {
+                        stanLicznika.error('Proszę podać poprawny stan licznika, liczbę kWh');
+                    }
+
+                }
+            }
+             if (!naleznosc.isMultiValue()) {
+                if (!naleznosc.val()) {
+                    naleznosc.error('Proszę podać należność');
+                } else {
+                    if (!isNumber(naleznosc.val())) {
+                        naleznosc.error('Proszę podać należność');
+                    }
+
+                }
+            }
+            
+
+
+
+
+
+            if (this.inError()) {
+                return false;
+            }
+        }
+    });
+
+    function isNumber(n) {
+        return !isNaN(parseFloat(n)) && isFinite(n);
+    }
+    function validateDate(date) {
+        var re =/(\d{4})-(\d{2})-(\d{2})/;
+        return re.test(String(date));
+    }
 
 
                                     var table = $('#admin_zarz_liczniki_Table').DataTable({

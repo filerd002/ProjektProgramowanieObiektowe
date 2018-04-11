@@ -19,7 +19,10 @@ import com.example.model.imp.ImplInformacja;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
+import java.util.Locale;
 import javax.swing.JFileChooser;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -28,10 +31,6 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.DateUtil;
 import org.apache.poi.ss.usermodel.Row;
-import org.hibernate.SQLQuery;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 
 /**
  *
@@ -320,7 +319,7 @@ File selectedFile = fileChooser.getSelectedFile();
                         dzialki.setNrDzialki(Long.valueOf(String.valueOf(nr_dzialki)));
                         odczytLicznika.setDzialki(dzialki);
                         odczytLicznika.setNrPomiaru(1);
-                        odczytLicznika.setData("czerwiec 2017");
+                        odczytLicznika.setData("2017-06-01");
                         System.out.println("nr_dzialki :" + nr_dzialki);
                         if (row.getCell(2).getCellType() == HSSFCell.CELL_TYPE_NUMERIC) {
                             int stan_licznika = (int) row.getCell(2).getNumericCellValue();
@@ -418,6 +417,9 @@ File selectedFile = fileChooser.getSelectedFile();
 
                         if (DateUtil.isCellDateFormatted(row.getCell(3))) {
                             String data = String.valueOf(row.getCell(3).getDateCellValue());
+                            SimpleDateFormat data_formatToExcel = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);
+                            Date dataExcel = data_formatToExcel.parse(data);
+                            data = new SimpleDateFormat("yyyy-MM-dd").format(dataExcel);
                             wyciagiJs.setData(data);
                             System.out.println("data :" + data);
                         }
