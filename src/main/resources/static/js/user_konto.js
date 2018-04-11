@@ -45,6 +45,51 @@
                                     });
 
 
+
+    editor.on('preSubmit', function (e, o, action) {
+
+        if (action !== 'remove') {
+            var login = this.field('login');
+            var password = this.field('password');
+  
+
+
+            if (!login.isMultiValue()) {
+                if (!login.val()) {
+                    login.error('Proszę podać login');
+                } else {
+                    if (login.val().length < 4) {
+                        login.error('login nie może być krótsze niż 4 znaki');
+                    }
+                }
+            }
+
+            if (!password.isMultiValue()) {
+                if (!password.val()) {
+                    password.error('Proszę podać hasło');
+                } else {
+                    if (!validatePassword(password.val())) {
+                        password.error('Hasło musi zawierać: osiem znaków, w tym: 1 wielka litera, 1 mała litera i 1 cyfra');
+                    }
+                }
+
+            }
+
+
+            if (this.inError()) {
+                return false;
+            }
+        }
+    });
+
+
+    function validatePassword(password) {
+        var re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+        return re.test(String(password));
+    }
+
+
+
                                     var table = $('#user_konto_Table').DataTable({
                                           dom: "Bfrtip",
                                         "processing": true,
