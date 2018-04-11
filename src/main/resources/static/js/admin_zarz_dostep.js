@@ -2,9 +2,12 @@ var editor;
 
 $(document).ready(function () {
 
+  $.extend( $.fn.dataTable.Editor.display.envelope.conf, {
+        attach: 'head'
+    } );
 
     editor = new $.fn.dataTable.Editor({
-
+     display: 'envelope',
          ajax: {
                         create: {
            		
@@ -100,7 +103,31 @@ $(document).ready(function () {
                 "label": "role",
                 "name": "role"
             }
-        ]
+        ],
+
+        i18n: {
+            create: {
+                button: "Nowy",
+                title: "Tworzenie nowego dostepu",
+                submit: "Stwórz"
+            },
+            edit: {
+                button: "Zmodyfikuj",
+                title: "Modyfikacja wybranego dostep",
+                submit: "Modyfikuj"
+            },
+            remove: {
+                button: "Usuń",
+                title: "Usuwanie wybranego dostep",
+                submit: "Usuń",
+                confirm: {
+                    1: "Czy na pewno chcesz usunąć?"
+                }
+            },
+            error: {
+                system: "Wystąpił błąd, skontaktuj się z administratorem systemu"
+            }
+        }
     });
 
     editor
@@ -177,7 +204,16 @@ $(document).ready(function () {
         "serverSide": false,
         "sAjaxSource": "/admin_zarz_dostep/get",
         "sAjaxDataProp": "",
-
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Polish.json",
+            select: {
+                rows: {
+                    _: "Zaznaczono %d wierszy",
+                    0: "Kliknij w wiersz aby go zaznaczyć",
+                    1: "Zaznaczono 1 wiersz"
+                }
+            }
+        },
           columns: [
             {data: "dzialkowicz.nrDzialkowicza"},
             {data: "login"},
@@ -190,9 +226,18 @@ $(document).ready(function () {
         idSrc: "dzialkowicz.nrDzialkowicza",
                 buttons: [
 
-                        {extend: "create", editor: editor},
-                        {extend: "edit",   editor: editor},
-                        {extend: "remove", editor: editor},
+                     {extend: "create", editor: editor,
+                formButtons: ['Stwórz', {text: 'Powrót', action: function () {
+                            this.close();
+                        }}]},
+                        {extend: "edit",   editor: editor,
+                formButtons: ['Modyfikuj', {text: 'Powrót', action: function () {
+                            this.close();
+                        }}]},
+                        {extend: "remove", editor: editor,
+                formButtons: ['Usuń', {text: 'Powrót', action: function () {
+                            this.close();
+                        }}]},
             {extend: 'pdfHtml5', orientation: 'landscape',
                 pageSize: 'LEGAL', download: 'open'}
                 ]

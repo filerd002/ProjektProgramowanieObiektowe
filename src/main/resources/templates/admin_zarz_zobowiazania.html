@@ -1,147 +1,178 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-<head>
+    <head>
 
-    <title>Panel Administratora</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous" />
-    <link rel="stylesheet" type="text/css" media="all" href="../css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}" />
+        <title>Panel Administratora</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous" />
+        <link rel="stylesheet" type="text/css" media="all" href="../css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}" />
 
-    <meta charset="utf-8" />
+        <meta charset="utf-8" />
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.5/css/select.dataTables.min.css" />
-    <link rel="stylesheet" type="text/css" media="all"
-          href="../css/editor.dataTables.min.css" th:href="@{/css/editor.dataTables.min.css}" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.5/css/select.dataTables.min.css" />
+        <link rel="stylesheet" type="text/css" media="all"
+              href="../css/editor.dataTables.min.css" th:href="@{/css/editor.dataTables.min.css}" />
 
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-
-
-    <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/select/1.2.5/js/dataTables.select.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-    <style>
-        .display {
-            padding-left: 8px;
-            padding-right: 8px;
-            padding-top: 1px;
-            padding-bottom: 1px;
-            margin: 0 auto 20px auto;
-            border-radius: 10px;
-            -moz-border-radius: 10px;
-            -webkit-border-radius: 10px;
-            color: black;
-        }
-
-        .headAndFooter {
-            color: #c0c0c0;
-        }
+        <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
 
-       
+        <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdn.datatables.net/select/1.2.5/js/dataTables.select.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
 
-        .dataTables_filter, .dataTables_info, .paginate_button {
-            color: #c0c0c0 !important;
-        }
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-        span.ellipsis {
-            color: #bbbbbb !important;
-        }
+        <style>
+            .display {
+                padding-left: 8px;
+                padding-right: 8px;
+                padding-top: 1px;
+                padding-bottom: 1px;
+                margin: 0 auto 20px auto;
+                border-radius: 10px;
+                -moz-border-radius: 10px;
+                -webkit-border-radius: 10px;
+                color: black;
+            }
 
-        a.paginate_button {
-            background-color: #4E5D6C;
-        }
-
-        a.previous, a.next {
-            background-color: #8d9dad;
-        }
-    </style>
+            .headAndFooter {
+                color: #c0c0c0;
+            }
 
 
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light  ">
 
-        <a class="navbar-brand" th:href="@{/admin}">Panel Administratora </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link" th:href="@{/admin}">Start</a>
-                <a class="nav-item nav-link" th:href="@{/admin_zarz_user}">Zarz. użytkownikami</a>
-                <a class="nav-item nav-link" th:href="@{/admin_zarz_dzialka}">Zarz. działkami</a>
-                <a class="nav-item nav-link" th:href="@{/admin_zarz_dostep}">Zarz. dostepem</a>
-                <a class="nav-item nav-link" th:href="@{/admin_zarz_liczniki}">Zarz. Licznikami</a>
-                <a class="nav-item nav-link active" th:href="@{/admin_zarz_zobowiazania}">Zarz. Zobowiazaniami</a>
-                <a class="nav-item nav-link" th:href="@{/admin_zarz_wyciagiJS}">Zarz. Wyciągami</a>
-                <a class="nav-item nav-link" th:href="@{/admin_zarz_bank}">Zarz. kontami bankowymi</a>
-                <a class="nav-item nav-link" th:href="@{/admin_upload}">Upload dokumentów </a>
 
-                <a class="item nav-link" th:href="@{/login?logout}" onclick="$('#form').submit();"> Wyloguj </a>
+            .dataTables_filter, .dataTables_info, .paginate_button {
+                color: #c0c0c0 !important;
+            }
+
+            span.ellipsis {
+                color: #bbbbbb !important;
+            }
+
+            a.paginate_button {
+                background-color: #4E5D6C;
+            }
+
+            a.previous, a.next {
+                background-color: #8d9dad;
+            }
+            div.DTE_Body div.DTE_Body_Content div.DTE_Field {
+                float: left;
+                width: 50%;
+                padding: 5px 20px;
+                clear: none;
+                box-sizing: border-box;
+            }
+
+            div.DTE_Body div.DTE_Form_Content:after {
+                content: ' ';
+                display: block;
+                clear: both;
+            }
+            div.DTED_Lightbox_Wrapper {
+        width: 600px;
+        margin-left: -300px;
+    }
+    div.DTE div.DTE_Body div.DTE_Field {
+        padding-top: 5px
+    }
+    div.DTE div.DTE_Body div.DTE_Field > label {
+        float: none;
+        clear: both;
+        width: 100%;
+    }
+    div.DTE div.DTE_Body div.DTE_Field > div.DTE_Field_Input {
+        float: none;
+        clear: both;
+        width: 100%;
+    }
+        </style>
+
+
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light  ">
+
+            <a class="navbar-brand" th:href="@{/admin}">Panel Administratora </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" th:href="@{/admin}">Start</a>
+                    <a class="nav-item nav-link" th:href="@{/admin_zarz_user}">Zarz. użytkownikami</a>
+                    <a class="nav-item nav-link" th:href="@{/admin_zarz_dzialka}">Zarz. działkami</a>
+                    <a class="nav-item nav-link" th:href="@{/admin_zarz_dostep}">Zarz. dostepem</a>
+                    <a class="nav-item nav-link" th:href="@{/admin_zarz_liczniki}">Zarz. Licznikami</a>
+                    <a class="nav-item nav-link active" th:href="@{/admin_zarz_zobowiazania}">Zarz. Zobowiazaniami</a>
+                    <a class="nav-item nav-link" th:href="@{/admin_zarz_wyciagiJS}">Zarz. Wyciągami</a>
+                    <a class="nav-item nav-link" th:href="@{/admin_zarz_bank}">Zarz. kontami bankowymi</a>
+                    <a class="nav-item nav-link" th:href="@{/admin_upload}">Upload dokumentów </a>
+
+                    <a class="item nav-link" th:href="@{/login?logout}" onclick="$('#form').submit();"> Wyloguj </a>
+                </div>
+                <form style="visibility: hidden" id="form" method="post" th:action="@{/logout}"></form>
             </div>
-            <form style="visibility: hidden" id="form" method="post" th:action="@{/logout}"></form>
+        </nav>
+        <div class="container col-xs-12 col-sm-12 col-lg-12  mt-5">
+            <table id="admin_zarz_zobowiazania_Table" class="display compact" cellspacing="0" width="100%">
+
+                <!-- Header Table -->
+                <thead class="display headAndFooter">
+                    <tr>
+                        <th>Nr zobowiazania</th>
+                        <th>Nr działki</th>
+                        <th>Rok rozliczeniowy</th>
+                        <th>Bilans otwarcia</th>
+                        <th>Skladka</th>
+                        <th>Czynsz</th>
+                        <th>Anr</th>
+                        <th>Wpisowe</th>
+                        <th>Energia rozp. sez.</th>
+                        <th>Energia zak. sez.</th>
+                        <th>Dyżur Rok Poprz/Bież</th>
+                        <th>Dyżur Rok Bież/Nast</th>
+                        <th>Zadluzenie</th>
+                        <th>Zobowiazania Razem z BO</th>
+                    </tr>
+                </thead>
+
+                <!-- Footer Table -->
+                <tfoot class="display headAndFooter">
+                    <tr>
+                        <th>Nr zobowiazania</th>
+                        <th>Nr działki</th>
+                        <th>Rok rozliczeniowy</th>
+                        <th>Bilans otwarcia</th>
+                        <th>Skladka</th>
+                        <th>Czynsz</th>
+                        <th>Anr</th>
+                        <th>Wpisowe</th>
+                        <th>Energia rozp. sez.</th>
+                        <th>Energia zak. sez.</th>
+                        <th>Dyżur Rok Poprz/Bież</th>
+                        <th>Dyżur Rok Bież/Nast</th>
+                        <th>Zadluzenie</th>
+                        <th>Zobowiazania Razem z BO</th>
+                    </tr>
+                </tfoot>
+            </table>
         </div>
-    </nav>
-    <div class="container col-xs-12 col-sm-12 col-lg-12  mt-5">
-        <table id="admin_zarz_zobowiazania_Table" class="display compact" cellspacing="0" width="100%">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+        <script src="/jQuery-2.1.4.min.js"></script>
+        <script src="/jquery.dataTables.js"></script>
+        <script src="/dataTables.bootstrap.min.js"></script>
+        <script src="/jquery.spring-friendly.js"></script>
 
-            <!-- Header Table -->
-            <thead class="display headAndFooter">
-                <tr>
-                    <th>Nr zobowiazania</th>
-                    <th>Nr działki</th>
-                    <th>Rok rozliczeniowy</th>
-                    <th>Bilans otwarcia</th>
-                    <th>Skladka</th>
-                    <th>Czynsz</th>
-                    <th>Anr</th>
-                    <th>Wpisowe</th>
-                    <th>Energia rozp. sez.</th>
-                    <th>Energia zak. sez.</th>
-                    <th>Dyżur Rok Poprz/Bież</th>
-                    <th>Dyżur Rok Bież/Nast</th>
-                    <th>Zadluzenie</th>
-                    <th>Zobowiazania Razem z BO</th>
-                </tr>
-            </thead>
-
-            <!-- Footer Table -->
-            <tfoot class="display headAndFooter">
-                <tr>
-                    <th>Nr zobowiazania</th>
-                    <th>Nr działki</th>
-                    <th>Rok rozliczeniowy</th>
-                    <th>Bilans otwarcia</th>
-                    <th>Skladka</th>
-                    <th>Czynsz</th>
-                    <th>Anr</th>
-                    <th>Wpisowe</th>
-                    <th>Energia rozp. sez.</th>
-                    <th>Energia zak. sez.</th>
-                    <th>Dyżur Rok Poprz/Bież</th>
-                    <th>Dyżur Rok Bież/Nast</th>
-                    <th>Zadluzenie</th>
-                    <th>Zobowiazania Razem z BO</th>
-                </tr>
-            </tfoot>
-        </table>
-    </div>
-    <script src="/jQuery-2.1.4.min.js"></script>
-    <script src="/jquery.dataTables.js"></script>
-    <script src="/dataTables.bootstrap.min.js"></script>
-    <script src="/jquery.spring-friendly.js"></script>
-
-    <script src="../../js/dataTables.editor.min.js"></script>
-    <script src="../../js/admin_zarz_zobowiazania.js"></script>
+        <script src="../../js/dataTables.editor.min.js"></script>
+        <script src="../../js/admin_zarz_zobowiazania.js"></script>
 
 
-</body>
+    </body>
 </html>

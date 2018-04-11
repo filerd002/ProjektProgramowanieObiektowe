@@ -2,9 +2,12 @@ var editor;
 
 $(document).ready(function () {
 
+   $.extend( $.fn.dataTable.Editor.display.envelope.conf, {
+        attach: 'head'
+    } );
 
     editor = new $.fn.dataTable.Editor({
-
+     display: 'envelope',
          ajax: {
                         create: {
            		
@@ -116,8 +119,34 @@ $(document).ready(function () {
                 "label": "Email",
                 "name": "email"
             }
-        ]
+        ],
+
+        i18n: {
+            create: {
+                button: "Nowy",
+                title: "Tworzenie nowego użytkownika",
+                submit: "Stwórz"
+            },
+            edit: {
+                button: "Zmodyfikuj",
+                title: "Modyfikacja wybranego użytkownika",
+                submit: "Modyfikuj"
+            },
+            remove: {
+                button: "Usuń",
+                title: "Usuwanie wybranego użytkownika",
+                submit: "Usuń",
+                confirm: {
+                    1: "Czy na pewno chcesz usunąć?"
+                }
+            },
+            error: {
+                system: "Wystąpił błąd, skontaktuj się z administratorem systemu"
+            }
+        }
     });
+
+
 
 
     editor
@@ -134,7 +163,7 @@ $(document).ready(function () {
             var nrLokalu = this.field('nrLokalu');
             var kodPocztowy = this.field('kodPocztowy');
             var miasto = this.field('miasto');
-  
+
             var telefon = this.field('telefon');
             var email = this.field('email');
 
@@ -198,15 +227,14 @@ $(document).ready(function () {
             if (!kodPocztowy.isMultiValue()) {
                 if (!kodPocztowy.val()) {
                     kodPocztowy.error('Proszę podać kod pocztowy');
-                }
-                else{
-                if (!validateCodePost(kodPocztowy.val())) {
-                    kodPocztowy.error('Niepoprawny kod pocztowy');
+                } else {
+                    if (!validateCodePost(kodPocztowy.val())) {
+                        kodPocztowy.error('Niepoprawny kod pocztowy');
 
-                }
+                    }
                 }
             }
-               if (!miasto.isMultiValue()) {
+            if (!miasto.isMultiValue()) {
                 if (!miasto.val()) {
                     miasto.error('Proszę podać nazwę miasta');
                 }
@@ -219,15 +247,14 @@ $(document).ready(function () {
                 }
             }
 
-      
-            
-              if (!telefon.isMultiValue()) {
+
+
+            if (!telefon.isMultiValue()) {
                 if (!telefon.val()) {
                     telefon.error('Proszę podać numer telefonu');
-                }
-                else{
-                if (!validateTel(telefon.val())) {
-                    telefon.error('Niepoprawny numer telefonu');
+                } else {
+                    if (!validateTel(telefon.val())) {
+                        telefon.error('Niepoprawny numer telefonu');
                     }
                 }
 
@@ -236,17 +263,16 @@ $(document).ready(function () {
             if (!email.isMultiValue()) {
                 if (!email.val()) {
                     email.error('Proszę podać email');
-                }
-                else{
-                if (!validateEmail(email.val())) {
-                    email.error('Niepoprawny adres email');
+                } else {
+                    if (!validateEmail(email.val())) {
+                        email.error('Niepoprawny adres email');
                     }
                 }
 
             }
 
-            
-            
+
+
 
 
 
@@ -266,7 +292,7 @@ $(document).ready(function () {
         var re = /[0-9]{2}-[0-9]{3}/;
         return re.test(String(code).toLowerCase());
     }
-    
+
     function validateTel(tel) {
         var re = /^[0-9\+]{8,13}$/;
         return re.test(String(tel));
@@ -278,7 +304,16 @@ $(document).ready(function () {
         "serverSide": false,
         "sAjaxSource": "/admin_zarz_user/get",
         "sAjaxDataProp": "",
-
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Polish.json",
+            select: {
+                rows: {
+                    _: "Zaznaczono %d wierszy",
+                    0: "Kliknij w wiersz aby go zaznaczyć",
+                    1: "Zaznaczono 1 wiersz"
+                }
+            }
+        },
           columns: [
             {data: "nrDzialkowicza"},
             {data: "imie"},
@@ -298,13 +333,24 @@ $(document).ready(function () {
         idSrc: "nrDzialkowicza",
                 buttons: [
 
-                        {extend: "create", editor: editor},
-                        {extend: "edit",   editor: editor},
-                        {extend: "remove", editor: editor},
+                        {extend: "create", editor: editor,
+                formButtons: ['Stwórz', {text: 'Powrót', action: function () {
+                            this.close();
+                        }}]},
+                        {extend: "edit",   editor: editor,
+                formButtons: ['Modyfikuj', {text: 'Powrót', action: function () {
+                            this.close();
+                        }}]},
+                        {extend: "remove", editor: editor,
+                formButtons: ['Usuń', {text: 'Powrót', action: function () {
+                            this.close();
+                        }}]},
             {extend: 'pdfHtml5', orientation: 'landscape',
                 pageSize: 'LEGAL', download: 'open'}
                 ]
     });
+
+
 });
 
 // Helper function to serialize all the form fields into a JSON string
