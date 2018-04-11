@@ -137,6 +137,167 @@
                                     });
 
 
+    editor.field('idWyciagu')
+            .disable();
+
+    editor.on('preSubmit', function (e, o, action) {
+
+        if (action !== 'remove') {
+            var nrDzialki = this.field('dzialki.nrDzialki');
+            var nrWyciagu = this.field('nrWyciagu');
+            var kwota = this.field('kwota');
+            var data = this.field('data');
+            var opis = this.field('opis');
+            var skladka = this.field('skladka');
+            var cynsz = this.field('cynsz');
+            var awrbp = this.field('awrbp');
+            var wpisowe = this.field('wpisowe');
+            var energiaRozpoczecieSezonu = this.field('energiaRozpoczecieSezonu');
+            var energiaZakonczenieSezonu = this.field('energiaZakonczenieSezonu');
+            var dyzurZRokuPoprzedniegoNaBiezacy = this.field('dyzurZRokuPoprzedniegoNaBiezacy');
+            var dyzurZRokuBiezacegoNaNastepny = this.field('dyzurZRokuBiezacegoNaNastepny');
+              var zadluzenieZRokuPoprzedniego = this.field('zadluzenieZRokuPoprzedniego');
+                var licznik = this.field('licznik');
+
+
+            if (!nrDzialki.isMultiValue()) {
+                if (!nrDzialki.val()) {
+                    nrDzialki.error('Proszę podać numer działki');
+                } else {
+                    if (!isNumber(nrDzialki.val())) {
+                        nrDzialki.error('Proszę podać poprawny numer działki');
+                    }
+                }
+            }
+               if (!nrWyciagu.isMultiValue()) {
+                  if (!nrWyciagu.val()) {
+                    nrWyciagu.error('Proszę podać numer wyciagu');
+                }
+                else{
+                    if (!isNumber(nrWyciagu.val())) {
+                        nrWyciagu.error('Proszę podać poprawną wartość liczbową');
+                    }                   
+                }          
+            }
+               if (!kwota.isMultiValue()) {
+                if (!kwota.val()) {
+                    kwota.error('Proszę podać kwotę wyciagu');
+                }
+                else{
+                    if (!isNumber(kwota.val())) {
+                        kwota.error('Proszę podać poprawną wartość liczbową');
+                    }                   
+                }          
+            }
+               if (!data.isMultiValue()) {
+                if (!data.val()) {
+                    data.error('Proszę podać date wyciagu');
+                } else {
+                    if (!validateDate(data.val())) {
+                        data.error('Proszę podać poprawny format daty pomiaru RRRR-MM-DD');
+                    }
+
+                }
+            }
+            
+                
+            
+              if (!skladka.isMultiValue()) {
+                if (skladka.val()) {
+                    if (!isNumber(skladka.val())) {
+                        skladka.error('Proszę podać poprawną wartość liczbową');
+                    }                   
+                }          
+            }
+            
+         
+              if (!cynsz.isMultiValue()) {
+                if (cynsz.val()) {
+                    if (!isNumber(cynsz.val())) {
+                        cynsz.error('Proszę podać poprawną wartość liczbową');
+                    }                   
+                }          
+            }
+             if (!awrbp.isMultiValue()) {
+                if (awrbp.val()) {
+                    if (!isNumber(awrbp.val())) {
+                        awrbp.error('Proszę podać poprawną wartość liczbową');
+                    }                   
+                }          
+            }
+              if (!wpisowe.isMultiValue()) {
+                if (wpisowe.val()) {
+                    if (!isNumber(wpisowe.val())) {
+                        wpisowe.error('Proszę podać poprawną wartość liczbową');
+                    }                   
+                }          
+            }
+            
+              if (!energiaRozpoczecieSezonu.isMultiValue()) {
+                if (energiaRozpoczecieSezonu.val()) {
+                    if (!isNumber(energiaRozpoczecieSezonu.val())) {
+                        energiaRozpoczecieSezonu.error('Proszę podać poprawną wartość liczbową');
+                    }                   
+                }          
+            }
+              if (!energiaZakonczenieSezonu.isMultiValue()) {
+                if (energiaZakonczenieSezonu.val()) {
+                    if (!isNumber(energiaZakonczenieSezonu.val())) {
+                        energiaZakonczenieSezonu.error('Proszę podać poprawną wartość liczbową');
+                    }                   
+                }          
+            }
+              if (!dyzurZRokuPoprzedniegoNaBiezacy.isMultiValue()) {
+                if (dyzurZRokuPoprzedniegoNaBiezacy.val()) {
+                    if (!isNumber(dyzurZRokuPoprzedniegoNaBiezacy.val())) {
+                        dyzurZRokuPoprzedniegoNaBiezacy.error('Proszę podać poprawną wartość liczbową');
+                    }                   
+                }          
+            }
+              if (!dyzurZRokuBiezacegoNaNastepny.isMultiValue()) {
+                if (dyzurZRokuBiezacegoNaNastepny.val()) {
+                    if (!isNumber(dyzurZRokuBiezacegoNaNastepny.val())) {
+                        dyzurZRokuBiezacegoNaNastepny.error('Proszę podać poprawną wartość liczbową');
+                    }                   
+                }          
+            }
+              if (!zadluzenieZRokuPoprzedniego.isMultiValue()) {
+                if (zadluzenieZRokuPoprzedniego.val()) {
+                    if (!isNumber(zadluzenieZRokuPoprzedniego.val())) {
+                        zadluzenieZRokuPoprzedniego.error('Proszę podać poprawną wartość liczbową');
+                    }                   
+                }          
+            }
+              if (!licznik.isMultiValue()) {
+                if (licznik.val()) {
+                    if (!isNumber(licznik.val())) {
+                        licznik.error('Proszę podać poprawną wartość liczbową');
+                    }                   
+                }          
+            }
+            
+            
+            
+
+
+
+
+
+            if (this.inError()) {
+                return false;
+            }
+        }
+    });
+
+    function isNumber(n) {
+        return !isNaN(parseFloat(n)) && isFinite(n);
+    }
+    function validateDate(date) {
+        var re =/(\d{4})-(\d{2})-(\d{2})/;
+        return re.test(String(date));
+    }
+
+
 
 
                                     var table = $('#admin_zarz_wyciagiJS_Table').DataTable({
