@@ -94,7 +94,31 @@ $(document).ready(function () {
                 "label": "Nr konta",
                 "name": "nrKonta"
             }
-        ]
+        ],
+        
+          i18n: {
+            create: {
+                button: "Nowy",
+                title:  "Tworzenie nowego konta bankowego",
+                submit: "Stwórz"
+            },
+            edit: {
+                button: "Zmodyfikuj",
+                title:  "Modyfikacja wybranego konta",
+                submit: "Modyfikuj"
+            },
+             remove: {
+                button: "Usuń",
+                title:  "Usuwanie wybranego konta",
+                submit: "Usuń",
+                confirm: {
+                    1: "Czy na pewno chcesz usunąć?"
+                }
+            },
+            error: {
+                system: "Wystąpił błąd, skontaktuj się z administratorem systemu"
+            }
+        }
     });
 
 

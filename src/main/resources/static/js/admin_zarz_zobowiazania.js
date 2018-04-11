@@ -161,102 +161,102 @@ $(document).ready(function () {
                     }
                 }
             }
-                    if (!rokRozliczeniowy.isMultiValue()) {
+            if (!rokRozliczeniowy.isMultiValue()) {
                 if (!rokRozliczeniowy.val()) {
                     rokRozliczeniowy.error('Proszę podać rok rozliczeniowy');
                 } else {
                     if (!isNumber(rokRozliczeniowy.val())) {
                         rokRozliczeniowy.error('Proszę podać poprawny rok rozliczeniowy');
                     }
-                     if (rokRozliczeniowy.val().length!==4) {
+                    if (rokRozliczeniowy.val().length !== 4) {
                         rokRozliczeniowy.error('Proszę podać poprawny rok rozliczeniowy');
                     }
                 }
             }
-               if (!bilansOtwarcia.isMultiValue()) {
+            if (!bilansOtwarcia.isMultiValue()) {
                 if (bilansOtwarcia.val()) {
                     if (!isNumber(bilansOtwarcia.val())) {
                         bilansOtwarcia.error('Proszę podać poprawną wartość liczbową');
-                    }                   
-                }          
+                    }
+                }
             }
-            
-              if (!skladka.isMultiValue()) {
+
+            if (!skladka.isMultiValue()) {
                 if (skladka.val()) {
                     if (!isNumber(skladka.val())) {
                         skladka.error('Proszę podać poprawną wartość liczbową');
-                    }                   
-                }          
+                    }
+                }
             }
-            
-              if (!czynsz.isMultiValue()) {
+
+            if (!czynsz.isMultiValue()) {
                 if (czynsz.val()) {
                     if (!isNumber(czynsz.val())) {
                         czynsz.error('Proszę podać poprawną wartość liczbową');
-                    }                   
-                }          
+                    }
+                }
             }
-              if (!anr.isMultiValue()) {
+            if (!anr.isMultiValue()) {
                 if (anr.val()) {
                     if (!isNumber(anr.val())) {
                         anr.error('Proszę podać poprawną wartość liczbową');
-                    }                   
-                }          
+                    }
+                }
             }
-            
-              if (!wpisowe.isMultiValue()) {
+
+            if (!wpisowe.isMultiValue()) {
                 if (wpisowe.val()) {
                     if (!isNumber(wpisowe.val())) {
                         wpisowe.error('Proszę podać poprawną wartość liczbową');
-                    }                   
-                }          
+                    }
+                }
             }
-            
-              if (!energiaRozpocecieSezonu.isMultiValue()) {
+
+            if (!energiaRozpocecieSezonu.isMultiValue()) {
                 if (energiaRozpocecieSezonu.val()) {
                     if (!isNumber(energiaRozpocecieSezonu.val())) {
                         energiaRozpocecieSezonu.error('Proszę podać poprawną wartość liczbową');
-                    }                   
-                }          
+                    }
+                }
             }
-              if (!energiaZakonczeniaSeoznu.isMultiValue()) {
+            if (!energiaZakonczeniaSeoznu.isMultiValue()) {
                 if (energiaZakonczeniaSeoznu.val()) {
                     if (!isNumber(energiaZakonczeniaSeoznu.val())) {
                         energiaZakonczeniaSeoznu.error('Proszę podać poprawną wartość liczbową');
-                    }                   
-                }          
+                    }
+                }
             }
-              if (!dyzurZRokuPoprzedniegoNaBiezacy.isMultiValue()) {
+            if (!dyzurZRokuPoprzedniegoNaBiezacy.isMultiValue()) {
                 if (dyzurZRokuPoprzedniegoNaBiezacy.val()) {
                     if (!isNumber(dyzurZRokuPoprzedniegoNaBiezacy.val())) {
                         dyzurZRokuPoprzedniegoNaBiezacy.error('Proszę podać poprawną wartość liczbową');
-                    }                   
-                }          
+                    }
+                }
             }
-              if (!dyzurZRokuBiezacegoNaNastepny.isMultiValue()) {
+            if (!dyzurZRokuBiezacegoNaNastepny.isMultiValue()) {
                 if (dyzurZRokuBiezacegoNaNastepny.val()) {
                     if (!isNumber(dyzurZRokuBiezacegoNaNastepny.val())) {
                         dyzurZRokuBiezacegoNaNastepny.error('Proszę podać poprawną wartość liczbową');
-                    }                   
-                }          
+                    }
+                }
             }
-              if (!zadluzenieZRokuPoprzedniego.isMultiValue()) {
+            if (!zadluzenieZRokuPoprzedniego.isMultiValue()) {
                 if (zadluzenieZRokuPoprzedniego.val()) {
                     if (!isNumber(zadluzenieZRokuPoprzedniego.val())) {
                         zadluzenieZRokuPoprzedniego.error('Proszę podać poprawną wartość liczbową');
-                    }                   
-                }          
+                    }
+                }
             }
-              if (!zobowiazaniaRazemZBo.isMultiValue()) {
+            if (!zobowiazaniaRazemZBo.isMultiValue()) {
                 if (zobowiazaniaRazemZBo.val()) {
                     if (!isNumber(zobowiazaniaRazemZBo.val())) {
                         zobowiazaniaRazemZBo.error('Proszę podać poprawną wartość liczbową');
-                    }                   
-                }          
+                    }
+                }
             }
-            
-            
-            
+
+
+
 
 
 
@@ -280,7 +280,7 @@ $(document).ready(function () {
         "serverSide": false,
         "sAjaxSource": "/admin_zarz_zobowiazania/get",
         "sAjaxDataProp": "",
-  "language": {
+        "language": {
             "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Polish.json"
         },
           columns: [

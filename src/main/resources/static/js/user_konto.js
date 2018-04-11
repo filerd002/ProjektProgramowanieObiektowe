@@ -41,7 +41,19 @@ $(document).ready(function () {
                 "label": "password",
                 "name": "password"
             }
-        ]
+        ],
+        
+          i18n: {         
+            edit: {
+                button: "Zmień nazwę lub hasło",
+                title:  "Zmiana nazwy lub hasła",
+                submit: "Zatwierdz zmianę"
+            },
+             
+            error: {
+                system: "Wystąpił błąd, skontaktuj się z administratorem systemu"
+            }
+        }
     });
 
 

@@ -117,8 +117,35 @@ $(document).ready(function () {
                 "label": "Email",
                 "name": "email"
             }
-        ]
+        ],
+        
+        
+        i18n: {
+            create: {
+                button: "Nowy",
+                title:  "Tworzenie nowego użytkownika",
+                submit: "Stwórz"
+            },
+            edit: {
+                button: "Zmodyfikuj",
+                title:  "Modyfikacja wybranego użytkownika",
+                submit: "Modyfikuj"
+            },
+             remove: {
+                button: "Usuń",
+                title:  "Usuwanie wybranego użytkownika",
+                submit: "Usuń",
+                confirm: {
+                    1: "Czy na pewno chcesz usunąć?"
+                }
+            },
+            error: {
+                system: "Wystąpił błąd, skontaktuj się z administratorem systemu"
+            }
+        }
     });
+    
+      
 
 
     editor
