@@ -150,7 +150,7 @@ $(document).ready(function () {
                 if (!role.val()) {
                     role.error('Proszę wprowadzić wartość ROLE_USER lub ROLE_ADMIN');
                 } else {
-                    if ((String(role.val()) !== 'ROLE_USER') || (String(role.val()) !== 'ROLE_ADMIN')) {
+                    if ((String(role.val()) !== 'ROLE_USER') && (String(role.val()) !== 'ROLE_ADMIN')) {
                         role.error('Proszę wprowadzić wartość ROLE_USER lub ROLE_ADMIN');
                     }
                 }
