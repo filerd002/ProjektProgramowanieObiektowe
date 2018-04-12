@@ -149,7 +149,7 @@ $(document).ready(function () {
                 if (!kodIban.val()) {
                     kodIban.error('Proszę podać kod IBAN');
                 } else {
-                    if (!validateIban()(kodIban.val())) {
+                    if (!validateIban(kodIban.val())) {
                         kodIban.error('Proszę podać poprawny format kodu IBAN PLXX XXXX XXXX XXXX XXXX XXXX XXXX');
                     }
 
@@ -160,7 +160,7 @@ $(document).ready(function () {
                 if (!nrKonta.val()) {
                     nrKonta.error('Proszę podać numer konta');
                 } else {
-                    if (!validateBank()()(nrKonta.val())) {
+                    if (!validateBank(nrKonta.val())) {
                         nrKonta.error('Proszę podać poprawny format numeru konta XX XXXX XXXX XXXX XXXX XXXX XXXX');
                     }
 
