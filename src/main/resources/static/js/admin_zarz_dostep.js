@@ -130,6 +130,14 @@ $(document).ready(function () {
         }
     });
 
+  $('#admin_zarz_dostep_Table').on( 'click', 'tbody td:not(:first-child)', function (e) {
+        editor.inline( this, {
+            onBlur: 'submit',
+              submit: 'allIfChanged'
+        } );
+    } );
+
+
     editor
             .field('dzialkowicz.nrDzialkowicza')
             .disable();
@@ -215,14 +223,23 @@ $(document).ready(function () {
             }
         },
           columns: [
+              {
+                data: null,
+                defaultContent: '',
+                className: 'select-checkbox',
+                orderable: false
+            },
             {data: "dzialkowicz.nrDzialkowicza"},
             {data: "login"},
             {data: "password"},
             {data: "enabled"},
             {data: "role"}
         ],
-
-        select: true,
+order: [ 1, 'asc' ],
+        select: {
+            style:    'os',
+            selector: 'td:first-child'
+        },
         idSrc: "dzialkowicz.nrDzialkowicza",
                 buttons: [
 

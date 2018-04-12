@@ -167,6 +167,13 @@ $(document).ready(function () {
         }
     });
 
+$('#admin_zarz_wyciagiJS_Table').on( 'click', 'tbody td:not(:first-child)', function (e) {
+        editor.inline( this, {
+            onBlur: 'submit',
+              submit: 'allIfChanged'
+        } );
+    } );
+
 
     editor.field('idWyciagu')
             .disable();
@@ -345,6 +352,12 @@ $(document).ready(function () {
             }
         },
           columns: [
+              {
+                data: null,
+                defaultContent: '',
+                className: 'select-checkbox',
+                orderable: false
+            },
             {data: "idWyciagu"},
             {data: "dzialki",
                 render: function (data, type, full) {
@@ -370,8 +383,11 @@ $(document).ready(function () {
             {data: "zadluzenieZRokuPoprzedniego"},
             {data: "licznik"}
         ],
-
-        select: true,
+order: [ 1, 'asc' ],
+        select: {
+            style:    'os',
+            selector: 'td:first-child'
+        },
         idSrc: "idWyciagu",
                 buttons: [
                 {extend: "create", editor: editor,

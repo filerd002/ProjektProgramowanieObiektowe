@@ -159,6 +159,14 @@ $(document).ready(function () {
     });
 
 
+$('#admin_zarz_zobowiazania_Table').on( 'click', 'tbody td:not(:first-child)', function (e) {
+        editor.inline( this, {
+            onBlur: 'submit',
+              submit: 'allIfChanged'
+        } );
+    } );
+
+
     editor.field('nrZobowiazania')
             .disable();
 
@@ -319,6 +327,12 @@ $(document).ready(function () {
             }
         },
           columns: [
+              {
+                data: null,
+                defaultContent: '',
+                className: 'select-checkbox',
+                orderable: false
+            },
             {data: "nrZobowiazania"},
             {data: "dzialki.nrDzialki"},
             {data: "rokRozliczeniowy"},
@@ -334,8 +348,11 @@ $(document).ready(function () {
             {data: "zadluzenieZRokuPoprzedniego"},
             {data: "zobowiazaniaRazemZBo"}
         ],
-
-        select: true,
+order: [ 1, 'asc' ],
+        select: {
+            style:    'os',
+            selector: 'td:first-child'
+        },
         idSrc: "nrZobowiazania",
                 buttons: [
                 {extend: "create", editor: editor,

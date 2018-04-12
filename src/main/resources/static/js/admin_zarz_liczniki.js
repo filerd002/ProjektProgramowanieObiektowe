@@ -138,6 +138,13 @@ $(document).ready(function () {
         }
     });
 
+$('#admin_zarz_liczniki_Table').on( 'click', 'tbody td:not(:first-child)', function (e) {
+        editor.inline( this, {
+            onBlur: 'submit',
+              submit: 'allIfChanged'
+        } );
+    } );
+
     editor.field('idOdczytLicznika')
             .disable();
 
@@ -241,6 +248,12 @@ $(document).ready(function () {
         },
 
           columns: [
+              {
+                data: null,
+                defaultContent: '',
+                className: 'select-checkbox',
+                orderable: false
+            },
             {data: "idOdczytLicznika"},
             {data: "dzialki",
                 render: function (data, type, full) {
@@ -256,8 +269,11 @@ $(document).ready(function () {
             {data: "stanLicznika"},
             {data: "naleznosc"}
         ],
-
-        select: true,
+order: [ 1, 'asc' ],
+        select: {
+            style:    'os',
+            selector: 'td:first-child'
+        },
         idSrc: "idOdczytLicznika",
                 buttons: [
                 {extend: "create", editor: editor,

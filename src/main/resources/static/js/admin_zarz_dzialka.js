@@ -123,6 +123,13 @@ $(document).ready(function () {
         }
     });
 
+  $('#admin_zarz_dzialka_Table').on( 'click', 'tbody td:not(:first-child)', function (e) {
+        editor.inline( this, {
+            onBlur: 'submit',
+              submit: 'allIfChanged'
+        } );
+    } );
+
 
     editor
             .field('nrDzialki')
@@ -187,12 +194,21 @@ $(document).ready(function () {
             }
         },
           columns: [
+              {
+                data: null,
+                defaultContent: '',
+                className: 'select-checkbox',
+                orderable: false
+            },
             {data: "nrDzialki"},
             {data: "powierzchnia"},
             {data: "dzialkowicz.nrDzialkowicza"}
         ],
-
-        select: true,
+order: [ 1, 'asc' ],
+        select: {
+            style:    'os',
+            selector: 'td:first-child'
+        },
         idSrc: "nrDzialki",
                 buttons: [
 
