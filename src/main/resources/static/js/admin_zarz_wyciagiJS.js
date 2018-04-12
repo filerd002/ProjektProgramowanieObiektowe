@@ -175,8 +175,6 @@ $('#admin_zarz_wyciagiJS_Table').on( 'click', 'tbody td:not(:first-child)', func
     } );
 
 
-    editor.field('idWyciagu')
-            .disable();
 
     editor.on('preSubmit', function (e, o, action) {
 

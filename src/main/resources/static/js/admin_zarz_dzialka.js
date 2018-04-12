@@ -25,11 +25,15 @@ $(document).ready(function () {
                 },
 
                 success: function (data) {
+                         editor.close();
                     table.clear().draw();
                     table.ajax.reload();
+                   
                 },
                 error: function (e) {
-                    alert("ERROR: ", e);
+                       editor.close();
+                    table.clear().draw();
+                    table.ajax.reload();
                 }
 
 
@@ -50,11 +54,14 @@ $(document).ready(function () {
                     return JSON.stringify(obj);
                 },
                 success: function (data) {
+                     editor.close();
                     table.clear().draw();
                     table.ajax.reload();
                 },
                 error: function (e) {
-                    alert("ERROR: ", e);
+                       editor.close();
+                    table.clear().draw();
+                    table.ajax.reload();
                 }
 
                         },
@@ -75,6 +82,7 @@ $(document).ready(function () {
                     return {"id": obj["nrDzialki"]};
                 },
                 success: function (data) {
+                      editor.close();
                     table.clear().draw();
                     table.ajax.reload();
                 },
@@ -130,10 +138,6 @@ $(document).ready(function () {
         } );
     } );
 
-
-    editor
-            .field('nrDzialki')
-            .disable();
 
     editor.on('preSubmit', function (e, o, action) {
 

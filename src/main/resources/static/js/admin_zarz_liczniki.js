@@ -6,6 +6,8 @@ $(document).ready(function () {
         attach: 'head'
     } );
 
+
+
     editor = new $.fn.dataTable.Editor({
      display: 'envelope',
          ajax: {
@@ -54,7 +56,8 @@ $(document).ready(function () {
                     table.ajax.reload();
                 },
                 error: function (e) {
-                    alert("ERROR: ", e);
+                      table.clear().draw();
+                    table.ajax.reload();
                 }
 
                         },
@@ -75,10 +78,12 @@ $(document).ready(function () {
                     return {"id": obj["idOdczytLicznika"]};
                 },
                 success: function (data) {
+                    editor.close();
                     table.clear().draw();
                     table.ajax.reload();
                 },
                 error: function (e) {
+                    editor.close();
                     table.clear().draw();
                     table.ajax.reload();
                 }            
@@ -92,8 +97,8 @@ $(document).ready(function () {
                 "label": "ID Odczyt licznika",
                 "name": "idOdczytLicznika"
             }, {
-                "label": "Nr dzialki",
-                "name": "dzialki.nrDzialki"
+                "label": "Nr dzialki",             
+                "name":"dzialki.nrDzialki"
             }, {
                 "label": "Nr pomiaru",
                 "name": "nrPomiaru"
@@ -297,6 +302,7 @@ order: [ 1, 'asc' ],
 // Helper function to serialize all the form fields into a JSON string
 function formToJSON() {
         return JSON.stringify({
+                "idOdczytLicznika": $('idOdczytLicznika').val(),
                 "dzialki.nrDzialki": $('#dzialki.nrDzialki').val(),
                 "nrPomiaru": $('#nrPomiaru').val(),
           "data": $('#data').val(),

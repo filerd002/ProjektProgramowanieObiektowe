@@ -133,9 +133,6 @@ $(document).ready(function () {
     } );
 
 
-    editor.field('nrDzialki')
-            .disable();
-
     editor.on('preSubmit', function (e, o, action) {
 
         if (action !== 'remove') {

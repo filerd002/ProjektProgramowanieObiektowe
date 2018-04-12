@@ -50,11 +50,14 @@ $(document).ready(function () {
                     return JSON.stringify(obj);
                 },
                 success: function (data) {
+                   editor.close();
                     table.clear().draw();
                     table.ajax.reload();
                 },
                 error: function (e) {
-                    alert("ERROR: ", e);
+               editor.close();
+                    table.clear().draw();
+                    table.ajax.reload();
                 }
 
                         },
@@ -136,11 +139,6 @@ $(document).ready(function () {
               submit: 'allIfChanged'
         } );
     } );
-
-
-    editor
-            .field('dzialkowicz.nrDzialkowicza')
-            .disable();
 
     editor.on('preSubmit', function (e, o, action) {
 

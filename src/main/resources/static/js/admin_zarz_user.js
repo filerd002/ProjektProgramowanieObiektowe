@@ -24,11 +24,14 @@ $(document).ready(function () {
                     return JSON.stringify(obj);
                 },
                 success: function (data) {
+                        editor.close();
                     table.clear().draw();
                     table.ajax.reload();
                 },
                 error: function (e) {
-                    alert("ERROR: ", e);
+                        editor.close();
+                    table.clear().draw();
+                    table.ajax.reload();
                 }
 
 
@@ -48,11 +51,14 @@ $(document).ready(function () {
                     return JSON.stringify(obj);
                 },
                 success: function (data) {
+                      editor.close();
                     table.clear().draw();
                     table.ajax.reload();
                 },
                 error: function (e) {
-                    alert("ERROR: ", e);
+            editor.close();
+                    table.clear().draw();
+                    table.ajax.reload();
                 }
 
                         },
@@ -73,10 +79,12 @@ $(document).ready(function () {
                     return {"id": obj["nrDzialkowicza"]};
                 },
                 success: function (data) {
+                      editor.close();
                     table.clear().draw();
                     table.ajax.reload();
                 },
                 error: function (e) {
+                    editor.close();
                     table.clear().draw();
                     table.ajax.reload();
                 }            
@@ -155,9 +163,7 @@ $(document).ready(function () {
     } );
 
 
-    editor
-            .field('nrDzialkowicza')
-            .disable();
+    
 
     editor.on('preSubmit', function (e, o, action) {
 

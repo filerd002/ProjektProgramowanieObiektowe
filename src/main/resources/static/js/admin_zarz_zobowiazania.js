@@ -75,10 +75,12 @@ $(document).ready(function () {
                     return {"id": obj["nrZobowiazania"]};
                 },
                 success: function (data) {
+                    editor.close();
                     table.clear().draw();
                     table.ajax.reload();
                 },
                 error: function (e) {
+                    editor.close();
                     table.clear().draw();
                     table.ajax.reload();
                 }            
@@ -166,9 +168,6 @@ $('#admin_zarz_zobowiazania_Table').on( 'click', 'tbody td:not(:first-child)', f
         } );
     } );
 
-
-    editor.field('nrZobowiazania')
-            .disable();
 
     editor.on('preSubmit', function (e, o, action) {
 
