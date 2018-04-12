@@ -23,15 +23,19 @@ $(document).ready(function () {
                         obj = d.data[key];
                         break;
                     }
+                    obj["idOdczytLicznika"] = 1;
                     return JSON.stringify(obj);
                 },
 
                 success: function (data) {
+                    editor.close();
                     table.clear().draw();
                     table.ajax.reload();
                 },
                 error: function (e) {
-                    alert("ERROR: ", e);
+                  editor.close();
+                    table.clear().draw();
+                    table.ajax.reload();
                 }
 
 
@@ -52,10 +56,12 @@ $(document).ready(function () {
                     return JSON.stringify(obj);
                 },
                 success: function (data) {
+                    editor.close();
                     table.clear().draw();
                     table.ajax.reload();
                 },
                 error: function (e) {
+                    editor.close();
                       table.clear().draw();
                     table.ajax.reload();
                 }

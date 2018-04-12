@@ -21,15 +21,19 @@ $(document).ready(function () {
                         obj = d.data[key];
                         break;
                     }
+                    obj["nrZobowiazania"] =1;
                     return JSON.stringify(obj);
                 },
 
                 success: function (data) {
+                    editor.close();
                     table.clear().draw();
                     table.ajax.reload();
                 },
                 error: function (e) {
-                    alert("ERROR: ", e);
+                     editor.close();
+                    table.clear().draw();
+                    table.ajax.reload();
                 }
 
 
@@ -160,6 +164,8 @@ $(document).ready(function () {
         }
     });
 
+editor.field('nrZobowiazania')
+            .disable();
 
 $('#admin_zarz_zobowiazania_Table').on( 'click', 'tbody td:not(:first-child)', function (e) {
         editor.inline( this, {
