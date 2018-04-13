@@ -102,6 +102,7 @@ $(document).ready(function () {
         "processing": true,
         "serverSide": false,
           "deferRender": true,
+            stateSave: true,
         "sAjaxSource": "/user_rozrachunki/get",
         "sAjaxDataProp": "",
         "language": {

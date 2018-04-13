@@ -246,6 +246,7 @@ $('#admin_zarz_liczniki_Table').on( 'click', 'tbody td:not(:first-child)', funct
         "processing": true,
         "serverSide": false,
           "deferRender": true,
+            stateSave: true,
         "sAjaxSource": "/admin_zarz_liczniki/get",
         "sAjaxDataProp": "",
         "language": {

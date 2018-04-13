@@ -349,6 +349,7 @@ editor.field('idWyciagu')
         "processing": true,
         "serverSide": false,
           "deferRender": true,
+            stateSave: true,
         "sAjaxSource": "/admin_zarz_wyciagiJS/get",
         "sAjaxDataProp": "",
         "language": {

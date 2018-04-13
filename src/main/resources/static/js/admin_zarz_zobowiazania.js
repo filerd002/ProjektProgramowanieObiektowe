@@ -320,6 +320,7 @@ $('#admin_zarz_zobowiazania_Table').on( 'click', 'tbody td:not(:first-child)', f
         "processing": true,
         "serverSide": false,
           "deferRender": true,
+            stateSave: true,
         "sAjaxSource": "/admin_zarz_zobowiazania/get",
         "sAjaxDataProp": "",
         "language": {

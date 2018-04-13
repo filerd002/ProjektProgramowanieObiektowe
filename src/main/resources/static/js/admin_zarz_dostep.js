@@ -211,6 +211,7 @@ $(document).ready(function () {
         "processing": true,
         "serverSide": false,
           "deferRender": true,
+            stateSave: true,
         "sAjaxSource": "/admin_zarz_dostep/get",
         "sAjaxDataProp": "",
         "language": {
