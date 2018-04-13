@@ -110,6 +110,7 @@ $(document).ready(function () {
         "processing": true,
         "serverSide": false,
           "deferRender": true,
+            stateSave: true,
         "sAjaxSource": "/user_konto/get",
         "sAjaxDataProp": "",
         "language": {

@@ -314,6 +314,8 @@ $(document).ready(function () {
           dom: "Bfrtip",
         "processing": true,
         "serverSide": false,
+         "deferRender": true,
+          stateSave: true,
         "sAjaxSource": "/admin_zarz_user/get",
         "sAjaxDataProp": "",
         "language": {
