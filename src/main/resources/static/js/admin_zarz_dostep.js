@@ -75,13 +75,15 @@ $(document).ready(function () {
                         break;
                     }
                     JSON.stringify(obj);
-                    return {"id": obj["dzialkowicz.nrDzialkowicza"]};
+                    return {"id": obj["nrDzialkowicza"]};
                 },
                 success: function (data) {
+                           editor.close();
                     table.clear().draw();
                     table.ajax.reload();
                 },
                 error: function (e) {
+                           editor.close();
                     table.clear().draw();
                     table.ajax.reload();
                 }            
@@ -89,10 +91,10 @@ $(document).ready(function () {
             }
                 },
         "table": "#admin_zarz_dostep_Table",
-        idSrc: "dzialkowicz.nrDzialkowicza",
+        idSrc: "nrDzialkowicza",
         "fields": [{
                 "label": "Nr dzialkowicza",
-                "name": "dzialkowicz.nrDzialkowicza"
+                "name": "nrDzialkowicza"
             }, {
                 "label": "login",
                 "name": "login"
@@ -227,7 +229,7 @@ $(document).ready(function () {
                 className: 'select-checkbox',
                 orderable: false
             },
-            {data: "dzialkowicz.nrDzialkowicza"},
+            {data: "nrDzialkowicza"},
             {data: "login"},
             {data: "password"},
             {data: "enabled"},
@@ -238,7 +240,7 @@ order: [ 1, 'asc' ],
             style:    'os',
             selector: 'td:first-child'
         },
-        idSrc: "dzialkowicz.nrDzialkowicza",
+        idSrc: "nrDzialkowicza",
                 buttons: [
 
                      {extend: "create", editor: editor,
@@ -262,7 +264,7 @@ order: [ 1, 'asc' ],
 // Helper function to serialize all the form fields into a JSON string
 function formToJSON() {
         return JSON.stringify({
-                "dzialkowicz.nrDzialkowicza": $('#dzialkowicz.nrDzialkowicza').val(),
+                "nrDzialkowicza": $('#nrDzialkowicza').val(),
                 "login": $('#login').val(),
           "password": $('#password').val(),
           "enabled": $('#enabled').val(),

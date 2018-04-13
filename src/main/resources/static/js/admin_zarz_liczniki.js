@@ -28,14 +28,14 @@ $(document).ready(function () {
                 },
 
                 success: function (data) {
-                    editor.close();
-                    table.clear().draw();
-                    table.ajax.reload();
+                      editor.close();
+                  $.fn.dataTable.ext.errMode = 'none';
+                    location.reload();
                 },
                 error: function (e) {
-                  editor.close();
-                    table.clear().draw();
-                    table.ajax.reload();
+                    editor.close();
+                  $.fn.dataTable.ext.errMode = 'none';
+                    location.reload();
                 }
 
 
@@ -57,13 +57,13 @@ $(document).ready(function () {
                 },
                 success: function (data) {
                     editor.close();
-                    table.clear().draw();
-                    table.ajax.reload();
+                  $.fn.dataTable.ext.errMode = 'none';
+                    location.reload();
                 },
                 error: function (e) {
-                    editor.close();
-                      table.clear().draw();
-                    table.ajax.reload();
+                   editor.close();
+                  $.fn.dataTable.ext.errMode = 'none';
+                    location.reload();
                 }
 
                         },
@@ -84,14 +84,14 @@ $(document).ready(function () {
                     return {"id": obj["idOdczytLicznika"]};
                 },
                 success: function (data) {
-                    editor.close();
-                    table.clear().draw();
-                    table.ajax.reload();
+                 editor.close();
+                  $.fn.dataTable.ext.errMode = 'none';
+                    location.reload();
                 },
                 error: function (e) {
-                    editor.close();
-                    table.clear().draw();
-                    table.ajax.reload();
+                      editor.close();
+                  $.fn.dataTable.ext.errMode = 'none';
+                    location.reload();
                 }            
 
             }

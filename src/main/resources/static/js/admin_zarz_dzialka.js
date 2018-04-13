@@ -87,6 +87,7 @@ $(document).ready(function () {
                     table.ajax.reload();
                 },
                 error: function (e) {
+                           editor.close();
                     table.clear().draw();
                     table.ajax.reload();
                 }            

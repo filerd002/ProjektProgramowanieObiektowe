@@ -22,6 +22,7 @@ $(document).ready(function () {
                         obj = d.data[key];
                         break;
                     }
+                      obj["dzialki.nrDzialki"]=obj["nrDzialki"];
                     return JSON.stringify(obj);
                 },
 
@@ -48,6 +49,8 @@ $(document).ready(function () {
                         obj = d.data[key];
                         break;
                     }
+                    obj["dzialki.nrDzialki"]=obj["nrDzialki"];
+                    
                     return JSON.stringify(obj);
                 },
                 success: function (data) {
@@ -76,10 +79,12 @@ $(document).ready(function () {
                     return {"id": obj["nrDzialki"]};
                 },
                 success: function (data) {
+                           editor.close();
                     table.clear().draw();
                     table.ajax.reload();
                 },
                 error: function (e) {
+                           editor.close();
                     table.clear().draw();
                     table.ajax.reload();
                 }            

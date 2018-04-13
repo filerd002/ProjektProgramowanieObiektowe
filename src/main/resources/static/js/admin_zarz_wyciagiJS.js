@@ -26,14 +26,14 @@ $(document).ready(function () {
                 },
 
                 success: function (data) {
-                       editor.close();
-                    table.clear().draw();
-                    table.ajax.reload();
+                         editor.close();
+                  $.fn.dataTable.ext.errMode = 'none';
+                    location.reload();
                 },
                 error: function (e) {
-                      editor.close();
-                    table.clear().draw();
-                    table.ajax.reload();
+                       editor.close();
+                  $.fn.dataTable.ext.errMode = 'none';
+                    location.reload();
                 }
 
 
@@ -54,14 +54,14 @@ $(document).ready(function () {
                     return JSON.stringify(obj);
                 },
                 success: function (data) {
-                    editor.close();
-                    table.clear().draw();
-                    table.ajax.reload();
+                     editor.close();
+                  $.fn.dataTable.ext.errMode = 'none';
+                    location.reload();
                 },
                 error: function (e) {
-                      editor.close();
-                    table.clear().draw();
-                    table.ajax.reload();
+                       editor.close();
+                  $.fn.dataTable.ext.errMode = 'none';
+                    location.reload();
                 }
 
                         },
@@ -83,13 +83,14 @@ $(document).ready(function () {
                 },
                 success: function (data) {
              editor.close();
-                    table.clear().draw();
-                    table.ajax.reload();
+                       editor.close();
+                  $.fn.dataTable.ext.errMode = 'none';
+                    location.reload();
                 },
                 error: function (e) {
-                 editor.close();
-                    table.clear().draw();
-                    table.ajax.reload();
+                     editor.close();
+                  $.fn.dataTable.ext.errMode = 'none';
+                    location.reload();
                 }            
 
             }
@@ -183,7 +184,8 @@ $('#admin_zarz_wyciagiJS_Table').on( 'click', 'tbody td:not(:first-child)', func
         } );
     } );
 
-
+editor.field('idWyciagu')
+            .disable();
 
     editor.on('preSubmit', function (e, o, action) {
 

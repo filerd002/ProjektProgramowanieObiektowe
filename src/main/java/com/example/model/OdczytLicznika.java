@@ -31,7 +31,7 @@ public class OdczytLicznika  implements java.io.Serializable {
 
 
      private Long idOdczytLicznika;
- 
+
      private Dzialki dzialki;
      private int nrPomiaru;
      private String data;
