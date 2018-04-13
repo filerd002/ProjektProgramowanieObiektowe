@@ -369,8 +369,8 @@ $(document).ready(function () {
             {extend: 'pdfHtml5', orientation: 'landscape',
                 pageSize: 'LEGAL', download: 'open'}
                 ]
-    });
 
+    });
 
 });
 

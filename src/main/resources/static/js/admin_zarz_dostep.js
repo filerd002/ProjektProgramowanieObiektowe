@@ -210,6 +210,7 @@ $(document).ready(function () {
           dom: "Bfrtip",
         "processing": true,
         "serverSide": false,
+          "deferRender": true,
         "sAjaxSource": "/admin_zarz_dostep/get",
         "sAjaxDataProp": "",
         "language": {

@@ -348,6 +348,7 @@ editor.field('idWyciagu')
           dom: "Bfrtip",
         "processing": true,
         "serverSide": false,
+          "deferRender": true,
         "sAjaxSource": "/admin_zarz_wyciagiJS/get",
         "sAjaxDataProp": "",
         "language": {

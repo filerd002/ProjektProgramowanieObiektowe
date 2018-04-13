@@ -319,6 +319,7 @@ $('#admin_zarz_zobowiazania_Table').on( 'click', 'tbody td:not(:first-child)', f
           dom: "Bfrtip",
         "processing": true,
         "serverSide": false,
+          "deferRender": true,
         "sAjaxSource": "/admin_zarz_zobowiazania/get",
         "sAjaxDataProp": "",
         "language": {

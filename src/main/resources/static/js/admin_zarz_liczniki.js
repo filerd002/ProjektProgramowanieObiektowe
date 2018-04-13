@@ -245,6 +245,7 @@ $('#admin_zarz_liczniki_Table').on( 'click', 'tbody td:not(:first-child)', funct
           dom: "Bfrtip",
         "processing": true,
         "serverSide": false,
+          "deferRender": true,
         "sAjaxSource": "/admin_zarz_liczniki/get",
         "sAjaxDataProp": "",
         "language": {
