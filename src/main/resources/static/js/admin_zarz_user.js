@@ -140,6 +140,9 @@ $(document).ready(function () {
                 title: "Modyfikacja wybranego użytkownika",
                 submit: "Modyfikuj"
             },
+            print: {
+               button: "Drukuj"  
+            },
             remove: {
                 button: "Usuń",
                 title: "Usuwanie wybranego użytkownika",
@@ -368,8 +371,18 @@ $(document).ready(function () {
                 formButtons: ['Usuń', {text: 'Powrót', action: function () {
                             this.close();
                         }}]},
-            {extend: 'pdfHtml5', orientation: 'landscape',
+            {
+                extend: 'collection',
+                text: 'Export',
+                buttons: [
+                    'copy',
+                    'excel',
+                     {extend: 'pdfHtml5', orientation: 'landscape',
                 pageSize: 'LEGAL', download: 'open'}
+                ,
+                    'print'
+                ]
+            }
                 ]
 
     });

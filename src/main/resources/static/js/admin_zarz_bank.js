@@ -240,8 +240,18 @@ $(document).ready(function () {
                 formButtons: ['Usuń', {text: 'Powrót', action: function () {
                             this.close();
                         }}]},
-            {extend: 'pdfHtml5', orientation: 'landscape',
+          {
+                extend: 'collection',
+                text: 'Export',
+                buttons: [
+                    'copy',
+                    'excel',
+                     {extend: 'pdfHtml5', orientation: 'landscape',
                 pageSize: 'LEGAL', download: 'open'}
+                ,
+                    'print'
+                ]
+            }
                 ]
     });
 });
