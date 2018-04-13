@@ -24,11 +24,14 @@ $(document).ready(function () {
                     return JSON.stringify(obj);
                 },
                 success: function (data) {
+                        editor.close();
                     table.clear().draw();
                     table.ajax.reload();
                 },
                 error: function (e) {
-                    alert("ERROR: ", e);
+                        editor.close();
+                    table.clear().draw();
+                    table.ajax.reload();
                 }
 
 
@@ -48,11 +51,14 @@ $(document).ready(function () {
                     return JSON.stringify(obj);
                 },
                 success: function (data) {
+                      editor.close();
                     table.clear().draw();
                     table.ajax.reload();
                 },
                 error: function (e) {
-                    alert("ERROR: ", e);
+            editor.close();
+                    table.clear().draw();
+                    table.ajax.reload();
                 }
 
                         },
@@ -73,10 +79,12 @@ $(document).ready(function () {
                     return {"id": obj["nrDzialkowicza"]};
                 },
                 success: function (data) {
+                      editor.close();
                     table.clear().draw();
                     table.ajax.reload();
                 },
                 error: function (e) {
+                    editor.close();
                     table.clear().draw();
                     table.ajax.reload();
                 }            
@@ -147,11 +155,15 @@ $(document).ready(function () {
     });
 
 
+    $('#admin_zarz_user_Table').on( 'click', 'tbody td:not(:first-child)', function (e) {
+        editor.inline( this, {
+            onBlur: 'submit',
+              submit: 'allIfChanged'
+        } );
+    } );
 
 
-    editor
-            .field('nrDzialkowicza')
-            .disable();
+    
 
     editor.on('preSubmit', function (e, o, action) {
 
@@ -302,6 +314,8 @@ $(document).ready(function () {
           dom: "Bfrtip",
         "processing": true,
         "serverSide": false,
+         "deferRender": true,
+          stateSave: true,
         "sAjaxSource": "/admin_zarz_user/get",
         "sAjaxDataProp": "",
         "language": {
@@ -315,6 +329,12 @@ $(document).ready(function () {
             }
         },
           columns: [
+               {
+                data: null,
+                defaultContent: '',
+                className: 'select-checkbox',
+                orderable: false
+            },
             {data: "nrDzialkowicza"},
             {data: "imie"},
             {data: "nazwisko"},
@@ -328,8 +348,11 @@ $(document).ready(function () {
             {data: "email"}
 
         ],
-
-        select: true,
+ order: [ 1, 'asc' ],
+        select: {
+            style:    'os',
+            selector: 'td:first-child'
+        },
         idSrc: "nrDzialkowicza",
                 buttons: [
 
@@ -348,8 +371,8 @@ $(document).ready(function () {
             {extend: 'pdfHtml5', orientation: 'landscape',
                 pageSize: 'LEGAL', download: 'open'}
                 ]
-    });
 
+    });
 
 });
 

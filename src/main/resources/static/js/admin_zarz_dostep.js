@@ -50,11 +50,14 @@ $(document).ready(function () {
                     return JSON.stringify(obj);
                 },
                 success: function (data) {
+                   editor.close();
                     table.clear().draw();
                     table.ajax.reload();
                 },
                 error: function (e) {
-                    alert("ERROR: ", e);
+               editor.close();
+                    table.clear().draw();
+                    table.ajax.reload();
                 }
 
                         },
@@ -72,13 +75,15 @@ $(document).ready(function () {
                         break;
                     }
                     JSON.stringify(obj);
-                    return {"id": obj["dzialkowicz.nrDzialkowicza"]};
+                    return {"id": obj["nrDzialkowicza"]};
                 },
                 success: function (data) {
+                           editor.close();
                     table.clear().draw();
                     table.ajax.reload();
                 },
                 error: function (e) {
+                           editor.close();
                     table.clear().draw();
                     table.ajax.reload();
                 }            
@@ -86,10 +91,10 @@ $(document).ready(function () {
             }
                 },
         "table": "#admin_zarz_dostep_Table",
-        idSrc: "dzialkowicz.nrDzialkowicza",
+        idSrc: "nrDzialkowicza",
         "fields": [{
                 "label": "Nr dzialkowicza",
-                "name": "dzialkowicz.nrDzialkowicza"
+                "name": "nrDzialkowicza"
             }, {
                 "label": "login",
                 "name": "login"
@@ -130,9 +135,12 @@ $(document).ready(function () {
         }
     });
 
-    editor
-            .field('dzialkowicz.nrDzialkowicza')
-            .disable();
+  $('#admin_zarz_dostep_Table').on( 'click', 'tbody td:not(:first-child)', function (e) {
+        editor.inline( this, {
+            onBlur: 'submit',
+              submit: 'allIfChanged'
+        } );
+    } );
 
     editor.on('preSubmit', function (e, o, action) {
 
@@ -202,6 +210,8 @@ $(document).ready(function () {
           dom: "Bfrtip",
         "processing": true,
         "serverSide": false,
+          "deferRender": true,
+            stateSave: true,
         "sAjaxSource": "/admin_zarz_dostep/get",
         "sAjaxDataProp": "",
         "language": {
@@ -215,15 +225,24 @@ $(document).ready(function () {
             }
         },
           columns: [
-            {data: "dzialkowicz.nrDzialkowicza"},
+              {
+                data: null,
+                defaultContent: '',
+                className: 'select-checkbox',
+                orderable: false
+            },
+            {data: "nrDzialkowicza"},
             {data: "login"},
             {data: "password"},
             {data: "enabled"},
             {data: "role"}
         ],
-
-        select: true,
-        idSrc: "dzialkowicz.nrDzialkowicza",
+order: [ 1, 'asc' ],
+        select: {
+            style:    'os',
+            selector: 'td:first-child'
+        },
+        idSrc: "nrDzialkowicza",
                 buttons: [
 
                      {extend: "create", editor: editor,
@@ -247,7 +266,7 @@ $(document).ready(function () {
 // Helper function to serialize all the form fields into a JSON string
 function formToJSON() {
         return JSON.stringify({
-                "dzialkowicz.nrDzialkowicza": $('#dzialkowicz.nrDzialkowicza').val(),
+                "nrDzialkowicza": $('#nrDzialkowicza').val(),
                 "login": $('#login').val(),
           "password": $('#password').val(),
           "enabled": $('#enabled').val(),

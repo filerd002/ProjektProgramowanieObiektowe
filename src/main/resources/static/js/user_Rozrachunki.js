@@ -101,6 +101,8 @@ $(document).ready(function () {
           dom: "Bfrtip",
         "processing": true,
         "serverSide": false,
+          "deferRender": true,
+            stateSave: true,
         "sAjaxSource": "/user_rozrachunki/get",
         "sAjaxDataProp": "",
         "language": {

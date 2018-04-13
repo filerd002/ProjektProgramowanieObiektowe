@@ -25,11 +25,15 @@ $(document).ready(function () {
                 },
 
                 success: function (data) {
+                         editor.close();
                     table.clear().draw();
                     table.ajax.reload();
+                   
                 },
                 error: function (e) {
-                    alert("ERROR: ", e);
+                       editor.close();
+                    table.clear().draw();
+                    table.ajax.reload();
                 }
 
 
@@ -50,11 +54,14 @@ $(document).ready(function () {
                     return JSON.stringify(obj);
                 },
                 success: function (data) {
+                     editor.close();
                     table.clear().draw();
                     table.ajax.reload();
                 },
                 error: function (e) {
-                    alert("ERROR: ", e);
+                       editor.close();
+                    table.clear().draw();
+                    table.ajax.reload();
                 }
 
                         },
@@ -75,10 +82,12 @@ $(document).ready(function () {
                     return {"id": obj["nrDzialki"]};
                 },
                 success: function (data) {
+                      editor.close();
                     table.clear().draw();
                     table.ajax.reload();
                 },
                 error: function (e) {
+                           editor.close();
                     table.clear().draw();
                     table.ajax.reload();
                 }            
@@ -123,10 +132,13 @@ $(document).ready(function () {
         }
     });
 
+  $('#admin_zarz_dzialka_Table').on( 'click', 'tbody td:not(:first-child)', function (e) {
+        editor.inline( this, {
+            onBlur: 'submit',
+              submit: 'allIfChanged'
+        } );
+    } );
 
-    editor
-            .field('nrDzialki')
-            .disable();
 
     editor.on('preSubmit', function (e, o, action) {
 
@@ -174,6 +186,8 @@ $(document).ready(function () {
           dom: "Bfrtip",
         "processing": true,
         "serverSide": false,
+          "deferRender": true,
+            stateSave: true,
         "sAjaxSource": "/admin_zarz_dzialka/get",
         "sAjaxDataProp": "",
         "language": {
@@ -187,12 +201,21 @@ $(document).ready(function () {
             }
         },
           columns: [
+              {
+                data: null,
+                defaultContent: '',
+                className: 'select-checkbox',
+                orderable: false
+            },
             {data: "nrDzialki"},
             {data: "powierzchnia"},
             {data: "dzialkowicz.nrDzialkowicza"}
         ],
-
-        select: true,
+order: [ 1, 'asc' ],
+        select: {
+            style:    'os',
+            selector: 'td:first-child'
+        },
         idSrc: "nrDzialki",
                 buttons: [
 

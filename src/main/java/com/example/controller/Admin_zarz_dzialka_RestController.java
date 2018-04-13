@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.model.Dzialki;
+import com.example.model.Iban;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.http.MediaType;
@@ -36,8 +37,6 @@ public class Admin_zarz_dzialka_RestController {
          
         @RequestMapping(value = "/admin_zarz_dzialka/add", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public Dzialki save(@RequestBody Dzialki dzialki){
- 
-  
  
      return  admin_zarz_dzialkaService.saveAdmin_zarz_dzialka(dzialki);
  

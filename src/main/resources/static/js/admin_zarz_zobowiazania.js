@@ -21,15 +21,19 @@ $(document).ready(function () {
                         obj = d.data[key];
                         break;
                     }
+                    obj["nrZobowiazania"] =1;
                     return JSON.stringify(obj);
                 },
 
                 success: function (data) {
+                    editor.close();
                     table.clear().draw();
                     table.ajax.reload();
                 },
                 error: function (e) {
-                    alert("ERROR: ", e);
+                     editor.close();
+                    table.clear().draw();
+                    table.ajax.reload();
                 }
 
 
@@ -75,10 +79,12 @@ $(document).ready(function () {
                     return {"id": obj["nrZobowiazania"]};
                 },
                 success: function (data) {
+                    editor.close();
                     table.clear().draw();
                     table.ajax.reload();
                 },
                 error: function (e) {
+                    editor.close();
                     table.clear().draw();
                     table.ajax.reload();
                 }            
@@ -158,9 +164,16 @@ $(document).ready(function () {
         }
     });
 
-
-    editor.field('nrZobowiazania')
+editor.field('nrZobowiazania')
             .disable();
+
+$('#admin_zarz_zobowiazania_Table').on( 'click', 'tbody td:not(:first-child)', function (e) {
+        editor.inline( this, {
+            onBlur: 'submit',
+              submit: 'allIfChanged'
+        } );
+    } );
+
 
     editor.on('preSubmit', function (e, o, action) {
 
@@ -306,6 +319,8 @@ $(document).ready(function () {
           dom: "Bfrtip",
         "processing": true,
         "serverSide": false,
+          "deferRender": true,
+            stateSave: true,
         "sAjaxSource": "/admin_zarz_zobowiazania/get",
         "sAjaxDataProp": "",
         "language": {
@@ -319,6 +334,12 @@ $(document).ready(function () {
             }
         },
           columns: [
+              {
+                data: null,
+                defaultContent: '',
+                className: 'select-checkbox',
+                orderable: false
+            },
             {data: "nrZobowiazania"},
             {data: "dzialki.nrDzialki"},
             {data: "rokRozliczeniowy"},
@@ -334,8 +355,11 @@ $(document).ready(function () {
             {data: "zadluzenieZRokuPoprzedniego"},
             {data: "zobowiazaniaRazemZBo"}
         ],
-
-        select: true,
+order: [ 1, 'asc' ],
+        select: {
+            style:    'os',
+            selector: 'td:first-child'
+        },
         idSrc: "nrZobowiazania",
                 buttons: [
                 {extend: "create", editor: editor,
