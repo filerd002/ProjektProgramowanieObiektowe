@@ -75,7 +75,7 @@ $(document).ready(function () {
                         break;
                     }
                     JSON.stringify(obj);
-                    return {"id": obj["nrDzialkowicza"]};
+                    return {"id": obj["dzialkowicz.nrDzialkowicza"]};
                 },
                 success: function (data) {
                            editor.close();
@@ -91,10 +91,10 @@ $(document).ready(function () {
             }
                 },
         "table": "#admin_zarz_dostep_Table",
-        idSrc: "nrDzialkowicza",
+        idSrc: "dzialkowicz.nrDzialkowicza",
         "fields": [{
                 "label": "Nr dzialkowicza",
-                "name": "nrDzialkowicza"
+                "name": "dzialkowicz.nrDzialkowicza"
             }, {
                 "label": "login",
                 "name": "login"
@@ -231,7 +231,7 @@ $(document).ready(function () {
                 className: 'select-checkbox',
                 orderable: false
             },
-            {data: "nrDzialkowicza"},
+            {data: "dzialkowicz.nrDzialkowicza"},
             {data: "login"},
             {data: "password"},
             {data: "enabled"},
@@ -242,7 +242,7 @@ order: [ 1, 'asc' ],
             style:    'os',
             selector: 'td:first-child'
         },
-        idSrc: "nrDzialkowicza",
+        idSrc: "dzialkowicz.nrDzialkowicza",
                 buttons: [
 
                      {extend: "create", editor: editor,
@@ -276,7 +276,7 @@ order: [ 1, 'asc' ],
 // Helper function to serialize all the form fields into a JSON string
 function formToJSON() {
         return JSON.stringify({
-                "nrDzialkowicza": $('#nrDzialkowicza').val(),
+                "dzialkowicz.nrDzialkowicza": $('#dzialkowicz.nrDzialkowicza').val(),
                 "login": $('#login').val(),
           "password": $('#password').val(),
           "enabled": $('#enabled').val(),
