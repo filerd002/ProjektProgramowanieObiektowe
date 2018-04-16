@@ -21,15 +21,19 @@ $(document).ready(function () {
                         obj = d.data[key];
                         break;
                     }
+                    obj["idWyciagu"]=1;
                     return JSON.stringify(obj);
                 },
 
                 success: function (data) {
-                    table.clear().draw();
-                    table.ajax.reload();
+                         editor.close();
+                  $.fn.dataTable.ext.errMode = 'none';
+                    location.reload();
                 },
                 error: function (e) {
-                    alert("ERROR: ", e);
+                       editor.close();
+                  $.fn.dataTable.ext.errMode = 'none';
+                    location.reload();
                 }
 
 
@@ -50,11 +54,14 @@ $(document).ready(function () {
                     return JSON.stringify(obj);
                 },
                 success: function (data) {
-                    table.clear().draw();
-                    table.ajax.reload();
+                     editor.close();
+                  $.fn.dataTable.ext.errMode = 'none';
+                    location.reload();
                 },
                 error: function (e) {
-                    alert("ERROR: ", e);
+                       editor.close();
+                  $.fn.dataTable.ext.errMode = 'none';
+                    location.reload();
                 }
 
                         },
@@ -75,12 +82,15 @@ $(document).ready(function () {
                     return {"id": obj["idWyciagu"]};
                 },
                 success: function (data) {
-                    table.clear().draw();
-                    table.ajax.reload();
+             editor.close();
+                       editor.close();
+                  $.fn.dataTable.ext.errMode = 'none';
+                    location.reload();
                 },
                 error: function (e) {
-                    table.clear().draw();
-                    table.ajax.reload();
+                     editor.close();
+                  $.fn.dataTable.ext.errMode = 'none';
+                    location.reload();
                 }            
 
             }
@@ -167,8 +177,14 @@ $(document).ready(function () {
         }
     });
 
+$('#admin_zarz_wyciagiJS_Table').on( 'click', 'tbody td:not(:first-child)', function (e) {
+        editor.inline( this, {
+            onBlur: 'submit',
+              submit: 'allIfChanged'
+        } );
+    } );
 
-    editor.field('idWyciagu')
+editor.field('idWyciagu')
             .disable();
 
     editor.on('preSubmit', function (e, o, action) {
@@ -332,6 +348,8 @@ $(document).ready(function () {
           dom: "Bfrtip",
         "processing": true,
         "serverSide": false,
+          "deferRender": true,
+            stateSave: true,
         "sAjaxSource": "/admin_zarz_wyciagiJS/get",
         "sAjaxDataProp": "",
         "language": {
@@ -345,6 +363,12 @@ $(document).ready(function () {
             }
         },
           columns: [
+              {
+                data: null,
+                defaultContent: '',
+                className: 'select-checkbox',
+                orderable: false
+            },
             {data: "idWyciagu"},
             {data: "dzialki",
                 render: function (data, type, full) {
@@ -370,8 +394,11 @@ $(document).ready(function () {
             {data: "zadluzenieZRokuPoprzedniego"},
             {data: "licznik"}
         ],
-
-        select: true,
+order: [ 1, 'asc' ],
+        select: {
+            style:    'os',
+            selector: 'td:first-child'
+        },
         idSrc: "idWyciagu",
                 buttons: [
                 {extend: "create", editor: editor,
@@ -386,8 +413,18 @@ $(document).ready(function () {
                 formButtons: ['Usuń', {text: 'Powrót', action: function () {
                             this.close();
                         }}]},
-            {extend: 'pdfHtml5', orientation: 'landscape',
+            {
+                extend: 'collection',
+                text: 'Export',
+                buttons: [
+                    'copy',
+                    'excel',
+                     {extend: 'pdfHtml5', orientation: 'landscape',
                 pageSize: 'LEGAL', download: 'open'}
+                ,
+                    'print'
+                ]
+            }
                 ]
     });
 });

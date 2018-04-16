@@ -6,6 +6,8 @@ $(document).ready(function () {
         attach: 'head'
     } );
 
+
+
     editor = new $.fn.dataTable.Editor({
      display: 'envelope',
          ajax: {
@@ -21,15 +23,19 @@ $(document).ready(function () {
                         obj = d.data[key];
                         break;
                     }
+                    obj["idOdczytLicznika"] = 1;
                     return JSON.stringify(obj);
                 },
 
                 success: function (data) {
-                    table.clear().draw();
-                    table.ajax.reload();
+                      editor.close();
+                  $.fn.dataTable.ext.errMode = 'none';
+                    location.reload();
                 },
                 error: function (e) {
-                    alert("ERROR: ", e);
+                    editor.close();
+                  $.fn.dataTable.ext.errMode = 'none';
+                    location.reload();
                 }
 
 
@@ -50,11 +56,14 @@ $(document).ready(function () {
                     return JSON.stringify(obj);
                 },
                 success: function (data) {
-                    table.clear().draw();
-                    table.ajax.reload();
+                    editor.close();
+                  $.fn.dataTable.ext.errMode = 'none';
+                    location.reload();
                 },
                 error: function (e) {
-                    alert("ERROR: ", e);
+                   editor.close();
+                  $.fn.dataTable.ext.errMode = 'none';
+                    location.reload();
                 }
 
                         },
@@ -75,12 +84,14 @@ $(document).ready(function () {
                     return {"id": obj["idOdczytLicznika"]};
                 },
                 success: function (data) {
-                    table.clear().draw();
-                    table.ajax.reload();
+                 editor.close();
+                  $.fn.dataTable.ext.errMode = 'none';
+                    location.reload();
                 },
                 error: function (e) {
-                    table.clear().draw();
-                    table.ajax.reload();
+                      editor.close();
+                  $.fn.dataTable.ext.errMode = 'none';
+                    location.reload();
                 }            
 
             }
@@ -92,8 +103,8 @@ $(document).ready(function () {
                 "label": "ID Odczyt licznika",
                 "name": "idOdczytLicznika"
             }, {
-                "label": "Nr dzialki",
-                "name": "dzialki.nrDzialki"
+                "label": "Nr dzialki",             
+                "name":"dzialki.nrDzialki"
             }, {
                 "label": "Nr pomiaru",
                 "name": "nrPomiaru"
@@ -137,6 +148,13 @@ $(document).ready(function () {
             }
         }
     });
+
+$('#admin_zarz_liczniki_Table').on( 'click', 'tbody td:not(:first-child)', function (e) {
+        editor.inline( this, {
+            onBlur: 'submit',
+              submit: 'allIfChanged'
+        } );
+    } );
 
     editor.field('idOdczytLicznika')
             .disable();
@@ -227,6 +245,8 @@ $(document).ready(function () {
           dom: "Bfrtip",
         "processing": true,
         "serverSide": false,
+          "deferRender": true,
+            stateSave: true,
         "sAjaxSource": "/admin_zarz_liczniki/get",
         "sAjaxDataProp": "",
         "language": {
@@ -241,6 +261,12 @@ $(document).ready(function () {
         },
 
           columns: [
+              {
+                data: null,
+                defaultContent: '',
+                className: 'select-checkbox',
+                orderable: false
+            },
             {data: "idOdczytLicznika"},
             {data: "dzialki",
                 render: function (data, type, full) {
@@ -256,8 +282,11 @@ $(document).ready(function () {
             {data: "stanLicznika"},
             {data: "naleznosc"}
         ],
-
-        select: true,
+order: [ 1, 'asc' ],
+        select: {
+            style:    'os',
+            selector: 'td:first-child'
+        },
         idSrc: "idOdczytLicznika",
                 buttons: [
                 {extend: "create", editor: editor,
@@ -272,8 +301,18 @@ $(document).ready(function () {
                 formButtons: ['Usuń', {text: 'Powrót', action: function () {
                             this.close();
                         }}]},
-            {extend: 'pdfHtml5', orientation: 'landscape',
+           {
+                extend: 'collection',
+                text: 'Export',
+                buttons: [
+                    'copy',
+                    'excel',
+                     {extend: 'pdfHtml5', orientation: 'landscape',
                 pageSize: 'LEGAL', download: 'open'}
+                ,
+                    'print'
+                ]
+            }
                 ]
     });
 });
@@ -281,6 +320,7 @@ $(document).ready(function () {
 // Helper function to serialize all the form fields into a JSON string
 function formToJSON() {
         return JSON.stringify({
+                "idOdczytLicznika": $('idOdczytLicznika').val(),
                 "dzialki.nrDzialki": $('#dzialki.nrDzialki').val(),
                 "nrPomiaru": $('#nrPomiaru').val(),
           "data": $('#data').val(),

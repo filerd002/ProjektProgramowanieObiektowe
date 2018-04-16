@@ -22,6 +22,7 @@ $(document).ready(function () {
                         obj = d.data[key];
                         break;
                     }
+                      obj["dzialki.nrDzialki"]=obj["nrDzialki"];
                     return JSON.stringify(obj);
                 },
 
@@ -48,6 +49,8 @@ $(document).ready(function () {
                         obj = d.data[key];
                         break;
                     }
+                    obj["dzialki.nrDzialki"]=obj["nrDzialki"];
+                    
                     return JSON.stringify(obj);
                 },
                 success: function (data) {
@@ -76,10 +79,12 @@ $(document).ready(function () {
                     return {"id": obj["nrDzialki"]};
                 },
                 success: function (data) {
+                           editor.close();
                     table.clear().draw();
                     table.ajax.reload();
                 },
                 error: function (e) {
+                           editor.close();
                     table.clear().draw();
                     table.ajax.reload();
                 }            
@@ -125,9 +130,13 @@ $(document).ready(function () {
         }
     });
 
+   $('#admin_zarz_bank_Table').on( 'click', 'tbody td:not(:first-child)', function (e) {
+        editor.inline( this, {
+            onBlur: 'submit',
+              submit: 'allIfChanged'
+        } );
+    } );
 
-    editor.field('nrDzialki')
-            .disable();
 
     editor.on('preSubmit', function (e, o, action) {
 
@@ -142,7 +151,7 @@ $(document).ready(function () {
                 if (!kodIban.val()) {
                     kodIban.error('Proszę podać kod IBAN');
                 } else {
-                    if (!validateIban()(kodIban.val())) {
+                    if (!validateIban(kodIban.val())) {
                         kodIban.error('Proszę podać poprawny format kodu IBAN PLXX XXXX XXXX XXXX XXXX XXXX XXXX');
                     }
 
@@ -153,7 +162,7 @@ $(document).ready(function () {
                 if (!nrKonta.val()) {
                     nrKonta.error('Proszę podać numer konta');
                 } else {
-                    if (!validateBank()()(nrKonta.val())) {
+                    if (!validateBank(nrKonta.val())) {
                         nrKonta.error('Proszę podać poprawny format numeru konta XX XXXX XXXX XXXX XXXX XXXX XXXX');
                     }
 
@@ -185,6 +194,8 @@ $(document).ready(function () {
           dom: "Bfrtip",
         "processing": true,
         "serverSide": false,
+          "deferRender": true,
+            stateSave: true,
         "sAjaxSource": "/admin_zarz_bank/get",
         "sAjaxDataProp": "",
         "language": {
@@ -198,12 +209,22 @@ $(document).ready(function () {
             }
         },
           columns: [
+               {
+                data: null,
+                defaultContent: '',
+                className: 'select-checkbox',
+                orderable: false
+            },
             {data: "nrDzialki"},
             {data: "kodIban"},
             {data: "nrKonta"}
         ],
 
-        select: true,
+       order: [ 1, 'asc' ],
+        select: {
+            style:    'os',
+            selector: 'td:first-child'
+        },
         idSrc: "nrDzialki",
                 buttons: [
 
@@ -219,8 +240,18 @@ $(document).ready(function () {
                 formButtons: ['Usuń', {text: 'Powrót', action: function () {
                             this.close();
                         }}]},
-            {extend: 'pdfHtml5', orientation: 'landscape',
+          {
+                extend: 'collection',
+                text: 'Export',
+                buttons: [
+                    'copy',
+                    'excel',
+                     {extend: 'pdfHtml5', orientation: 'landscape',
                 pageSize: 'LEGAL', download: 'open'}
+                ,
+                    'print'
+                ]
+            }
                 ]
     });
 });

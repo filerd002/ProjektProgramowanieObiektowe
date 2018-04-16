@@ -109,6 +109,8 @@ $(document).ready(function () {
           dom: "Bfrtip",
         "processing": true,
         "serverSide": false,
+          "deferRender": true,
+            stateSave: true,
         "sAjaxSource": "/user_konto/get",
         "sAjaxDataProp": "",
         "language": {
@@ -135,8 +137,18 @@ $(document).ready(function () {
                 formButtons: ['Zatwierdz', {text: 'Powrót', action: function () {
                             this.close();
                         }}]},             
-            {extend: 'pdfHtml5', orientation: 'landscape',
+           {
+                extend: 'collection',
+                text: 'Export',
+                buttons: [
+                    'copy',
+                    'excel',
+                     {extend: 'pdfHtml5', orientation: 'landscape',
                 pageSize: 'LEGAL', download: 'open'}
+                ,
+                    'print'
+                ]
+            }
                 ]
     });
 });
