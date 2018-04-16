@@ -161,7 +161,7 @@ File selectedFile = fileChooser.getSelectedFile();
                             System.out.println("powierzchnia :" + powierzchnia);
                         }
      
-                         String password = RandomStringUtils.randomAlphanumeric(6).toLowerCase();
+                          String password = RandomStringUtils.randomAlphanumeric(1).toUpperCase()+RandomStringUtils.randomAlphanumeric(6).toLowerCase()+nr_czlonkowski;
                         dost.setPassword(password);
                                             
                         impdzialkowicz.add(dzialkowicz);
